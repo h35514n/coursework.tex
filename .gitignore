@@ -1,0 +1,20 @@
+# Build artifacts only. The two glyph PDFs under tex/latex/coursework
+# are source assets and must stay tracked -- do NOT add a blanket *.pdf
+# rule here.
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.xdv
+build/
+
+# macOS / editors
+.DS_Store
+*~
+\#*\#
+.\#*
+.auctex-auto/
+*.el

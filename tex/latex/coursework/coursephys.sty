@@ -1,0 +1,98 @@
+% =====================================================================
+% coursephys.sty -- Physics notation shared by coursework documents.
+%   Vector-field notation, unit vectors, Griffiths' script-r, and
+%   physical constants. Required by coursenotes.cls and coursepsets.cls.
+%
+% Factored out of the former problemsets.cls. The script-r glyphs are
+% shipped alongside this file in the texmf tree and are referenced by
+% bare name, so kpathsea resolves them regardless of the compile
+% directory. (The old class hardcoded "assets/ScriptR", which pinned
+% every document's working directory.)
+% =====================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{coursephys}[2026/09/05 v1.0 Physics notation for coursework documents]
+
+\RequirePackage{coursemath}
+\RequirePackage{graphicx}
+\RequirePackage{siunitx}
+
+% ============= Bold math, both ways =============
+% coursepsets uses mathspec over traditional NFSS math, where \bm is the
+% way to embolden a symbol. coursenotes loads classicthesis, which under
+% XeLaTeX pulls in unicode-math -- and unicode-math is incompatible with
+% \bm (it errors with "Improper alphabetic constant"). Everything below
+% goes through these three hooks so one definition serves both classes.
+% The non-unicode-math branch expands token-for-token to what
+% problemsets.cls used to write inline, so problem-set output is
+% unchanged.
+\newif\ifcourse@unicodemath
+\@ifpackageloaded{unicode-math}{\course@unicodemathtrue}{\course@unicodemathfalse}
+
+\ifcourse@unicodemath
+  % unicode-math: \symbf, and accents must sit outside the bold group.
+  \newcommand{\course@bold}[1]{\symbf{#1}}
+  \newcommand{\course@bhat}[1]{\hat{\symbf{#1}}}
+  \newcommand{\course@bhatrm}[1]{\hat{\symbf{\mathrm{#1}}}}
+\else
+  \RequirePackage{bm}
+  \newcommand{\course@bold}[1]{\bm{#1}}
+  \newcommand{\course@bhat}[1]{\bm{\hat{#1}}}
+  \newcommand{\course@bhatrm}[1]{\bm{\hat{\mathrm{#1}}}}
+\fi
+
+% ====== Griffiths Electrodynamics: the separation vector ===========
+% Glyphs live next to this file in tex/latex/coursework/.
+\providecommand{\rcurs}{{\mbox{$\resizebox{.09in}{.08in}{\includegraphics[trim= 1em 0 14em 0,clip]{coursework-scriptr}}$}}}
+\providecommand{\brcurs}{{\mbox{$\resizebox{.09in}{.08in}{\includegraphics[trim= 1em 0 14em 0,clip]{coursework-boldr}}$}}}
+% No \bm here: \brcurs is already the bold glyph image, so \bm was a
+% no-op (verified pixel-identical at 600dpi), and \bm around \hat
+% breaks under coursenotes' Euler math setup.
+\providecommand{\hrcurs}{{\mbox{$\hat{\brcurs}$}}}
+
+% ============= Vector Calculus Notation =============
+\providecommand{\grad}[1]{{\course@bold{\nabla} #1}}
+\providecommand{\lap}[1]{{\course@bold{\nabla}^2\, #1}}
+\providecommand{\vect}[1]{{\ensuremath{\,\course@bold{#1}}}}
+\providecommand{\vectrm}[1]{{\ensuremath{\vect{\mathrm{#1}}}}}
+\providecommand{\vhat}[1]{{\ensuremath{\,\course@bhat{#1}}}}
+\ifcourse@unicodemath
+  \providecommand{\vhatrm}[1]{{\ensuremath{\,\hat{\symbf{\mathrm{#1}}}}}}
+\else
+  % Note the accent sits inside \mathrm here but outside it in \xhat &c.
+  % That asymmetry is inherited from problemsets.cls; preserved deliberately.
+  \providecommand{\vhatrm}[1]{{\ensuremath{\vectrm{\hat{#1}}}}}
+\fi
+
+% ============= Unit Vectors =============
+\providecommand{\xhat}{{\,\, \course@bhatrm{x}}}
+\providecommand{\yhat}{{\,\, \course@bhatrm{y}}}
+\providecommand{\zhat}{{\,\, \course@bhatrm{z}}}
+\providecommand{\rhat}{{\,\, \course@bhatrm{r}}}
+\providecommand{\thetahat}{{\,\, \course@bhat{\theta}}}
+\providecommand{\phihat}{{\,\, \course@bhat{\phi}}}
+\providecommand{\shat}{{\,\, \course@bhatrm{s}}}
+
+% ============= Upright v, s, p for velocity/speed (txfonts) =============
+\ifcourse@unicodemath
+  % txmi is an 8-bit NFSS font; under unicode-math fall back to the
+  % ordinary italic letters.
+  \providecommand{\varv}{\mathit{v}}
+  \providecommand{\sarv}{\mathit{s}}
+  \providecommand{\parv}{\mathit{p}}
+\else
+  \DeclareSymbolFont{matha}{OML}{txmi}{m}{it}% txfonts
+  \DeclareMathSymbol{\varv}{\mathord}{matha}{118}
+  \DeclareMathSymbol{\sarv}{\mathord}{matha}{115}
+  \DeclareMathSymbol{\parv}{\mathord}{matha}{112}
+\fi
+
+% ============= Physical constants with units =============
+\providecommand{\sikB}{\ensuremath{\SI{1.381e-23}{\J\per\K}}}
+\providecommand{\siNa}{\ensuremath{\SI{6.022e23}{\per\mole}}}
+
+% ============= Blundell, Thermal Physics =============
+\providecommand{\ivda}{\ensuremath{\int \course@bold{\mathrm{v}} \cdot \dd \course@bold{\mathrm{a}}}}
+\providecommand{\ivdl}{\ensuremath{\int \course@bold{\mathrm{v}} \cdot \dd \course@bold{\mathrm{l}}}}
+
+\endinput
+% chktex 17
