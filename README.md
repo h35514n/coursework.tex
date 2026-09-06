@@ -1,4 +1,4 @@
-# coursework-texmf
+# coursework.tex
 
 Shared LaTeX document classes and macro packages for course repos. Installed
 once per machine into `TEXMFHOME`; after that any document anywhere can say
