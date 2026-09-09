@@ -92,6 +92,50 @@ Individual sets and chapters are `subfiles`, so each builds on its own or as
 part of the combined document. `\ifSubfilesClassLoaded` is the hook for
 emitting a title block only in the standalone build.
 
+### Separate problem and solution fragments
+
+Each assignment imports matching fragments in order:
+
+```latex
+% homework/01-pset.tex, after its heading and chapter/section commands
+\input{homework/01-pset/problem01}%
+
+\solution{\input{homework/01-pset/solution01}}
+
+\input{homework/01-pset/problem02}%
+
+\solution{\input{homework/01-pset/solution02}}
+```
+
+```latex
+% homework/01-pset/problem01.tex
+\problem[Griffiths 1.1]%
+Statement of the problem.
+% Reading, Reference, and Hint blocks belong here.
+```
+
+```latex
+% homework/01-pset/solution01.tex
+Work goes here.
+```
+
+Both files are bare fragments with no preamble. The solution file contains
+only the work; its parent supplies the `\solution` wrapper. Keep a matching
+solution file even for an unsolved problem, and keep each pair adjacent in the
+parent. Keep the `%` on the problem import and the blank line before `\solution`
+to end the statement paragraph without adding space between files. Run builds
+from the course repo root and retain repo-root-relative paths for fragments
+and figures.
+
+The existing `\solution` command supplies the heading, closing marker,
+visibility, and page breaks. In `worksheet` and `summary` builds, the hidden
+solution file is not read; reading references and hints stay visible in the
+problem file. Per-problem overrides still use
+`\solution[\SHOW]{\input{...}}` or `\solution[\HIDE]{\input{...}}`.
+Legacy `\solution{Work goes here.}` usage remains supported. No additional
+class command or package is needed, and course Makefiles already track all
+`.tex` fragments in each assignment directory.
+
 ## `coursepsets` class options
 
 | Option | Effect |

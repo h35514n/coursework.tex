@@ -229,6 +229,56 @@
 
 }
 
+% ============= Problem Label Helper =============
+% \@problemlabel{<N>}{<title>} typesets a bold "Problem N" (or, when title
+% is non-empty, "Problem N. title") as a \subsubsection, matching \problem's
+% own heading style. Used by \includeguide/\includediscussion, which need
+% an explicit problem number rather than the theproblem counter.
+\providecommand{\@problemlabel}[2]{%
+	\noindent%
+	\ifthenelse{\isempty{#2}}%
+	{\subsubsection{\textbf{Problem~#1}}}%
+	{\subsubsection{\textbf{Problem~#1}.~\textit{\small{#2}}}}%
+}
+
+% ============= Problem Inclusion =============
+% \includeproblem[<title>]{<pset dir>}{<NN>} generates the "Problem N[.
+% title]" heading via \problem, inputs <dir>/problemNN (a bare fragment
+% with no heading of its own), and wraps <dir>/solutionNN in \solution.
+\providecommand{\includeproblem}[3][]{%
+	\problem[#1]%
+	\input{#2/problem#3}%
+
+	\solution{\input{#2/solution#3}}
+}
+
+% ============= Guide Inclusion =============
+% \includeguide[<title>]{<pset dir>}{<NN>} — only if <dir>/guideNN.tex
+% exists — labels and inputs it. Always visible: unlike Solution/
+% Discussion, Guide content (reading pointers, priming questions) is meant
+% to help before/while solving, so it is not gated by \@solutionvis.
+\providecommand{\includeguide}[3][]{%
+	\IfFileExists{#2/guide#3.tex}{%
+		\@problemlabel{\number#3}{#1}%
+		\input{#2/guide#3}%
+	}{}%
+}
+
+% ============= Discussion Inclusion =============
+% \includediscussion[<title>]{<pset dir>}{<NN>} — only if
+% <dir>/discussionNN.tex exists — labels and inputs it. Tracks
+% \@solutionvis (hidden in worksheet mode, omitted in summary mode) since
+% it can spoil a solution's insight before the reader has worked the
+% problem by hand.
+\providecommand{\includediscussion}[3][]{%
+	\ifnum\@solutionvis=\SHOW%
+		\IfFileExists{#2/discussion#3.tex}{%
+			\@problemlabel{\number#3}{#1}%
+			\input{#2/discussion#3}%
+		}{}%
+	\fi%
+}
+
 % ============= Chapter, Section, Item Commands =============
 \newcommand*{\currentchapter}{0}
 \newcommand*{\currentchaptername}{}
