@@ -252,6 +252,17 @@
 	\solution{\input{#2/solution#3}}
 }
 
+% ============= Priming Question =============
+% \priming{<text>} labels a Guide priming question, matching the visual
+% style of the hand-typed "Reading:"/"Reference:" labels above it in a
+% guideNN.tex file. Its main payoff is making priming-question presence
+% grep-able (`grep -L '\\priming{' guide*.tex` finds guides that still need
+% one), rather than requiring prose-sniffing to tell a Reading paragraph
+% from a priming one.
+\providecommand{\priming}[1]{%
+	\textbf{\textit{Priming:}} #1%
+}
+
 % ============= Guide Inclusion =============
 % \includeguide[<title>]{<pset dir>}{<NN>} — only if <dir>/guideNN.tex
 % exists — labels and inputs it. Always visible: unlike Solution/
