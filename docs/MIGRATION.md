@@ -5,9 +5,9 @@ Version 2 replaces the old API. Work in an isolated course worktree and keep its
 ## Source transformation
 
 ```sh
-python3 ../coursework-refactor/scripts/migrate.py . > build/migration.diff
-python3 ../coursework-refactor/scripts/migrate.py . --write --report build/migration.json
-python3 ../coursework-refactor/scripts/migrate.py .
+python3 ../coursework.tex/scripts/migrate.py . > build/migration.diff
+python3 ../coursework.tex/scripts/migrate.py . --write --report build/migration.json
+python3 ../coursework.tex/scripts/migrate.py .
 ```
 
 The last command should report zero changes. The scanner handles balanced groups, optional arguments, nested expressions, comments and verbatim. It rejects inconsistent repeated titles and unrecognized assignment structure instead of silently dropping content. Inspect the dry-run before applying it. It is a v1 migration tool, not a formatter for newly authored v2 documents.
