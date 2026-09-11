@@ -55,12 +55,14 @@
      {\prop_gput:NVn \g__course_assignment_ids_prop \g__course_assignment_id_tl {1}}
    \int_compare:nNnF {\l__course_assignment_number_int}>{0}
      {\__course_error:n {Assignment~number~must~be~positive.}}
-   \setcounter{assignment}{\l__course_assignment_number_int-1}\refstepcounter{assignment}
+   \setcounter{assignment}{\l__course_assignment_number_int}
    \tl_gset:Nn \g__course_assignment_title_tl {#2}
    \seq_gclear:N \g__course_declarations_seq\prop_gclear:N \g__course_titles_prop
    \prop_gclear:N \g__course_objects_prop\bool_gset_false:N \g__course_printed_bool
    \setcounter{section}{\value{assignment}-1}
    \vspace{-1.75em}\section{#2}
+   \setcounter{assignment}{\l__course_assignment_number_int-1}\refstepcounter{assignment}
+   \protected@edef\@currentlabelname{#2}
   }
 \NewDocumentCommand \declareproblem {O{}m}
   {\tl_if_empty:NT \g__course_assignment_id_tl {\__course_error:n {Declare~an~assignment~first.}}
@@ -101,6 +103,9 @@
    \__course_heading:n {#2}
    \str_if_eq:nnT {#1}{problem}
      {\setcounter{problem}{\l__course_ordinal_int-1}\refstepcounter{problem}
+      \protected@edef\@currentlabelname
+        {Problem~\int_use:N\l__course_ordinal_int
+         \tl_if_empty:NF\l__course_problem_title_tl{.\ \l__course_problem_title_tl}}
       \exp_args:Ne \label {prob:\g__course_assignment_id_tl :#2}}
    \file_input:n {\__course_path:nn{#1}{#2}}
    \str_if_eq:nnT {#1}{problem}

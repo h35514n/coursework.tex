@@ -77,11 +77,11 @@ def main():
     (fragments/'solution05.tex').write_text('')
     (fragments/'problem06.tex').write_text('LongFirstPage.\\newpage LongSecondPage.\n')
     (fragments/'solution06.tex').write_text('LongSolution.\n')
-    start=r'\assignment[id=alpha,number=3,directory=build/api/fragments]{Assignment}'
+    start=r'\assignment[id=alpha,number=3,directory=build/api/fragments]{Assignment}\label{assignment:alpha}'
     decl=r'\declareproblem[title={First}]{01}\declareproblem[title={Second}]{02}'
     render=r'\printassignment[problems={02,01}]'
     cases=[]
-    cases.append(compile_case('ordered',start+decl+render+r'\cref{prob:alpha:02,prob:alpha:01}',checks=[label('prob:alpha:02','3.1'),label('prob:alpha:01','3.2'),label('eq:guide02','3.1.1'),label('eq:problem02','3.1.2'),label('eq:solution02','3.1.3'),label('eq:discussion02','3.1.4'),label('fig:discussion02','3.1.4'),require_text('Problem 1. Second','Problem 2. First','problems 3.1 and 3.2')]))
+    cases.append(compile_case('ordered',start+decl+render+r'\cref{prob:alpha:02,prob:alpha:01}; \cref{assignment:alpha}; \nameref{prob:alpha:02}',checks=[label('prob:alpha:02','3.1'),label('prob:alpha:01','3.2'),label('eq:guide02','3.1.1'),label('eq:problem02','3.1.2'),label('eq:solution02','3.1.3'),label('eq:discussion02','3.1.4'),label('fig:discussion02','3.1.4'),require_text('Problem 1. Second','Problem 2. First','problems 3.1 and 3.2','assignment 3'),label('assignment:alpha','3')]))
     cases.append(compile_case('subset',start+decl+r'\printassignment[problems={02}]',checks=[label('prob:alpha:02','3.1'),absent('Statement01')]))
     for mode in ['worksheet','compact']:
         cases.append(compile_case(mode,start+r'\declareproblem{03}\declareproblem{04}\printassignment',options='mode=worked,problem-breaks=page',preamble=r'\AtBeginDocument{\courseworksetup{mode='+mode+'}}',checks=[require_text('Statement03','Unsolved04'),absent('solution03.tex','discussion03.tex','solution04.tex','Discussion')]))
