@@ -25,8 +25,10 @@
 \NewDocumentCommand\RR{}{\ensuremath{\mathbb{R}}}
 \NewDocumentCommand\CC{}{\ensuremath{\mathbb{C}}}
 \NewDocumentCommand\dd{}{\mathrm{d}}
-\NewDocumentCommand\deriv{O{1}mm}{\diff[#1]{#2}{#3}}
-\NewDocumentCommand\pderiv{O{1}mm}{\diffp[#1]{#2}{#3}}
+% A closed group prevents diffcoeff from treating a following [expression]
+% in the document as its optional evaluation-point argument.
+\NewDocumentCommand\deriv{O{1}mm}{{\diff[#1]{#2}{#3}}}
+\NewDocumentCommand\pderiv{O{1}mm}{{\diffp[#1]{#2}{#3}}}
 \NewDocumentCommand\integral{mmmm}{\ensuremath{\int_{#3}^{#4}\!#1\,\mathrm{d}#2}}
 \NewDocumentCommand\evalat{mmm}{\ensuremath{\left.#1\right\rvert_{#2}^{#3}}}
 \NewDocumentCommand\evalbracket{mmm}{\ensuremath{\left\lbrack#1\right\rvert_{#2}^{#3}}}

@@ -46,6 +46,10 @@
 \RequirePackage{mathspec}     % keep after amsmath
 \RequirePackage{cleveref}
 \RequirePackage[all]{hypcap}  % hypcap: Links go to object instead of caption. [Keep as last package]
+% report restarts page numbering after its title page. Give page 1 only
+% to the contents/body page, avoiding a duplicate title-page destination.
+\AddToHook{env/titlepage/before}{\hypersetup{pageanchor=false}}
+\AddToHook{env/titlepage/after}{\hypersetup{pageanchor=true}}
 %----------------------------
 
 % SI Units handling
