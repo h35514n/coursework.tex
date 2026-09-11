@@ -1,5 +1,8 @@
 # Coursework v2 review report
 
+This records the completed review milestone before adoption. For the user's
+subsequent approval, selected fonts, and activation status, see [ADOPTION.md](ADOPTION.md).
+
 The breaking API, balanced-argument source migration, four course migration worktrees, and isolated Unicode font comparison are implemented. Nothing has been merged or installed.
 
 ## Review branches

@@ -1,5 +1,11 @@
 # Coursework font review
 
+**Decision:** adopt Pagella prose in both classes, Pagella mathematics in
+homework, and Euler mathematics in notes. Euler has no corresponding regular,
+italic, and bold prose family; the user explicitly selected Pagella prose as
+its companion. See [ADOPTION.md](ADOPTION.md) for activation and validation.
+The following is the original specimen review record.
+
 Both choices use the same v2 API and XeLaTeX. The font experiment is isolated on `codex/coursework-fonts`; the API migration branch retains the original typography.
 
 - **Distinct styles:** Pagella homework and Euler notes.

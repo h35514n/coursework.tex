@@ -24,7 +24,7 @@
 	palatino=false,
 	style=classicthesis
 }{classicthesis}
-% Load mathematics before classicthesis selects its Unicode math backend.
+% Load mathematics and the shared font configuration before classicthesis.
 \PassOptionsToPackage{unicode}{coursemath}
 \RequirePackage{coursemath}
 \RequirePackage{courseenvironments}
@@ -46,7 +46,7 @@
 \RequirePackage{xcolor}                             % Required. For setting the color of hyperlinks
 
 %----------------------------
-% Font selection is owned by coursefonts; no mathspec     % keep after amsmath
+% Font selection is owned by coursefonts.
 \RequirePackage{cleveref}
 \RequirePackage[all]{hypcap}  % hypcap: Links go to object instead of caption. [Keep as last package]
 % report restarts page numbering after its title page. Give page 1 only

@@ -1,16 +1,16 @@
 # Coursework v2
 
 XeLaTeX classes and notation for course notes, assignments, exams, worksheets,
-and compact problem handouts. Version 2 is a breaking API change. The v1
-installation remains in the original checkout while migration branches are
-reviewed.
+and compact problem handouts. Version 2 is a breaking API change. The four
+migrated courses use this API; recovery branches preserve their v1 sources.
 
 Requires **TeX Live 2026**, including the June 2026 LaTeX kernel, and XeLaTeX.
-This experimental branch uses Unicode math through `coursefonts.sty`.
-Choose `font-profile=pagella` or `font-profile=euler` as a class option;
-homework defaults to Pagella and notes to Euler. The completed API branch
-retains the original typography. See [the font review](docs/FONT-REVIEW.md)
-and `output/pdf/coursework-font-comparison.pdf` before adopting a profile.
+Font selection is centralized in `coursefonts.sty`. Both classes use Pagella
+prose; homework uses Pagella mathematics and notes use Euler mathematics.
+These are the adopted defaults, so course preambles need no font options.
+An explicit `font-profile=pagella` or `font-profile=euler` class option changes
+the mathematics only. See [the adoption record](docs/ADOPTION.md) and
+[the original font comparison](docs/FONT-REVIEW.md).
 
 ## Package responsibilities
 
@@ -23,7 +23,7 @@ and `output/pdf/coursework-font-comparison.pdf` before adopting a profile.
 | `courseenvironments.sty` | Theorems, formulas, math tables and subparts |
 | `coursemath.sty` | Mathematical notation and the bold-symbol backend |
 | `coursephys.sty` | Physics notation, constants, units and script-r assets |
-| `coursefonts.sty` | Unicode text/math font selection for this experiment |
+| `coursefonts.sty` | Pagella prose and the class-specific Unicode math font |
 
 Both classes load math and document environments. Load physics explicitly.
 The math and physics packages also work with `article`; they do not select
