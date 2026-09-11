@@ -1,0 +1,73 @@
+{
+  "fonts": {
+    "prose": "TeX Gyre Pagella",
+    "homework_math": "TeX Gyre Pagella Math",
+    "notes_math": "Euler Math"
+  },
+  "builds": [
+    {
+      "repository": "coursework-testing",
+      "fixture_revision": "e6175d16bfe0d1ed2499d9085c7a95d922c00c22",
+      "class_revision": "e885b806db1caa7e7d2ffb3c1bcbbc8e33765f89",
+      "pdfs": 46,
+      "api_pages": 488,
+      "adopted_pages": 496,
+      "candidate_manifest": "/Users/jmromer/Courses/coursework-testing/build/candidate/manifest.json",
+      "font_comparison": "/Users/jmromer/Courses/coursework-testing/build/comparison-v2-api/report.json",
+      "checkpoint": "/Users/jmromer/Courses/coursework-testing/checkpoints/v2-pagella-euler/manifest.json"
+    },
+    {
+      "repository": "phys331-electricity-and-magnetism-migration",
+      "fixture_revision": "2c69713ac8f4e434b4ef8f832faa2b7849544b39",
+      "class_revision": "e885b806db1caa7e7d2ffb3c1bcbbc8e33765f89",
+      "pdfs": 35,
+      "api_pages": 416,
+      "adopted_pages": 424,
+      "candidate_manifest": "/Users/jmromer/Courses/phys331-electricity-and-magnetism-migration/build/candidate/manifest.json",
+      "font_comparison": "/Users/jmromer/Courses/phys331-electricity-and-magnetism-migration/build/comparison-v2-api/report.json",
+      "checkpoint": "/Users/jmromer/Courses/phys331-electricity-and-magnetism-migration/checkpoints/v2-pagella-euler/manifest.json"
+    },
+    {
+      "repository": "phys433-quantum-physics-migration",
+      "fixture_revision": "faa7c24eca76c2bb2a52ad3ec5298ef184d85633",
+      "class_revision": "e885b806db1caa7e7d2ffb3c1bcbbc8e33765f89",
+      "pdfs": 34,
+      "api_pages": 331,
+      "adopted_pages": 331,
+      "candidate_manifest": "/Users/jmromer/Courses/phys433-quantum-physics-migration/build/candidate/manifest.json",
+      "font_comparison": "/Users/jmromer/Courses/phys433-quantum-physics-migration/build/comparison-v2-api/report.json",
+      "checkpoint": "/Users/jmromer/Courses/phys433-quantum-physics-migration/checkpoints/v2-pagella-euler/manifest.json"
+    },
+    {
+      "repository": "phys440-wave-optics-migration",
+      "fixture_revision": "b9b3c9a57f2ad3eb4ea618dd2df03ac5e964b734",
+      "class_revision": "e885b806db1caa7e7d2ffb3c1bcbbc8e33765f89",
+      "pdfs": 34,
+      "api_pages": 208,
+      "adopted_pages": 208,
+      "candidate_manifest": "/Users/jmromer/Courses/phys440-wave-optics-migration/build/candidate/manifest.json",
+      "font_comparison": "/Users/jmromer/Courses/phys440-wave-optics-migration/build/comparison-v2-api/report.json",
+      "checkpoint": "/Users/jmromer/Courses/phys440-wave-optics-migration/checkpoints/v2-pagella-euler/manifest.json"
+    },
+    {
+      "repository": "phys491-capstone-migration",
+      "fixture_revision": "1acf3b9c2b09e9a35237395c292adf6719d229c8",
+      "class_revision": "e885b806db1caa7e7d2ffb3c1bcbbc8e33765f89",
+      "pdfs": 21,
+      "api_pages": 178,
+      "adopted_pages": 178,
+      "candidate_manifest": "/Users/jmromer/Courses/phys491-capstone-migration/build/candidate/manifest.json",
+      "font_comparison": "/Users/jmromer/Courses/phys491-capstone-migration/build/comparison-v2-api/report.json",
+      "checkpoint": "/Users/jmromer/Courses/phys491-capstone-migration/checkpoints/v2-pagella-euler/manifest.json"
+    }
+  ],
+  "api_cases": 25,
+  "migration_tests": 8,
+  "original_baseline_sha256": "8c858e9130836771b945ca17310bf083ac163130c25ea896b5a963d9056053d5",
+  "installed_smoke_reports": [
+    "/Users/jmromer/Courses/phys331-electricity-and-magnetism/build/v2-font-activation/verification.json",
+    "/Users/jmromer/Courses/phys433-quantum-physics/build/v2-font-activation/verification.json",
+    "/Users/jmromer/Courses/phys440-wave-optics/build/v2-font-activation/verification.json",
+    "/Users/jmromer/Courses/phys491-capstone/build/v2-font-activation/verification.json"
+  ]
+}

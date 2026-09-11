@@ -8,7 +8,7 @@ require no course-specific font setup.
 ## Recovery and activation
 
 The local `master` branches of `coursework.tex`, PHYS 331, 433, 440, and 491
-have adopted the validated API migration. Each repository has an
+have adopted the validated API migration and selected fonts. Each repository has an
 `archive/coursework-v1` recovery branch at its original revision. The class
 repository also preserves the approved API with its original typography as
 `archive/coursework-v2-api`.
@@ -25,10 +25,37 @@ All four original course checkouts built their first assignment using the
 installed v2 classes without a `TEXINPUTS` override. Recorder files confirmed
 the installed checkout supplied every coursework module.
 
-The approved font integration is undergoing the full 170-output matrix and
-the behavioral API suite before activation. The original v1 baselines and
-reviewed `v2-api` checkpoints remain immutable; font differences are compared
-against `v2-api` separately.
+After font activation, homework and notes were built again in all four original
+course checkouts: **8 installed-path smoke outputs** pass. Recorder and fontspec
+logs confirm the selected class modules and math fonts, with no competing
+mathspec, mathpazo, or eulervm package. Empty chapter/assignment placeholders do
+not embed unused math fonts; their font selection is verified in the logs.
+
+The approved font integration passes the full 170-output matrix: **1,637
+pages**, compared with 1,621 at the pre-font API checkpoint. All **25 behavioral
+TeX cases** and **8 migration tests** pass. There are no missing glyphs, duplicate
+PDF destinations, or duplicate active labels. The original v1 baselines and
+reviewed `v2-api` checkpoints remain immutable.
+
+| Repository | PDFs | API checkpoint pages | Adopted font pages |
+| --- | ---: | ---: | ---: |
+| coursework-testing | 46 | 488 | 496 |
+| PHYS 331 | 35 | 416 | 424 |
+| PHYS 433 | 34 | 331 | 331 |
+| PHYS 440 | 34 | 208 | 208 |
+| PHYS 491 | 21 | 178 | 178 |
+
+Each testbed/migration worktree retains font text/render differences in
+`build/comparison-v2-api/` and the reviewed snapshot in
+`checkpoints/v2-pagella-euler/`. Comparisons to that snapshot pass. The original
+v1 comparison remains strict. See [adoption-validation.json](adoption-validation.json)
+for pinned build revisions, manifests, and artifact paths.
+
+Font changes alter glyph metrics and extracted Unicode characters. Warnings
+remain explicit in the comparison reports: a few new paragraph overflows
+(roughly 11–14 points), inherited equation overflows, and unicode-math notices
+about its math-symbol/mathtools definitions. These are recorded separately
+from build failures; they have not been suppressed.
 
 Full-course font validation identified two remaining legacy integration cases.
 PHYS 331 and its testbed replace two `\bigintssss` uses with standard integrals.
