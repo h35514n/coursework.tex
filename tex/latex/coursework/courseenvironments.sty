@@ -1,0 +1,98 @@
+% Shared theorem and display environments; layout defaults remain class-owned.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{courseenvironments}[2026/09/11 v1.1 Shared coursework environments]
+\RequirePackage{coursemath}
+% ============= Math Table =============
+% Float placement and lead-in skip differ between the notes and problem
+% set layouts; each class overrides these hooks. The opener is a whole
+% macro rather than just the placement key because \begin{table} reads
+% its optional argument unexpanded.
+\providecommand{\coursemathtablestart}{\begin{table}[ht!]}
+\providecommand{\coursemathtableend}{\end{table}}
+\providecommand{\coursemathtabletopskip}{-1em}
+
+\newif\ifcaption%
+\pgfkeys%
+{
+	/mypkg/title/.store in=\Caption,  % Any value assigned to title will be stored in \Caption
+	/mypkg/title= ,                   % Initialize so \Caption exists
+	/mypkg/label/.store in=\Label,    % Any value assigned to label will be stored in \Label
+	/mypkg/label= ,                   % Initialize so \Label exists
+	/mypkg/caption/.is if=caption,    % Declare a boolean, defaults to false
+}
+\newenvironment{mathtable}[2][]{
+	\pgfkeys{/mypkg/.cd, #1}%
+	\vspace{\coursemathtabletopskip}%
+	\coursemathtablestart%
+		\small \begin{center}%
+			\begin{displaymath}%
+				\begin{array}{#2}%
+					\toprule
+					}{
+					% \bottomrule % TODO: Fix error when including \bottomrule
+				\end{array}%
+			\end{displaymath}%
+			\ifcaption%
+				\vspace{-1em}\caption{\Caption}\label{\Label}%
+			\fi%
+		\end{center}%
+	\coursemathtableend%
+	\vspace{-1em}%
+}
+
+% ============= Double-line Column-Heading for table =============
+\providecommand{\double}[2]{%
+	\multicolumn{1}{c}{%
+		\genfrac{}{}{0pt}{}{\text{#1}}{\text{#2}}
+	}
+}
+
+% ============= Formula Environment =============
+\newcounter{formula}
+\newenvironment{formula}[1][Formula \arabic{formula}]
+{
+	\addtocounter{formula}{1}
+	\begin{displaymath}
+		\tag*{\parbox{5em}{\textbf{\small{#1}}}}
+		}{
+	\end{displaymath}\\
+}
+
+% ============= Theorem-Style Environments =============
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lma}[thm]{Lemma}
+\newtheorem{crl}[thm]{Corollary}
+\newtheorem{prp}[thm]{Proposition}
+\newtheorem{cnj}[thm]{Conjecture}
+\newtheorem{alg}[thm]{Algorithm}
+
+% Associated environments (for numbered theorem environments)
+\newenvironment{theorem}[2][]{\begin{thm}[#1]\label{#2}}{\end{thm}}
+\newenvironment{lemma}[2][]{\begin{lma}[#1]\label{#2}}{\end{lma}}
+\newenvironment{corollary}[2][]{\begin{crl}[#1]\label{#2}}{\end{crl}}
+\newenvironment{proposition}[2][]{\begin{prp}[#1]\label{#2}}{\end{prp}}
+\newenvironment{conjecture}[2][]{\begin{cnj}[#1]\label{#2}}{\end{cnj}}
+\newenvironment{algorithm}[2][]{\begin{alg}[#1]\label{#2}}{\end{alg}}
+
+\theoremstyle{remark}             % Italic label, roman letters
+\newtheorem{rmk}{Remark}[section] % Numbered by section. Remarks are used to expand on and integrate material.
+\newtheorem*{note}{Note}          % Un-numbered. Notes are used to comment on specific elements of the material.
+\newtheorem*{caveat}{Caveat}      % Un-numbered. Caveats are used to guide the reader away from a common error.
+\newtheorem*{warning}{Warning}    % Un-numbered. Warnings are used to guide away from especially egregious errors.
+
+\theoremstyle{definition}              % Bold label, roman letters
+\newtheorem{dfn}{Definition}[section]  % Numbered by section. Definitions of concepts and terms.
+\newtheorem{exm}{Example}[section]     % Numbered by section. Illustrative examples.
+\newtheorem{smm}{Summary}[subsection]  % Numbered by subsection. For section summaries.
+\newtheorem*{question}{Question}       % Un-numbered. For questions to motivate further analysis.
+\newtheorem*{speculation}{Speculation} % Un-numbered. For questions that arise but will not be immediately answered.
+
+% Associated environments (for numbered theorem environments)
+\newenvironment{remark}[2][]{\begin{rmk}[#1]\label{#2}}{\end{rmk}}
+\newenvironment{definition}[2][]{\begin{dfn}[#1]\label{#2}}{\end{dfn}}
+\newenvironment{example}[2][]{\begin{exm}[#1]\label{#2}}{\end{exm}}
+\newenvironment{summary}[2][]{\begin{smm}[#1]\label{#2}}{\end{smm}}
+
+\newenvironment{sublist}{\begin{enumerate}[label = (\alph*)]\vspace{-1ex}}{\end{enumerate}}
+\endinput

@@ -80,6 +80,7 @@
 \providecommand{\coursemathtabletopskip}{-2ex}
 
 \RequirePackage{coursemath}
+\RequirePackage{courseenvironments}
 \RequirePackage{coursephys}
 
 \endinput

@@ -367,6 +367,7 @@
 % so the deliberate ordering (amsmath before mathspec, hypcap last
 % among the layout packages) is preserved.
 \RequirePackage{coursemath}
+\RequirePackage{courseenvironments}
 \RequirePackage{coursephys}
 
 \endinput
