@@ -1,0 +1,18 @@
+% Experimental Unicode font profiles, isolated from the API migration branch.
+\NeedsTeXFormat{LaTeX2e}[2026-06-01]
+\ProvidesExplPackage{coursefonts}{2026/09/11}{2.0.0}{Explicit Unicode font profiles}
+\RequirePackage{coursecommon}
+\RequirePackage{fontspec}
+\str_if_eq:VnTF\g__course_font_profile_tl{euler}
+ {\PassOptionsToPackage{math-style=upright}{unicode-math}
+  \RequirePackage{euler-math}}
+ {\RequirePackage{unicode-math}
+  \setmathfont{texgyrepagella-math.otf}}
+\setmainfont{texgyrepagella}[
+ Extension=.otf,UprightFont=*-regular,ItalicFont=*-italic,
+ BoldFont=*-bold,BoldItalicFont=*-bolditalic,Ligatures=TeX,Numbers=OldStyle]
+\setmonofont{DejaVuSansMono}[
+ Extension=.ttf,BoldFont=*-Bold,ItalicFont=*-Oblique,
+ BoldItalicFont=*-BoldOblique,Scale=0.85]
+\linespread{1.05}
+\endinput

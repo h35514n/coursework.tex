@@ -10,10 +10,12 @@
 
 % ================== Packages and Document Options ==================
 \LoadClass[11pt,letterpaper]{article}
+\PassOptionsToPackage{unicode}{coursemath}
 \RequirePackage{coursemath}
 \RequirePackage{courseenvironments}
+\RequirePackage{coursefonts}
 
-\RequirePackage[scaled=0.85]{beramono}
+
 \RequirePackage[small]{caption}
 \RequirePackage{fancyhdr}                           % For customizing headers/footers.
 \RequirePackage{fontspec}
@@ -21,7 +23,7 @@
 \RequirePackage{graphicx}                           % Used for inserting images.
 \RequirePackage[colorlinks=true, linkcolor=navy, urlcolor=black]{hyperref}
 \RequirePackage{lastpage}                           % For page count in header/footer.
-\RequirePackage[osf,sc]{mathpazo}
+
 \RequirePackage{nameref}
 \RequirePackage[font={footnotesize}]{subcaption}
 \RequirePackage{subfiles}                           % Per-pset standalone builds
@@ -34,19 +36,12 @@
 \RequirePackage{url}                                % Enables urls with the \url tag
 \RequirePackage{xcolor}                             % Set hyperlink color
 % -------------------- Late loaders -----------------------------------------
-\RequirePackage{mathspec}
+% Font selection is owned by coursefonts; no mathspec
 \RequirePackage{courseassignments}
 \RequirePackage{cleveref}
 \RequirePackage[all]{hypcap}    % Links go to object instead of caption [keep as last]
 
-% ==================   Font Settings   ==================
-% \PassOptionsToPackage{osf,sc}{mathpazo}
-% \PassOptionsToPackage{scaled=0.85}{beramono}
-\setmainfont[Ligatures=TeX,Numbers=OldStyle]{TeX Gyre Pagella} % Palatino clone
-\linespread{1.05} % a bit more for Palatino
-\setmathfont{TeX Gyre Pagella Math}
-\setmonofont[Scale=0.85]{DejaVu Sans Mono}
-\DeclareFixedFont{\chapterNumber}{U}{eur}{b}{n}{70}
+% Fonts are selected by coursefonts.
 
 % ==================   Appearance Settings   ==================
 \definecolor{@todoclr}{gray}{0.80}   % For To-Dos. 50% brightness

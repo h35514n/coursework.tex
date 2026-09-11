@@ -6,10 +6,14 @@
   { \prop_gput:Nnn \g__course_metadata_prop {#1} {}
     \keys_define:nn {coursework}
       {#1 .code:n = \prop_gput:Nnn \g__course_metadata_prop {#1} {##1}} }
+\tl_new:N \g__course_font_profile_tl
+\tl_gset:Nn \g__course_font_profile_tl {pagella}
 \tl_new:N \g__course_mode_tl
 \tl_new:N \g__course_breaks_tl
 \keys_define:nn {coursework}
   {
+    font-profile .choices:nn = {pagella,euler}
+      {\tl_gset:NV \g__course_font_profile_tl \l_keys_choice_tl},
     mode .choices:nn = {worked,worksheet,compact}
       {\tl_gset:NV \g__course_mode_tl \l_keys_choice_tl},
     mode .initial:n = worked,

@@ -6,8 +6,11 @@ installation remains in the original checkout while migration branches are
 reviewed.
 
 Requires **TeX Live 2026**, including the June 2026 LaTeX kernel, and XeLaTeX.
-The API branch retains the existing Pagella/mathpazo homework and
-classicthesis/Euler notes typography. Font alternatives are a separate review.
+This experimental branch uses Unicode math through `coursefonts.sty`.
+Choose `font-profile=pagella` or `font-profile=euler` as a class option;
+homework defaults to Pagella and notes to Euler. The completed API branch
+retains the original typography. See [the font review](docs/FONT-REVIEW.md)
+and `output/pdf/coursework-font-comparison.pdf` before adopting a profile.
 
 ## Package responsibilities
 
@@ -20,6 +23,7 @@ classicthesis/Euler notes typography. Font alternatives are a separate review.
 | `courseenvironments.sty` | Theorems, formulas, math tables and subparts |
 | `coursemath.sty` | Mathematical notation and the bold-symbol backend |
 | `coursephys.sty` | Physics notation, constants, units and script-r assets |
+| `coursefonts.sty` | Unicode text/math font selection for this experiment |
 
 Both classes load math and document environments. Load physics explicitly.
 The math and physics packages also work with `article`; they do not select

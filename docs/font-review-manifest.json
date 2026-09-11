@@ -1,0 +1,235 @@
+{
+  "class_revision": "418f4db1687fa069664d1b02c1df11c15c54b804",
+  "class_status": "?? docs/FONT-REVIEW.md\n?? output/",
+  "class_files": {
+    "courseenvironments.sty": "ecfbd5acb98dcb55558003844e6f204cc508c373f118734edcf0801458ad2c30",
+    "coursemath.sty": "cb897e70ec596629a888187072bc6d4ce882d79449ad25ddcfb3cd8c211cdd1d",
+    "coursefonts.sty": "6ad5e64ad4e94ec95d11d72743067380cf20d2277dac8711a64444a98ecebb78",
+    "coursework-scriptr.pdf": "54b8fdc20ab5f3a612e1fc0318f02a0a27c8372ffcf9788994b6b8e63e08d4f2",
+    "coursecommon.sty": "09ce4f40bf0938e5a51f911a7bbbaebd93ea2b6e19ec45041d8b6e10cf941afc",
+    "coursephys.sty": "2645c75a51d4db91be757d1fc09b95d5fd6c1a1820ae4ac040ee50e1c9bdffcc",
+    "coursenotes.cls": "f142e0e8a84e0647b3457472af07585393efc16efaae81f551801924899eb36a",
+    "courseassignments.sty": "eb58077e12d9cb4b6af056ae495bd48c1b4794619c4c52c7733accde42959cb7",
+    "coursepsets.cls": "004d5c9143fd50fde819988b376438c72f53c9029833373277770066aa8ed474",
+    "coursework-boldr.pdf": "56bcafbf42afb329719e81fdb90e426b8e169c5cf0d41c3d095c64561ced5f8a"
+  },
+  "testbed_revision": "afe973365c33a39fd80bb31a775b5d762d3c6e00",
+  "testbed_status": "",
+  "source_date_epoch": "1789087534",
+  "xelatex": "XeTeX 3.141592653-2.6-0.999998 (TeX Live 2026)",
+  "results": [
+    {
+      "name": "specimen-pagella-homework",
+      "profile": "pagella",
+      "class": "coursepsets",
+      "pdf": "/Users/jmromer/Courses/coursework-fonts/build/font-review/specimen-pagella-homework/specimen-pagella-homework.pdf",
+      "pages": 2,
+      "sha256": "b0b184b75faaa5109d245a31a940200bfb9bdbaafcf4571ba5f46ac472fca69a",
+      "text_sha256": "9bae8ba065841c895f6cd8d4788b279edea4e3295622f27926f78be0fb6fa91d",
+      "warnings": [
+        "Package unicode-math Warning: Using \\overbracket and \\underbracket from",
+        "Package unicode-math Warning: I'm going to overwrite the following commands"
+      ],
+      "font_paths": [],
+      "font_table": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nBQKNZB+TeXGyrePagella-Bold-Identity-H CID Type 0C       Identity-H       yes yes yes      5  0\nIGIQCA+TeXGyrePagella-Regular-Identity-H CID Type 0C       Identity-H       yes yes yes      7  0\nKEYSEN+TeXGyrePagellaMath-Regular-Identity-H CID Type 0C       Identity-H       yes yes yes      9  0\nSUINHB+TeXGyrePagella-Italic-Identity-H CID Type 0C       Identity-H       yes yes yes     30  0\nIJFNTQ+Kaufmann-Bold                 Type 1C           Custom           yes yes no      15  0\nSRSQDW+Kaufmann                      Type 1C           Custom           yes yes no      24  0\n",
+      "command": [
+        "latexmk",
+        "-xelatex",
+        "-halt-on-error",
+        "-interaction=nonstopmode",
+        "-recorder",
+        "-usepretex=\\PassOptionsToClass{font-profile=pagella}{coursepsets}",
+        "-outdir=/Users/jmromer/Courses/coursework-fonts/build/font-review/specimen-pagella-homework",
+        "/Users/jmromer/Courses/coursework-fonts/build/font-review/specimen-pagella-homework.tex"
+      ]
+    },
+    {
+      "name": "specimen-euler-notes",
+      "profile": "euler",
+      "class": "coursenotes",
+      "pdf": "/Users/jmromer/Courses/coursework-fonts/build/font-review/specimen-euler-notes/specimen-euler-notes.pdf",
+      "pages": 2,
+      "sha256": "325d9c70399c5df4b8e99f4a455a5eaf5c09dc6765e700aafb3485cdf7810339",
+      "text_sha256": "3a589cecafc55d87051046bb2c99e01958824ab74b903d20977f92587ff5cd23",
+      "warnings": [
+        "Package classicthesis Warning: Using package \"footmisc\" with option \"marginal\" ",
+        "Package unicode-math Warning: Using \\overbracket and \\underbracket from",
+        "Package unicode-math Warning: I'm going to overwrite the following commands"
+      ],
+      "font_paths": [],
+      "font_table": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nHZJOVW+TeXGyrePagella-Regular-Identity-H CID Type 0C       Identity-H       yes yes yes      5  0\nMTAJYH+Euler-Math-Identity-H         CID Type 0C       Identity-H       yes yes yes      7  0\nUBJZAG+TeXGyrePagella-Italic-Identity-H CID Type 0C       Identity-H       yes yes yes     28  0\nIJFNTQ+Kaufmann-Bold                 Type 1C           Custom           yes yes no      13  0\nSRSQDW+Kaufmann                      Type 1C           Custom           yes yes no      22  0\nLYRHKL+TeXGyrePagella-Bold-Identity-H CID Type 0C       Identity-H       yes yes yes     33  0\n",
+      "command": [
+        "latexmk",
+        "-xelatex",
+        "-halt-on-error",
+        "-interaction=nonstopmode",
+        "-recorder",
+        "-usepretex=\\PassOptionsToClass{font-profile=euler}{coursenotes}",
+        "-outdir=/Users/jmromer/Courses/coursework-fonts/build/font-review/specimen-euler-notes",
+        "/Users/jmromer/Courses/coursework-fonts/build/font-review/specimen-euler-notes.tex"
+      ]
+    },
+    {
+      "name": "specimen-pagella-notes",
+      "profile": "pagella",
+      "class": "coursenotes",
+      "pdf": "/Users/jmromer/Courses/coursework-fonts/build/font-review/specimen-pagella-notes/specimen-pagella-notes.pdf",
+      "pages": 2,
+      "sha256": "92c03351404e23c55ac296d82fafba51c5bb90f90e225f78f7972ce49febdb46",
+      "text_sha256": "016c358d2f79884f11374fa762709aba0b21681edf287c72c9e8033db868b275",
+      "warnings": [
+        "Package classicthesis Warning: Using package \"footmisc\" with option \"marginal\" ",
+        "Package unicode-math Warning: Using \\overbracket and \\underbracket from",
+        "Package unicode-math Warning: I'm going to overwrite the following commands"
+      ],
+      "font_paths": [],
+      "font_table": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nOKNZGI+TeXGyrePagella-Regular-Identity-H CID Type 0C       Identity-H       yes yes yes      5  0\nGHOWXX+TeXGyrePagellaMath-Regular-Identity-H CID Type 0C       Identity-H       yes yes yes      7  0\nJIIEUN+TeXGyrePagella-Italic-Identity-H CID Type 0C       Identity-H       yes yes yes     28  0\nIJFNTQ+Kaufmann-Bold                 Type 1C           Custom           yes yes no      13  0\nSRSQDW+Kaufmann                      Type 1C           Custom           yes yes no      22  0\nNELDBM+TeXGyrePagella-Bold-Identity-H CID Type 0C       Identity-H       yes yes yes     33  0\n",
+      "command": [
+        "latexmk",
+        "-xelatex",
+        "-halt-on-error",
+        "-interaction=nonstopmode",
+        "-recorder",
+        "-usepretex=\\PassOptionsToClass{font-profile=pagella}{coursenotes}",
+        "-outdir=/Users/jmromer/Courses/coursework-fonts/build/font-review/specimen-pagella-notes",
+        "/Users/jmromer/Courses/coursework-fonts/build/font-review/specimen-pagella-notes.tex"
+      ]
+    },
+    {
+      "name": "euler-01-useful-maths",
+      "profile": "euler",
+      "class": "coursenotes",
+      "pdf": "/Users/jmromer/Courses/coursework-fonts/build/font-review/euler-01-useful-maths/01-useful-maths.pdf",
+      "pages": 4,
+      "sha256": "92894cafa2d609c55c04620fac0d9592090f5cda4c38aedb42dafdc84d7837b0",
+      "text_sha256": "5ab8df304493ecc8c2826749800ba0df1cae03cf91b5d875d9d340c79dcb2399",
+      "warnings": [
+        "Package classicthesis Warning: Using package \"footmisc\" with option \"marginal\" ",
+        "Package unicode-math Warning: Using \\overbracket and \\underbracket from",
+        "Package unicode-math Warning: I'm going to overwrite the following commands",
+        "LaTeX Warning: Reference `sec:velocity_distribution' on page 3 undefined on inp",
+        "LaTeX Warning: Reference `sec:velocity_distribution' on page 3 undefined on inp",
+        "LaTeX Warning: There were undefined references."
+      ],
+      "font_paths": [],
+      "font_table": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nRNNJPM+TeXGyrePagella-Regular-Identity-H CID Type 0C       Identity-H       yes yes yes      5  0\nVPIHDW+TeXGyrePagella-Italic-Identity-H CID Type 0C       Identity-H       yes yes yes      7  0\nWPPJIG+Euler-Math-Identity-H         CID Type 0C       Identity-H       yes yes yes      9  0\nNCYEVV+TeXGyrePagella-Bold-Identity-H CID Type 0C       Identity-H       yes yes yes     21  0\n",
+      "command": [
+        "latexmk",
+        "-xelatex",
+        "-halt-on-error",
+        "-interaction=nonstopmode",
+        "-recorder",
+        "-usepretex=\\PassOptionsToClass{font-profile=euler}{coursenotes}",
+        "-outdir=/Users/jmromer/Courses/coursework-fonts/build/font-review/euler-01-useful-maths",
+        "notes/01-useful-maths.tex"
+      ]
+    },
+    {
+      "name": "euler-03-probability",
+      "profile": "euler",
+      "class": "coursenotes",
+      "pdf": "/Users/jmromer/Courses/coursework-fonts/build/font-review/euler-03-probability/03-probability.pdf",
+      "pages": 6,
+      "sha256": "72021d24ce3f4817f77c9c1eb6aa3b3771ddc96f36e22f1f01101cc3d4fd4a8c",
+      "text_sha256": "1b4c405a29ee3e8bc63d985e376c6325ece202d093b4ec7faf1622f864ee69f5",
+      "warnings": [
+        "Package classicthesis Warning: Using package \"footmisc\" with option \"marginal\" ",
+        "Package unicode-math Warning: Using \\overbracket and \\underbracket from",
+        "Package unicode-math Warning: I'm going to overwrite the following commands"
+      ],
+      "font_paths": [],
+      "font_table": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nHYGEBC+TeXGyrePagella-Regular-Identity-H CID Type 0C       Identity-H       yes yes yes      5  0\nHBURJU+Euler-Math-Identity-H         CID Type 0C       Identity-H       yes yes yes     17  0\nMNIFLC+TeXGyrePagella-Bold-Identity-H CID Type 0C       Identity-H       yes yes yes     19  0\nWQBVQA+TeXGyrePagella-Italic-Identity-H CID Type 0C       Identity-H       yes yes yes     24  0\n",
+      "command": [
+        "latexmk",
+        "-xelatex",
+        "-halt-on-error",
+        "-interaction=nonstopmode",
+        "-recorder",
+        "-usepretex=\\PassOptionsToClass{font-profile=euler}{coursenotes}",
+        "-outdir=/Users/jmromer/Courses/coursework-fonts/build/font-review/euler-03-probability",
+        "notes/03-probability.tex"
+      ]
+    },
+    {
+      "name": "pagella-01-useful-maths",
+      "profile": "pagella",
+      "class": "coursenotes",
+      "pdf": "/Users/jmromer/Courses/coursework-fonts/build/font-review/pagella-01-useful-maths/01-useful-maths.pdf",
+      "pages": 4,
+      "sha256": "3c8a7600f0e3727a58da2d578c77973d23f9dab13f7b64e7cd6977cac5cde9ea",
+      "text_sha256": "5b42882af636e1ad5e3471dc0e60682b959fa5768a2587252ad413a9bd7392ca",
+      "warnings": [
+        "Package classicthesis Warning: Using package \"footmisc\" with option \"marginal\" ",
+        "Package unicode-math Warning: Using \\overbracket and \\underbracket from",
+        "Package unicode-math Warning: I'm going to overwrite the following commands",
+        "LaTeX Warning: Reference `sec:velocity_distribution' on page 3 undefined on inp",
+        "LaTeX Warning: Reference `sec:velocity_distribution' on page 3 undefined on inp",
+        "LaTeX Warning: There were undefined references."
+      ],
+      "font_paths": [],
+      "font_table": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nOOJCSN+TeXGyrePagella-Regular-Identity-H CID Type 0C       Identity-H       yes yes yes      5  0\nZWYAFY+TeXGyrePagella-Italic-Identity-H CID Type 0C       Identity-H       yes yes yes      7  0\nQYQXXR+TeXGyrePagellaMath-Regular-Identity-H CID Type 0C       Identity-H       yes yes yes      9  0\nXHGTCO+TeXGyrePagella-Bold-Identity-H CID Type 0C       Identity-H       yes yes yes     21  0\n",
+      "command": [
+        "latexmk",
+        "-xelatex",
+        "-halt-on-error",
+        "-interaction=nonstopmode",
+        "-recorder",
+        "-usepretex=\\PassOptionsToClass{font-profile=pagella}{coursenotes}",
+        "-outdir=/Users/jmromer/Courses/coursework-fonts/build/font-review/pagella-01-useful-maths",
+        "notes/01-useful-maths.tex"
+      ]
+    },
+    {
+      "name": "pagella-03-probability",
+      "profile": "pagella",
+      "class": "coursenotes",
+      "pdf": "/Users/jmromer/Courses/coursework-fonts/build/font-review/pagella-03-probability/03-probability.pdf",
+      "pages": 5,
+      "sha256": "98faea579f0888dfa394242604c472561177f471f2d6004b8c9898079f7a3aaa",
+      "text_sha256": "34281068ce59e3bd9530a47307b86c14fd1dc8140f92fa5de5af18ec120ed895",
+      "warnings": [
+        "Package classicthesis Warning: Using package \"footmisc\" with option \"marginal\" ",
+        "Package unicode-math Warning: Using \\overbracket and \\underbracket from",
+        "Package unicode-math Warning: I'm going to overwrite the following commands"
+      ],
+      "font_paths": [],
+      "font_table": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nBOMYCJ+TeXGyrePagella-Regular-Identity-H CID Type 0C       Identity-H       yes yes yes      5  0\nGCSJJQ+TeXGyrePagellaMath-Regular-Identity-H CID Type 0C       Identity-H       yes yes yes     17  0\nHHAZSA+TeXGyrePagella-Bold-Identity-H CID Type 0C       Identity-H       yes yes yes     19  0\nQYYPQE+TeXGyrePagella-Italic-Identity-H CID Type 0C       Identity-H       yes yes yes     24  0\n",
+      "command": [
+        "latexmk",
+        "-xelatex",
+        "-halt-on-error",
+        "-interaction=nonstopmode",
+        "-recorder",
+        "-usepretex=\\PassOptionsToClass{font-profile=pagella}{coursenotes}",
+        "-outdir=/Users/jmromer/Courses/coursework-fonts/build/font-review/pagella-03-probability",
+        "notes/03-probability.tex"
+      ]
+    },
+    {
+      "name": "pagella-assignment",
+      "profile": "pagella",
+      "class": "coursepsets",
+      "pdf": "/Users/jmromer/Courses/coursework-fonts/build/font-review/pagella-assignment/01-pset.pdf",
+      "pages": 17,
+      "sha256": "23e8d906dfc8abc796acfb8b30efc1d76c8fa35006ae8d28736ea355d221ae49",
+      "text_sha256": "ddbb64916a53370a6dac2d2895021f380e41946a85a5a13eb0578262f3b09293",
+      "warnings": [
+        "Package unicode-math Warning: Using \\overbracket and \\underbracket from",
+        "Package unicode-math Warning: I'm going to overwrite the following commands"
+      ],
+      "font_paths": [],
+      "font_table": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nCZTSHW+TeXGyrePagella-Regular-Identity-H CID Type 0C       Identity-H       yes yes yes      5  0\nCUUKJM+TeXGyrePagella-Bold-Identity-H CID Type 0C       Identity-H       yes yes yes      7  0\nBFIMVV+TeXGyrePagella-Italic-Identity-H CID Type 0C       Identity-H       yes yes yes     17  0\nZHEBMM+TeXGyrePagella-BoldItalic-Identity-H CID Type 0C       Identity-H       yes yes yes     19  0\nBFTKNV+TeXGyrePagellaMath-Regular-Identity-H CID Type 0C       Identity-H       yes yes yes     30  0\nIJFNTQ+Kaufmann-Bold                 Type 1C           Custom           yes yes no      24  0\nSRSQDW+Kaufmann                      Type 1C           Custom           yes yes no      35  0\n",
+      "command": [
+        "latexmk",
+        "-xelatex",
+        "-halt-on-error",
+        "-interaction=nonstopmode",
+        "-recorder",
+        "-usepretex=\\PassOptionsToClass{font-profile=pagella}{coursepsets}",
+        "-outdir=/Users/jmromer/Courses/coursework-fonts/build/font-review/pagella-assignment",
+        "homework/01-pset.tex"
+      ]
+    }
+  ],
+  "comparison_pdf": "/Users/jmromer/Courses/coursework-fonts/output/pdf/coursework-font-comparison.pdf"
+}
