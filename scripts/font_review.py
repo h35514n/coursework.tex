@@ -77,12 +77,18 @@ def main():
   for source in ['notes/01-useful-maths.tex','notes/03-probability.tex']:
    results.append(build(profile+'-'+Path(source).stem,source,TESTBED,profile,'coursenotes'))
  results.append(build('pagella-assignment','homework/01-pset.tex',TESTBED,'pagella','coursepsets'))
- from pypdf import PdfWriter
+ from pypdf import PdfReader, PdfWriter
  writer=PdfWriter()
  # The combined visual comparison has section bookmarks. Keep internal
  # reference links in the individual PDFs; their repeated destination names
  # must not create cross-specimen links in the merged document.
- for specimen in specimens:writer.append(specimen['pdf'],outline_item=specimen['name'],excluded_fields=['/Annots'])
+ for specimen in specimens:
+  first_page=len(writer.pages)
+  reader=PdfReader(specimen['pdf'])
+  for page in reader.pages:
+   page.pop('/Annots',None)
+   writer.add_page(page)
+  writer.add_outline_item(specimen['name'],first_page)
  output=FINAL/'coursework-font-comparison.pdf'
  with output.open('wb') as f:writer.write(f)
  results_meta={'class_revision':command(['git','rev-parse','HEAD'],cwd=ROOT).strip(),
