@@ -61,6 +61,22 @@ def label(name,number):
     return check
 
 
+def page_groups(*groups):
+    """Markers in each group share a page; successive groups start later."""
+    def check(text,*_):
+        pages=text.split('\f');previous=-1
+        for group in groups:
+            positions=[]
+            for marker in group:
+                matches=[i for i,page in enumerate(pages) if marker in page]
+                assert len(matches)==1, f'Expected one occurrence of {marker}: {matches}'
+                positions.extend(matches)
+            assert len(set(positions))==1, f'Expected same page for {group}: {positions}'
+            assert positions[0]>previous, f'Expected a page boundary before {group}'
+            previous=positions[0]
+    return check
+
+
 def font_backend(profile):
     def check(text,aux,fls,log):
         inputs={Path(line[6:]).name for line in fls.splitlines() if line.startswith('INPUT ')}
@@ -91,6 +107,12 @@ def main():
     (fragments/'solution05.tex').write_text('')
     (fragments/'problem06.tex').write_text('LongFirstPage.\\newpage LongSecondPage.\n')
     (fragments/'solution06.tex').write_text('LongSolution.\n')
+    for name,body in {
+      'guide07':'FlowGuide', 'problem07':'FlowStatementA', 'solution07':'FlowSolutionA',
+      'discussion07':'FlowDiscussion', 'problem08':'FlowStatementB', 'solution08':'FlowSolutionB',
+      'problem09':'FlowOtherAssignment', 'solution09':'FlowOtherSolution',
+    }.items():
+        (fragments/(name+'.tex')).write_text(body+'.\n')
     start=r'\assignment[id=alpha,number=3,directory=build/api/fragments]{Assignment}\label{assignment:alpha}'
     decl=r'\declareproblem[title={First}]{01}\declareproblem[title={Second}]{02}'
     render=r'\printassignment[problems={02,01}]'
@@ -102,6 +124,23 @@ def main():
     cases.append(compile_case('no-optional',start+r'\declareproblem{05}\printassignment',checks=[require_text('EmptySolution05'),absent('Guide','Discussion')]))
     cases.append(compile_case('long-problem',start+r'\declareproblem{06}\declareproblem{05}\printassignment',options='mode=worked,problem-breaks=page',checks=[require_text('LongFirstPage','LongSecondPage','LongSolution','EmptySolution05')]))
     cases.append(compile_case('independent',start+r'\declareproblem{05}\printassignment\assignment[id=beta,number=7,directory=build/api/fragments]{Another}\declareproblem{05}\printassignment',checks=[label('prob:alpha:05','3.1'),label('prob:beta:05','7.1')]))
+    flow_body=(r'FrontMarker\par'+start+r'\declareproblem{07}\declareproblem{08}\printassignment'
+      r'\assignment[id=beta,number=7,directory=build/api/fragments]{Another}\declareproblem{09}\printassignment')
+    flow_checks=[require_text('FlowSolutionA','FlowSolutionB','FlowOtherSolution'),
+      label('prob:alpha:07','3.1'),label('prob:alpha:08','3.2'),label('prob:beta:09','7.1')]
+    cases.append(compile_case('worked-flow',flow_body,
+      options='mode=worksheet,problem-breaks=page,assignment-breaks=page,section-breaks=page',
+      preamble=r'\AtBeginDocument{\courseworksetup{mode=worked,problem-breaks=flow,assignment-breaks=flow,section-breaks=flow}}',
+      checks=flow_checks+[page_groups(('FrontMarker','FlowGuide','FlowStatementA','FlowStatementB','FlowDiscussion','FlowOtherAssignment'))]))
+    cases.append(compile_case('worked-page-boundaries',flow_body,
+      options='mode=worked,problem-breaks=page,assignment-breaks=page,section-breaks=page',
+      checks=flow_checks+[page_groups(('FrontMarker','FlowGuide'),('FlowStatementA',),('FlowStatementB',),('FlowDiscussion',),('FlowOtherAssignment',))]))
+    cases.append(compile_case('worked-section-flow',flow_body,
+      options='mode=worked,problem-breaks=flow,assignment-breaks=page,section-breaks=flow',
+      checks=flow_checks+[page_groups(('FrontMarker','FlowGuide','FlowStatementA','FlowStatementB','FlowDiscussion'),('FlowOtherAssignment',))]))
+    cases.append(compile_case('worked-assignment-flow',flow_body,
+      options='mode=worked,problem-breaks=flow,assignment-breaks=flow,section-breaks=page',
+      checks=flow_checks+[page_groups(('FrontMarker','FlowGuide'),('FlowStatementA','FlowStatementB'),('FlowDiscussion','FlowOtherAssignment'))]))
     for name,body,message in [
       ('duplicate',start+r'\declareproblem{01}\declareproblem{01}','Duplicate problem ID'),
       ('unknown',start+decl+r'\printassignment[problems={99}]','Unknown problem ID'),

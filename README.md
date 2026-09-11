@@ -121,10 +121,24 @@ Guides remain available. Empty guide/discussion sections are omitted.
 Page breaks belong to problem boundaries, independent of solutions. Long
 problems may span pages; the next problem starts on a fresh page in page mode.
 
+`assignment-breaks=page|flow` controls breaks before subsequent assignments
+(default `flow`). `section-breaks=page|flow` controls transitions between Guide,
+Problem Set, and Discussion within an assignment (default `page`). These settings
+are independent of the output mode and never insert a break before the first
+assignment or its first section. Keep front-matter breaks explicit in the source;
+use these settings instead of inserting page breaks between assignment subfiles.
+
+Every course Makefile also provides `make homework-flow`, producing
+`build/homework-flow.pdf` with all worked content, including guides, solutions,
+and discussions, and all three break settings set to `flow`. It uses a separate
+job name, leaving the ordinary homework PDF and its auxiliary files independent.
+Title/contents pages and any deliberate breaks inside problem content remain.
+
 Course Makefiles apply build overrides after source defaults:
 
 ```sh
 latexmk -usepretex='\AtBeginDocument{\courseworksetup{mode=compact}}' homework.tex
+latexmk -jobname=homework-flow -usepretex='\AtBeginDocument{\courseworksetup{mode=worked,problem-breaks=flow,assignment-breaks=flow,section-breaks=flow}}' homework.tex
 ```
 
 Class-only mode options are consumed before packages process global options;

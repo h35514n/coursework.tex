@@ -43,7 +43,12 @@
     {\__course_error:n {IDs~must~contain~only~letters,~digits,~hyphens,~and~underscores.}}}
 \cs_generate_variant:Nn \__course_check_id:n {V}
 \NewDocumentCommand \assignment {O{}m}
-  {\tl_clear:N \g__course_assignment_id_tl
+  {\par
+   % Finish the previous page before changing its assignment/footer identity.
+   % The first assignment follows the document's explicit front matter.
+   \prop_if_empty:NF \g__course_assignment_ids_prop
+     {\str_if_eq:VnT \g__course_assignment_breaks_tl {page}{\clearpage}}
+   \tl_clear:N \g__course_assignment_id_tl
    \tl_clear:N \g__course_directory_tl
    \tl_gset:Nn \g__course_problems_title_tl {Problem~Set}
    \int_set:Nn \l__course_assignment_number_int {\value{assignment}+1}
@@ -120,7 +125,8 @@
    \seq_map_inline:Nn \l__course_selection_seq
      {\file_if_exist:nT {\__course_path:nn{#1}{##1}}{\bool_set_true:N\l__course_any_bool}}
    \bool_if:NT \l__course_any_bool
-     {\tl_if_empty:NF \g__course_role_tl {\clearpage}
+     {\tl_if_empty:NF \g__course_role_tl
+        {\par\str_if_eq:VnT \g__course_section_breaks_tl {page}{\clearpage}}
       \tl_gset:Nn \g__course_role_tl {#2}
       \vspace{-0.5em}\subsection{#2}
       \int_zero:N \l__course_ordinal_int

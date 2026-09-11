@@ -10,6 +10,8 @@
 \tl_gset:Nn \g__course_font_profile_tl {pagella}
 \tl_new:N \g__course_mode_tl
 \tl_new:N \g__course_breaks_tl
+\tl_new:N \g__course_assignment_breaks_tl
+\tl_new:N \g__course_section_breaks_tl
 \keys_define:nn {coursework}
   {
     font-profile .choices:nn = {pazo,pagella,euler}
@@ -19,7 +21,13 @@
     mode .initial:n = worked,
     problem-breaks .choices:nn = {page,flow}
       {\tl_gset:NV \g__course_breaks_tl \l_keys_choice_tl},
-    problem-breaks .initial:n = flow
+    problem-breaks .initial:n = flow,
+    assignment-breaks .choices:nn = {page,flow}
+      {\tl_gset:NV \g__course_assignment_breaks_tl \l_keys_choice_tl},
+    assignment-breaks .initial:n = flow,
+    section-breaks .choices:nn = {page,flow}
+      {\tl_gset:NV \g__course_section_breaks_tl \l_keys_choice_tl},
+    section-breaks .initial:n = page
   }
 \NewDocumentCommand \courseworksetup {m} {\keys_set:nn {coursework}{#1}}
 \NewExpandableDocumentCommand \courseworkvalue {m}
@@ -37,7 +45,8 @@
 \AddToHook{package/before}{
   \cs_if_eq:NNF \@raw@classoptionslist \scan_stop:
     {\clist_map_inline:nn
-       {mode=worked,mode=worksheet,mode=compact,problem-breaks=page,problem-breaks=flow}
+       {mode=worked,mode=worksheet,mode=compact,problem-breaks=page,problem-breaks=flow,
+        assignment-breaks=page,assignment-breaks=flow,section-breaks=page,section-breaks=flow}
        {\clist_gremove_all:Nn \@raw@classoptionslist {#1}}}}
 \prg_new_conditional:Npnn \course_if_solutions: {T,F,TF}
   {\str_if_eq:VnTF \g__course_mode_tl {worked}{\prg_return_true:}{\prg_return_false:}}

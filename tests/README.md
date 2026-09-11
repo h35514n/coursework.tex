@@ -3,6 +3,8 @@
 `python3 -m unittest discover -s tests -v` tests source migration behavior.
 `python3 tests/run_api.py` compiles the semantic TeX matrix and records its
 results in `build/api/report.json`. No inputs outside `build/api` are changed.
+Page-boundary cases verify independent assignment, section, and problem break
+settings, including a fully flowing worked build overriding worksheet defaults.
 The cases include deliberately invalid documents; success means these fail
 with the expected diagnostic. Successful cases must have correct labels,
 expected visible content, no hidden file inputs, no duplicate PDF destinations,
