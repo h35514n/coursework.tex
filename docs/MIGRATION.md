@@ -2,6 +2,10 @@
 
 Version 2 replaces the old API. Work in an isolated course worktree and keep its original-class baseline. No legacy API mode is provided.
 
+For the older self-contained PHYS 321 and PHYS 432 classes, use the
+[dedicated legacy workflow](LEGACY-COURSE-MIGRATION.md); its dialect handling and
+embedded-solution extraction are separate from the generic v1 scanner.
+
 ## Source transformation
 
 ```sh

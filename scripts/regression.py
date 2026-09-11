@@ -71,14 +71,14 @@ def build_environment(directory, epoch):
     return env
 
 
-def resolve_classes(directory, env):
+def resolve_classes(directory, env, *, legacy=False, source_root=ROOT):
     resolved = {}
-    for name in sorted(SHARED | GLYPHS | {p.name for p in directory.glob("*.sty")}):
+    for name in sorted({"problemsets.cls", "notes.cls"} if legacy else SHARED | GLYPHS | {p.name for p in directory.glob("*.sty")}):
         args = ["kpsewhich", "-progname=xelatex"]
         if name in GLYPHS:
             args += ["-format=graphic/figure"]
-        value = run(args + [name], env=env)
-        actual = Path(value).resolve()
+        value = run(args + [name], env=env, cwd=source_root)
+        actual = (source_root / value).resolve()
         expected = (directory / name).resolve()
         if not value or actual != expected:
             raise RuntimeError(f"Wrong class/asset resolution for {name}: {value!r}; expected {expected}")
@@ -86,10 +86,10 @@ def resolve_classes(directory, env):
     return resolved
 
 
-def verify_recorder(recorder, directory, source_root=ROOT):
+def verify_recorder(recorder, directory, source_root=ROOT, *, legacy=False):
     """Reject an installed-class fallback, including files loaded indirectly."""
     used = set()
-    names = SHARED | GLYPHS | {p.name for p in directory.rglob("*.sty")}
+    names = ({"problemsets.cls", "notes.cls"} if legacy else SHARED | GLYPHS | {p.name for p in directory.rglob("*.sty")})
     for line in recorder.read_text().splitlines():
         if not line.startswith("INPUT "):
             continue
@@ -99,8 +99,9 @@ def verify_recorder(recorder, directory, source_root=ROOT):
             if actual != expected:
                 raise RuntimeError(f"{recorder}: loaded {actual}, expected {expected}")
             used.add(actual.name)
-    required = {"coursemath.sty", "coursephys.sty"}
-    if not required <= used or not used & {"coursenotes.cls", "coursepsets.cls"}:
+    required = set() if legacy else {"coursemath.sty", "coursephys.sty"}
+    classes = {"problemsets.cls", "notes.cls"} if legacy else {"coursenotes.cls", "coursepsets.cls"}
+    if not required <= used or not used & classes:
         raise RuntimeError(f"{recorder}: incomplete coursework inputs: {sorted(used)}")
     return sorted(used)
 
@@ -142,6 +143,7 @@ def inspect_pdf(pdf, artifact_root, dpi):
     folder.mkdir(parents=True, exist_ok=True)
     info = run(["pdfinfo", str(pdf)])
     (folder / "pdfinfo.txt").write_text(info + "\n")
+    (folder / "fonts.txt").write_text(run(["pdffonts", str(pdf)]) + "\n")
     match = re.search(r"^Pages:\s+(\d+)", info, re.M)
     if not match:
         raise RuntimeError(f"Cannot read page count: {pdf}")
@@ -161,7 +163,7 @@ def snapshot_classes(artifact_root, manifest):
     """Resolve frozen bundles locally; historical absolute paths are provenance."""
     if manifest.get("frozen_fixtures"):
         directory = artifact_root / "classes"
-        if manifest.get("mode") == "baseline":
+        if manifest.get("mode") == "baseline" and not manifest.get("legacy_classes"):
             directory /= "tex/latex/coursework"
     else:
         directory = Path(manifest["class_directory"])
@@ -215,15 +217,17 @@ def build(mode, config):
         # A completed baseline is handled above and is never replaced.
         shutil.rmtree(artifact_root)
     artifact_root.mkdir(parents=True)
-    origin = (ROOT / config["class_repository"]).resolve()
-    epoch = git(origin, "show", "-s", "--format=%ct", config["baseline_revision"])
+    legacy = mode == "baseline" and config.get("baseline_layout") == "local-classes"
+    origin = ROOT if legacy else (ROOT / config["class_repository"]).resolve()
+    epoch_origin = ROOT if config.get("baseline_layout") == "local-classes" else origin
+    epoch = git(epoch_origin, "show", "-s", "--format=%ct", config["baseline_revision"])
     source_root = ROOT
     if mode == "baseline":
         archive = subprocess.check_output(["git", "-C", str(origin), "archive",
-                                           config["baseline_revision"], "tex/latex/coursework"])
+                                           config["baseline_revision"], *(["problemsets.cls", "notes.cls"] if legacy else ["tex/latex/coursework"])])
         with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
             tar.extractall(artifact_root / "classes", filter="data")
-        directory = artifact_root / "classes/tex/latex/coursework"
+        directory = artifact_root / ("classes" if legacy else "classes/tex/latex/coursework")
         for path in directory.iterdir():
             if path.is_file():
                 path.chmod(0o444)
@@ -234,6 +238,12 @@ def build(mode, config):
         source_root = artifact_root / "fixtures"
         with tarfile.open(fileobj=io.BytesIO(archive)) as tar:
             tar.extractall(source_root, filter="data")
+        # The frozen class bundle is authoritative; do not let fixture-root copies
+        # shadow it through TeX's current-directory search. Original bytes also
+        # remain in the revision archive and are hashed in class_files.
+        if legacy:
+            for name in ("problemsets.cls", "notes.cls"):
+                (source_root / name).unlink()
         fixture = {"revision": fixture_revision, "status": "", "files": class_files(source_root)}
     else:
         repo = (ROOT / config["candidate_repository"]).resolve()
@@ -243,7 +253,7 @@ def build(mode, config):
         fixture = source_info(ROOT)
     before = class_files(directory)
     env = build_environment(directory, epoch)
-    resolved = resolve_classes(directory, env)
+    resolved = resolve_classes(directory, env, legacy=legacy, source_root=source_root)
     command = ["make", "-k", f"-j{config['jobs']}", f"BUILD={artifact_root / 'pdf'}",
                "LATEXMKOPT=-halt-on-error", "all", "problems", "worksheets"]
     started = time.time()
@@ -253,7 +263,8 @@ def build(mode, config):
     metadata = {"mode": mode, "class_revision": revision, "class_status": class_status,
                 "class_directory": str(directory), "class_files": before, "testbed": fixture,
                 "resolved": resolved, "tools": tools, "source_date_epoch": epoch,
-                "render_dpi": config["render_dpi"], "command": command, "frozen_fixtures": mode == "baseline"}
+                "render_dpi": config["render_dpi"], "command": command, "frozen_fixtures": mode == "baseline",
+                "legacy_classes": legacy}
     if proc.returncode:
         write_json(artifact_root / "failure.json", {**metadata, "exit_code": proc.returncode})
         raise RuntimeError(f"{mode} build failed; see {artifact_root / 'build.log'}")
@@ -266,7 +277,7 @@ def build(mode, config):
     pdfs, inputs, warnings = {}, {}, Counter()
     for index, name in enumerate(expected, 1):
         pdf = artifact_root / "pdf" / name
-        inputs[name] = verify_recorder(pdf.with_suffix(".fls"), directory, source_root)
+        inputs[name] = verify_recorder(pdf.with_suffix(".fls"), directory, source_root, legacy=legacy)
         warnings.update({f"{name}: {message}": count for message, count in
                          warnings_in(pdf.with_suffix(".log").read_text(errors="replace"), directory).items()})
         print(f"Inspecting {mode} {index}/{len(expected)}: {name}", flush=True)

@@ -12,3 +12,8 @@ and no undefined references or missing glyphs.
 be included in either class or in an article loading the shared packages.
 The real-course regression driver is `scripts/regression.py`; set
 `COURSEWORK_TEST_ROOT` to the course root when invoking it directly.
+
+`tests/test_legacy_migration.py` covers the two self-contained course dialects,
+embedded/imported solution extraction, label disambiguation, archival exclusions,
+and relocated local-class snapshots. Existing regression-harness tests remain
+in the retained testbed and can target this checkout with `COURSEWORK_TOOLS`.
