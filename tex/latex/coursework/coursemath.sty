@@ -11,8 +11,12 @@
 \RequirePackage[spaced,mleftright]{diffcoeff}
 
 % Backend selection happens when used, allowing unicode-math to load later.
-\NewDocumentCommand\course@mathbold{m}{\IfPackageLoadedTF{unicode-math}{\symbf{#1}}{\bm{#1}}}
-\NewDocumentCommand\mathbold{m}{\course@mathbold{#1}}
+\NewDocumentCommand\course@mathbold{m}{\IfPackageLoadedTF{unicode-math}{%
+  \begingroup
+  % Text-font math alphabets otherwise escape the Unicode bold selection.
+  \let\mathrm\symbfup\let\mathit\symbfit
+  \symbf{#1}\endgroup}{\bm{#1}}}
+\NewDocumentCommand\mathbold{m}{\ensuremath{\course@mathbold{#1}}}
 \NewDocumentCommand\course@boldhat{m}{\IfPackageLoadedTF{unicode-math}{\hat{\symbf{#1}}}{\bm{\hat{#1}}}}
 \NewDocumentCommand\course@uprightbold{m}{\IfPackageLoadedTF{unicode-math}{\symbfup{#1}}{\bm{\mathrm{#1}}}}
 \NewDocumentCommand\course@uprightboldhat{m}{\IfPackageLoadedTF{unicode-math}{\hat{\symbfup{#1}}}{\bm{\hat{\mathrm{#1}}}}}

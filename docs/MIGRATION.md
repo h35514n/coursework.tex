@@ -96,3 +96,9 @@ Retained: `\NN`, `\ZZ`, `\QQ`, `\RR`, `\CC`, `\dd`, `\grad`, `\vect`, `\xhat`, `
 The mechanical environment extraction is pixel-identical to v1. Subsequent v2 changes deliberately repair problem/object references, remove duplicate destinations, omit empty sections, move page breaks to problem boundaries, remove formula trailing line breaks, and use the consolidated derivative/delimiter helpers. Rendered closing markers are consistent across worked modes. Titles now display their requested document label. Original content and rounded constant values are preserved.
 
 Use named checkpoints only after inspecting these changes. A comparison against the immutable v1 baseline should continue to report differences; that is not permission to disregard unexpected differences. Font experiments are separate from API acceptance.
+
+The adopted Unicode fonts also replace the two PHYS 331 uses of the legacy
+`\bigintssss` glyph with the selected font's standard `\int`. The migration
+tool records this transformation; it changes integral sizing, not the
+integrand or bounds. `\mathbold` works in prose and mathematics, and nested
+`\mathrm`/`\mathit` retain their upright/italic choice while becoming bold.

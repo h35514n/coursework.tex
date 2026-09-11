@@ -29,3 +29,9 @@ The approved font integration is undergoing the full 170-output matrix and
 the behavioral API suite before activation. The original v1 baselines and
 reviewed `v2-api` checkpoints remain immutable; font differences are compared
 against `v2-api` separately.
+
+Full-course font validation identified two remaining legacy integration cases.
+PHYS 331 and its testbed replace two `\bigintssss` uses with standard integrals.
+The shared bold helper now enters math mode when used in prose and preserves
+boldness inside explicit upright/italic alphabets. Three additional behavioral
+cases verify those properties under both classes and standalone legacy math.

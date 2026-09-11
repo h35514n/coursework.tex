@@ -16,6 +16,10 @@ class MigrationTests(unittest.TestCase):
         self.assertEqual(m.migrate_text(before),after)
     def test_second_derivative_and_vectors(self):
         self.assertEqual(m.migrate_text(r'\fdl{f}{x}+\twovector{a}{\p{b}}'),r'\deriv[2]{f}{x}+\colvector[r]{a\\\paren*{b}}')
+    def test_legacy_sized_integral(self):
+        result=r'\int~f(x)\,\dd x'
+        self.assertEqual(m.migrate_text(r'\bigintssss~f(x)\,\dd x'),result)
+        self.assertEqual(m.migrate_text(result),result)
     def test_theorem_label_is_explicit(self):
         text=r'\begin{example}[A]{ex:a}Body\end{example}'
         result=r'\begin{example}[A]\label{ex:a}Body\end{example}'

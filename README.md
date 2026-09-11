@@ -182,6 +182,6 @@ paths, recorder inputs, tool versions, warnings, PDFs, text and page renders.
 `make compare` remains strict against the original baseline. Intentional
 changes are reviewed before saving an explicitly named immutable checkpoint.
 
-All assets are resolved by kpathsea, and original course branches retain their
-existing installation. Merging classes, merging course migrations and choosing
-a font profile are coordinated release steps after review.
+All assets are resolved by kpathsea. The adopted class and course checkouts
+use the existing installation path; recovery branches and frozen checkpoints
+preserve the earlier versions. See `docs/ADOPTION.md` for the activation record.

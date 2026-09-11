@@ -27,6 +27,7 @@ SIMPLE = {
     'sikB': r'\constantvalue{boltzmann}', 'siNa': r'\constantvalue{avogadro}',
     'ivda': r'\int \uprightvect{v}\cdot\dd\uprightvect{a}',
     'ivdl': r'\int \uprightvect{v}\cdot\dd\uprightvect{l}', 'bm': r'\mathbold',
+    'bigintssss': r'\int',
 }
 META = {'Author':'author', 'CourseNumber':'course-code', 'CourseName':'course-title',
         'CourseTerm':'term', 'CourseText':'textbook', 'CourseTextAuthor':'textbook-author'}
