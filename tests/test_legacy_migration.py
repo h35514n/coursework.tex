@@ -70,6 +70,9 @@ class LegacyMigrationTests(unittest.TestCase):
     def test_unknown_trailing_content_rejected(self):
         with self.assertRaisesRegex(m.MigrationError,'outside solution'):
             m.split_problems(r'\problem A\solution{B}Unknown narrative')
+    def test_physics_cross_preserves_bold_symbol(self):
+        self.assertEqual(m.migrate_notation(r'\omega \cross r'),r'\omega \mathbold{\times} r')
+
     def test_known_legacy_todo_is_retained(self):
         p=m.split_problems(r'\problem A\solution{B}TODO')[0]
         self.assertIn('TODO',p['statement']);self.assertEqual(p['trailing_annotation'],'TODO')

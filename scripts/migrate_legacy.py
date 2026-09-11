@@ -89,7 +89,8 @@ def prepare(root, dialect):
         seed=meta['chapters'][index] if path.endswith('01-useful-maths.tex') else meta['chapters'][index]-1
         changes[path]=(r'\documentclass[notes.tex]{subfiles}'+'\n'+r'\begin{document}'+'\n'+
                        r'\ifSubfilesClassLoaded{\setcounter{chapter}{'+str(seed)+'}}{}\n'+prefix+
-                       r'\input{'+path.replace('notes/','notes/fragments/')[:-4]+'}\n'+r'\end{document}'+'\n')
+                       r'\input{'+path.replace('notes/','notes/fragments/')[:-4]+'}\n'+
+                       (r'\par'+'\n' if path.endswith('05-mb-distribution.tex') else '')+r'\end{document}'+'\n')
         changes[path.replace('notes/','notes/fragments/')]=body
         result+=r'\subfile{'+path[:-4]+'}\n'
     result+=notes[cursor:];changes['notes.tex']=result
@@ -180,6 +181,8 @@ def migrate_notation(text, *, notes=False):
                 # diffcoeff also accepts unbraced/mixed/operator forms. Keep its
                 # public syntax; the shared math package deliberately loads it.
                 pass
+        elif name == 'cross':
+            edits.append((a,b,r'\mathbold{\times}'))
         elif name in {'bvect','bdot','bddot'}:
             edits.append((a,b,{'bvect':r'\uprightvect','bdot':r'\mechanicsdot','bddot':r'\mechanicsddot'}[name]))
     # Outer replacements already transform their balanced nested arguments.
