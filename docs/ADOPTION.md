@@ -74,3 +74,19 @@ all three sections, verified from PDF text bounds and page renders.
 The 25-case API suite passes with an added rendered-heading check; that check
 fails against the pre-fix PDF. The full-matrix counts above describe the font
 adoption checkpoint before this subsequent spacing correction.
+
+## Explicit integral sizes
+
+Following the user's review of the resized PHYS 331 integrals, `\integral`
+accepts `size=normal|medium|large`. Its default rendering is unchanged.
+Medium and large enlarge the selected font's display integral by one and two
+relative-size steps; this is an explicit author choice, not automatic sizing.
+The PHYS 331 statement and solution use `large`, including their standard
+integral formula. That formula places the differential after the fraction
+to follow the shared command's argument convention.
+
+The expanded 29-case API suite verifies all three sizes with Pagella homework,
+Euler notes, and standalone legacy math; nested and consecutive calls do not
+leak settings. Default dimensions match the original expression in inline
+and display styles. Invalid sizes fail explicitly. The eight migration tests
+pass, including the requirement to review legacy sized-integral conversions.

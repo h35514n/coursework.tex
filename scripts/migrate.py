@@ -27,7 +27,6 @@ SIMPLE = {
     'sikB': r'\constantvalue{boltzmann}', 'siNa': r'\constantvalue{avogadro}',
     'ivda': r'\int \uprightvect{v}\cdot\dd\uprightvect{a}',
     'ivdl': r'\int \uprightvect{v}\cdot\dd\uprightvect{l}', 'bm': r'\mathbold',
-    'bigintssss': r'\int',
 }
 META = {'Author':'author', 'CourseNumber':'course-code', 'CourseName':'course-title',
         'CourseTerm':'term', 'CourseText':'textbook', 'CourseTextAuthor':'textbook-author'}
@@ -108,7 +107,9 @@ def migrate_text(s):
     for start,end,name in commands(s):
         if start<cursor:continue
         replacement=None;j=end
-        if name in SIMPLE: replacement=SIMPLE[name]
+        if re.fullmatch(r'bigint[s]*',name):
+            raise MigrationError('Sized integral requires manual conversion to \\integral[size=medium|large]{expression}{variable}{lower}{upper}; preserve its sizing intent.')
+        elif name in SIMPLE: replacement=SIMPLE[name]
         elif name in META: replacement='\\courseworkvalue{'+META[name]+'}'
         elif name in {'abs','norm'}:
             if end>=len(s) or s[end]!='*': replacement='\\'+name+'*'

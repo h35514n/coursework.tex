@@ -128,6 +128,7 @@ def main():
     for cls in ['coursepsets','coursenotes','article']:
         cases.append(compile_case('environments-'+cls,env,cls=cls,checks=[require_text('FirstWordExample','FirstWordRemark','FirstCaption','SecondTable'),label('formula:auto','1'),label('formula:named','2')]))
         cases.append(compile_case('notation-'+cls,r'\input{tests/notation.tex}',cls=cls))
+        cases.append(compile_case('integral-sizes-'+cls,r'\input{tests/integral_sizes.tex}',cls=cls))
         cases.append(compile_case('bold-text-'+cls,r'''
 The position is \mathbold{\mathrm{r}}; an expression is \mathbold{\alpha+r}.
 \IfPackageLoadedTF{unicode-math}{
@@ -139,6 +140,7 @@ The position is \mathbold{\mathrm{r}}; an expression is \mathbold{\alpha+r}.
   \ifdim\wd0=\wd1\else\errmessage{Italic bold alphabet lost}\fi
 }{}
 ''',cls=cls))
+    cases.append(compile_case('integral-bad-size',r'$\integral[size=giant]{x}{x}{0}{1}$',error='Unknown integral size'))
     check_heading_spacing(OUT/'ordered/ordered.pdf')
     (OUT/'report.json').write_text(json.dumps(cases,indent=2)+'\n')
     print(f'All {len(cases)} API cases passed.',flush=True)

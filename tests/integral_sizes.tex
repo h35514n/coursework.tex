@@ -1,0 +1,34 @@
+% Real rendered sizes, default compatibility, and option isolation.
+\newbox\normalintegralbox
+\newbox\mediumintegralbox
+\newbox\largeintegralbox
+\newbox\referenceintegralbox
+\setbox\normalintegralbox=\hbox{$\displaystyle\integral{x}{x}{0}{1}$}
+\setbox\referenceintegralbox=\hbox{$\displaystyle\int_0^1\!x\,\mathrm{d}x$}
+\newcommand{\assertintegralsame}{%
+  \ifdim\wd\normalintegralbox=\wd\referenceintegralbox\else\errmessage{Integral width changed}\fi
+  \ifdim\ht\normalintegralbox=\ht\referenceintegralbox\else\errmessage{Integral height changed}\fi
+  \ifdim\dp\normalintegralbox=\dp\referenceintegralbox\else\errmessage{Integral depth changed}\fi}
+\assertintegralsame
+\setbox\mediumintegralbox=\hbox{$\displaystyle\integral[size=medium]{x}{x}{0}{1}$}
+\setbox\largeintegralbox=\hbox{$\displaystyle\integral[size=large]{x}{x}{0}{1}$}
+\ifdim\ht\mediumintegralbox>\ht\normalintegralbox\else\errmessage{Medium integral did not grow}\fi
+\ifdim\ht\largeintegralbox>\ht\mediumintegralbox\else\errmessage{Large integral did not grow}\fi
+% A preceding explicit size cannot change the next default integral.
+\setbox\normalintegralbox=\hbox{$\displaystyle\integral{x}{x}{0}{1}$}
+\assertintegralsame
+\setbox\normalintegralbox=\hbox{$\integral[size=normal]{x}{x}{0}{1}$}
+\setbox\referenceintegralbox=\hbox{$\int_0^1\!x\,\mathrm{d}x$}
+\assertintegralsame
+\[
+ \integral{\frac{1}{\sqrt{x^2+z^2}}}{x}{-L}{L}\quad
+ \integral[size=medium]{\frac{1}{\sqrt{x^2+z^2}}}{x}{-L}{L}\quad
+ \integral[size=large]{\frac{1}{\sqrt{x^2+z^2}}}{x}{-L}{L}
+\]
+Inline: $\integral[size=large]{f(x)}{x}{}{}$.
+In prose: \integral[size=medium]{f(x)}{x}{a}{}.
+\[
+ \integral[size=large]{\integral{f(x,y)}{y}{0}{1}}{x}{a}{b}
+ \quad \integral{\integral[size=large]{f(x,y)}{y}{}{b}}{x}{}{}
+ \quad e^{\integral{f(x)}{x}{0}{t}}
+\]

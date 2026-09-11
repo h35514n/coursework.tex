@@ -97,8 +97,11 @@ The mechanical environment extraction is pixel-identical to v1. Subsequent v2 ch
 
 Use named checkpoints only after inspecting these changes. A comparison against the immutable v1 baseline should continue to report differences; that is not permission to disregard unexpected differences. Font experiments are separate from API acceptance.
 
-The adopted Unicode fonts also replace the two PHYS 331 uses of the legacy
-`\bigintssss` glyph with the selected font's standard `\int`. The migration
-tool records this transformation; it changes integral sizing, not the
-integrand or bounds. `\mathbold` works in prose and mathematics, and nested
+The initial Unicode adoption replaced PHYS 331's `\bigintssss` commands with
+standard integrals. That lost the explicit sizing intent. The current API
+supports `\integral[size=normal|medium|large]{expression}{variable}{lower}{upper}`;
+the affected statement and solution now explicitly select `large`. The
+migration tool flags legacy sized integrals for manual conversion because
+their unbraced integrands and differentials cannot be inferred reliably.
+`\mathbold` works in prose and mathematics, and nested
 `\mathrm`/`\mathit` retain their upright/italic choice while becoming bold.

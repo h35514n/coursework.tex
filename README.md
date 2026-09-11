@@ -162,6 +162,21 @@ and `\mathbold{\alpha}`. `\grad` and `\laplacian` are operators. Physics
 constants separate symbols (`\kB`, `\NA`) from rounded quantities
 (`\constantvalue{boltzmann}`, `\constantvalue{avogadro}`).
 
+Integral sizing is explicit and local to each call:
+
+```latex
+\integral{x^2}{x}{0}{1}  % unchanged default; follows the surrounding math style
+\integral[size=medium]{\frac{1}{\sqrt{x^2+z^2}}}{x}{-L}{L}
+\integral[size=large]{\frac{1}{\sqrt{x^2+z^2}}}{x}{-L}{L}
+```
+
+`size=normal` is the default. `medium` and `large` use the current math font's
+display integral enlarged by one or two `relsize` steps (approximately 20%
+and 44%). Only the sign grows: integrands and bounds retain their surrounding
+math sizes. Empty bounds still mean an indefinite or one-sided integral.
+Sizes are not inferred from integrand height, and nested calls reset to
+`normal` unless explicitly sized. Unknown sizes produce an error.
+
 The complete migration map is in [docs/MIGRATION.md](docs/MIGRATION.md).
 [tests/notation.tex](tests/notation.tex) is a runnable notation specimen.
 

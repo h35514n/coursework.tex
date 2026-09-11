@@ -9,6 +9,7 @@
 \ifcourse@unicode\else\RequirePackage{bigints}\fi
 \ifcourse@unicode\else\RequirePackage{bm}\fi
 \RequirePackage[spaced,mleftright]{diffcoeff}
+\RequirePackage{relsize}
 
 % Backend selection happens when used, allowing unicode-math to load later.
 \NewDocumentCommand\course@mathbold{m}{\IfPackageLoadedTF{unicode-math}{%
@@ -30,7 +31,27 @@
 % in the document as its optional evaluation-point argument.
 \NewDocumentCommand\deriv{O{1}mm}{{\diff[#1]{#2}{#3}}}
 \NewDocumentCommand\pderiv{O{1}mm}{{\diffp[#1]{#2}{#3}}}
-\NewDocumentCommand\integral{mmmm}{\ensuremath{\int_{#3}^{#4}\!#1\,\mathrm{d}#2}}
+\ExplSyntaxOn
+\tl_new:N \l__course_integral_size_tl
+\msg_new:nnn {coursemath}{integral-size}
+  {Unknown~integral~size~'#1'.~Use~normal,~medium,~or~large.}
+\keys_define:nn {coursework/integral}
+  {size .code:n =
+    \clist_if_in:nnTF {normal,medium,large}{#1}
+      {\tl_set:Nn \l__course_integral_size_tl {#1}}
+      {\msg_error:nnn {coursemath}{integral-size}{#1}}}
+\NewDocumentCommand\integral{O{}mmmm}
+  {\group_begin:
+   \tl_set:Nn \l__course_integral_size_tl {normal}
+   \keys_set:nn {coursework/integral}{#1}
+   \ensuremath{
+     \str_case:Vn \l__course_integral_size_tl
+       {{normal}{\int}
+        {medium}{\mathop{\displaystyle\mathlarger{\int}}\nolimits}
+        {large}{\mathop{\displaystyle\mathlarger{\mathlarger{\int}}}\nolimits}}
+     \sb{#4}\sp{#5}\!#2\,\mathrm{d}#3}
+   \group_end:}
+\ExplSyntaxOff
 \NewDocumentCommand\evalat{mmm}{\ensuremath{\left.#1\right\rvert_{#2}^{#3}}}
 \NewDocumentCommand\evalbracket{mmm}{\ensuremath{\left\lbrack#1\right\rvert_{#2}^{#3}}}
 \DeclarePairedDelimiter\paren{(}{)}
