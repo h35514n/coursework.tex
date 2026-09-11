@@ -30,11 +30,18 @@
   \fi
   % Preserve formula's own reference identity across amsmath's display setup.
   \edef\course@formulalabel{\theformula}%
+  \ifdefined\@currentHref\let\course@formulahref\@currentHref\fi
+  \ifdefined\cref@currentlabel\let\course@formulacref\cref@currentlabel\fi
   \begin{equation*}%
   \tag*{\parbox{5em}{\textbf{\small\course@formulatitle}}}%
+  \gdef\df@tag{%
+    \maketag@@@{\parbox{5em}{\textbf{\small\course@formulatitle}}}%
+    \edef\@currentlabel{\course@formulalabel}\def\@currentcounter{formula}%
+    \ifdefined\course@formulahref\let\@currentHref\course@formulahref\fi
+    \ifdefined\course@formulacref\let\cref@currentlabel\course@formulacref\fi}%
 }{\end{equation*}}
 \NewDocumentEnvironment{subparts}{}{\begin{enumerate}[label=(\alph*)]\vspace{-1ex}}{\end{enumerate}}
-\NewDocumentCommand\tableheading{mm}{\multicolumn{1}{c}{\genfrac{}{}{0pt}{}{\text{#1}}{\text{#2}}}}
+\newcommand\tableheading[2]{\multicolumn{1}{c}{\genfrac{}{}{0pt}{}{\text{#1}}{\text{#2}}}}
 \ExplSyntaxOn
 \tl_new:N \g__course_table_placement_tl
 \tl_gset:Nn \g__course_table_placement_tl {ht!}

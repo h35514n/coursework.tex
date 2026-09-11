@@ -22,8 +22,19 @@
   {\prop_item:Nn \g__course_metadata_prop {#1}}
 \NewDocumentCommand \courseworkclassoption {mm}
   {\keys_set_known:nnN {coursework}{#1}\l_tmpa_tl
-   \tl_if_empty:NF \l_tmpa_tl
+   \tl_if_empty:NTF \l_tmpa_tl
+     {\@removeelement{#1}\@classoptionslist\@classoptionslist
+      \@removeelement{#1}\@raw@classoptionslist\@raw@classoptionslist
+      \global\let\@classoptionslist\@classoptionslist
+      \global\let\@raw@classoptionslist\@raw@classoptionslist}
      {\exp_args:NV \PassOptionsToClass \l_tmpa_tl {#2}}}
+% LaTeX restores the raw class-option list after loading a class (subfiles
+% also does so). Keep our class-only choices out of later package options.
+\AddToHook{package/before}{
+  \cs_if_eq:NNF \@raw@classoptionslist \scan_stop:
+    {\clist_map_inline:nn
+       {mode=worked,mode=worksheet,mode=compact,problem-breaks=page,problem-breaks=flow}
+       {\clist_gremove_all:Nn \@raw@classoptionslist {#1}}}}
 \prg_new_conditional:Npnn \course_if_solutions: {T,F,TF}
   {\str_if_eq:VnTF \g__course_mode_tl {worked}{\prg_return_true:}{\prg_return_false:}}
 \prg_new_conditional:Npnn \course_if_pagebreak: {T,F,TF}

@@ -1,19 +1,7 @@
-% =====================================================================
-% coursepsets.cls -- Problem set / exam document class for coursework.
-%   (Formerly problemsets.cls.)
-%
-% Layout, the \problem/\solution machinery, and headers live here.
-% Math macros and physics notation come from coursemath.sty and
-% coursephys.sty, loaded at the foot of this file.
-%
-% Options:
-% final      hides to-dos
-% worksheet  hides solutions and places each problem on separate page
-% expand     places each problem on a separate page
-% summary    hides solutions without placing problems on separate pages
-% =====================================================================
+% Assignments and exams: declarations, semantic references, and output profiles.
+% See README.md and docs/MIGRATION.md for the v2 authoring interface.
 
-\NeedsTeXFormat{LaTeX2e}
+\NeedsTeXFormat{LaTeX2e}[2026-06-01]
 \ProvidesClass{coursepsets}[2026/09/11 v2.0.0 Problem sets and exams]
 
 \RequirePackage{coursecommon}
@@ -22,28 +10,19 @@
 
 % ================== Packages and Document Options ==================
 \LoadClass[11pt,letterpaper]{article}
+\RequirePackage{coursemath}
+\RequirePackage{courseenvironments}
 
-\RequirePackage{amssymb}
-\RequirePackage{amsthm}                             % Used for theorem environments.
 \RequirePackage[scaled=0.85]{beramono}
-\RequirePackage{bigints}                            % Larger integral signs
-\RequirePackage{bm}                                 % For boldface in math mode
-\RequirePackage{booktabs}                           % Used for mathtable environment.
 \RequirePackage[small]{caption}
-\RequirePackage[spaced, mleftright]{diffcoeff}      % For \diff, \diffp, etc commands
-\RequirePackage{enumitem}                           % Used for the enumerate environment.
 \RequirePackage{fancyhdr}                           % For customizing headers/footers.
-\RequirePackage{float}                              % Used for floats (tables, figures, etc.)
 \RequirePackage{fontspec}
 \RequirePackage[top=0.85in, bottom=1in, left=1in, right=1in]{geometry}
 \RequirePackage{graphicx}                           % Used for inserting images.
 \RequirePackage[colorlinks=true, linkcolor=navy, urlcolor=black]{hyperref}
 \RequirePackage{lastpage}                           % For page count in header/footer.
 \RequirePackage[osf,sc]{mathpazo}
-\RequirePackage{mathtools}                          % Loads amsmath.
 \RequirePackage{nameref}
-\RequirePackage{pgfkeys}                            % For mathtable environment.
-\RequirePackage{siunitx}                            % For SI units.
 \RequirePackage[font={footnotesize}]{subcaption}
 \RequirePackage{subfiles}                           % Per-pset standalone builds
 \RequirePackage{tabularx}                           % For pset heading
@@ -54,10 +33,10 @@
 \RequirePackage{tkz-euclide}                        % Required for geometric figures
 \RequirePackage{url}                                % Enables urls with the \url tag
 \RequirePackage{xcolor}                             % Set hyperlink color
-\RequirePackage{xifthen}                            % Conditional constructs
 % -------------------- Late loaders -----------------------------------------
-\RequirePackage{cleveref}                           % Reference by chapter and section
 \RequirePackage{mathspec}
+\RequirePackage{courseassignments}
+\RequirePackage{cleveref}
 \RequirePackage[all]{hypcap}    % Links go to object instead of caption [keep as last]
 
 % ==================   Font Settings   ==================
@@ -93,7 +72,7 @@
 \hypersetup{bookmarksdepth=3} % Set the depth of PDF bookmarks to 3 (includes \subsubsections)
 
 % ================== SI Units setup ==================
-\sisetup{group-separator = {,}}
+\AddToHook{package/siunitx/after}{\sisetup{group-separator={,}}}
 
 % ============= Headers and Footers =============
 \renewcommand{\headrulewidth}{0pt}
@@ -149,7 +128,4 @@
 
 
 % Shared interfaces are independent of this class's heading styles.
-\RequirePackage{coursemath}
-\RequirePackage{courseenvironments}
-\RequirePackage{courseassignments}
 \endinput
