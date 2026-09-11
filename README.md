@@ -1,195 +1,183 @@
-# coursework.tex
+# Coursework v2
 
-Shared LaTeX document classes and macro packages for course repos. Installed
-once per machine into `TEXMFHOME`; after that any document anywhere can say
-`\documentclass{coursepsets}`.
+XeLaTeX classes and notation for course notes, assignments, exams, worksheets,
+and compact problem handouts. Version 2 is a breaking API change. The v1
+installation remains in the original checkout while migration branches are
+reviewed.
 
-## Requirements
+Requires **TeX Live 2026**, including the June 2026 LaTeX kernel, and XeLaTeX.
+The API branch retains the existing Pagella/mathpazo homework and
+classicthesis/Euler notes typography. Font alternatives are a separate review.
 
-- **TeX Live** (the full scheme is simplest). Beyond the base, the classes pull
-  in `classicthesis`, `mathspec`, `diffcoeff`, `tkz-euclide`, `todonotes`,
-  `subfiles`, `bigints`, `bera`, `txfonts`, `etoc`, and `hypcap`.
-- **XeLaTeX** — see [Engine](#engine).
-- **Fonts installed at the OS level**: TeX Gyre Pagella, TeX Gyre Pagella Math,
-  DejaVu Sans Mono. `fontspec` looks fonts up by name through the system font
-  list, so the copies inside the TeX Live tree are not enough; install the
-  `.otf`/`.ttf` files themselves (on macOS, `~/Library/Fonts` or Font Book).
+## Package responsibilities
 
-## Install
-
-```sh
-./install.sh
-```
-
-Symlinks `tex/latex/coursework` into `$TEXMFHOME/tex/latex/coursework`
-(`~/Library/texmf/...` on macOS), then prints what `kpsewhich` resolves for each
-file. Because it is a symlink, edits here take effect on the next build with no
-reinstall, and new files added to the tree are picked up automatically. Because
-`TEXMFHOME` is searched live by kpathsea, no `mktexlsr` is needed.
-
-The clone can live anywhere; the script records whatever path it is run from.
-Re-run it only if the repo moves.
-
-## Contents
-
-| File | Purpose |
+| Module | Owns |
 | --- | --- |
-| `coursenotes.cls` | Reading notes. `classicthesis` over `report`, per-chapter local TOCs. |
-| `coursepsets.cls` | Problem sets and exams. `\heading`, `\chap`, `\sect`, `\problem`, `\solution`. |
-| `coursemath.sty` | Math macros, theorem environments, `mathtable`, `formula`, `sublist`. |
-| `coursephys.sty` | Vector notation, unit vectors, Griffiths' script-r, physical constants. |
-| `coursework-scriptr.pdf`, `coursework-boldr.pdf` | Glyphs for `\rcurs` / `\brcurs`. |
+| `coursepsets.cls` | Assignment page layout, headings, footers and typography |
+| `coursenotes.cls` | classicthesis notes layout, chapter contents and typography |
+| `coursecommon.sty` | Metadata, output settings, title/heading commands |
+| `courseassignments.sty` | Declarations, selection, numbering, fragment rendering |
+| `courseenvironments.sty` | Theorems, formulas, math tables and subparts |
+| `coursemath.sty` | Mathematical notation and the bold-symbol backend |
+| `coursephys.sty` | Physics notation, constants, units and script-r assets |
 
-Both classes require `coursemath` and `coursephys`, so every document gets the
-same macro set.
+Both classes load math and document environments. Load physics explicitly.
+The math and physics packages also work with `article`; they do not select
+fonts, configure a page layout, or overwrite standard text accents.
 
-## Engine
-
-**XeLaTeX.** `coursepsets.cls` uses `fontspec` (`\setmainfont{TeX Gyre Pagella}`)
-and `mathspec`; `coursenotes.cls` pulls in `unicode-math` by way of
-`classicthesis`. Neither works under pdfLaTeX.
-
-## Using it from a course repo
-
-A repo keeps its course-specific values in one file and its structure in two
-root documents, so the same skeleton serves every course:
+## Course identity
 
 ```latex
-% course.tex -- the only course-specific file
-\newcommand{\Author}{...}
-\newcommand{\CourseNumber}{PHYS~331}
-\newcommand{\CourseName}{Electricity \& Magnetism}
-\newcommand{\CourseTerm}{Fall 2024}
-\newcommand{\CourseText}{Introduction to Electrodynamics}
-\newcommand{\CourseTextAuthor}{David J. Griffiths}
+% course.tex: shared preamble for homework and notes
+\usepackage{coursephys}
+\courseworksetup{
+  author={Your Name},
+  course-code={PHYS 331},
+  course-title={Electricity \& Magnetism},
+  term={Fall 2026},
+  textbook={Introduction to Electrodynamics},
+  textbook-author={David J. Griffiths}
+}
 ```
 
+Read individual values with `\courseworkvalue{author}` (and the other keys).
+Values may contain LaTeX. Repeated setup calls replace earlier values.
+
 ```latex
-% homework.tex
-\documentclass[expand,final]{coursepsets}
+\documentclass[mode=worked,problem-breaks=page,final]{coursepsets}
 \input{course}
 \begin{document}
-\heading[Homework]{\Author}{\CourseNumber}{\CourseName}{\CourseTerm}
+\listoftodos\clearpage
+\pagenumbering{arabic}
+\makecourseworktitle[title={Homework}]
+\tableofcontents\newpage
+\makeassignmentheading[title={Homework}]
 \subfile{homework/01-pset}
 \end{document}
 ```
 
+Title generation, assignment headings, contents, todos and page numbering are
+separate operations. A title/heading `date` defaults to the configured term.
+Ordinary `\title`, `\author`, `\date`, and `\maketitle` remain usable for notes.
+
+## Declare once, render consistently
+
 ```latex
-% notes.tex
-\documentclass{coursenotes}
-\input{course}
+% homework/01-pset.tex; compile from the course repository root
+\documentclass[homework.tex]{subfiles}
 \begin{document}
-\title{\CourseText\\\large Reading Notes}
-\author{\Author}
-\date{\CourseTerm}
-\maketitle
-\tableofcontents
-\subfile{notes/01-topic}
+\ifSubfilesClassLoaded{%
+  \makecourseworktitle[title={Problem Set 1}]
+  \tableofcontents\newpage
+  \makeassignmentheading[title={Problem Set 1}]
+}{}
+\assignment[id=pset01,number=1,directory=homework/01-pset]{Vector Analysis}
+\declareproblem[title={Griffiths 1.7}]{01}
+\declareproblem[title={Griffiths 1.11 a,b,c}]{02}
+\printassignment
 \end{document}
 ```
 
-Individual sets and chapters are `subfiles`, so each builds on its own or as
-part of the combined document. `\ifSubfilesClassLoaded` is the hook for
-emitting a title block only in the standalone build.
+Each problem has a required `problemNN.tex` and, in worked mode, a required
+`solutionNN.tex`. Optional `guideNN.tex` and `discussionNN.tex` are included
+when present. Fragments contain content only; their parent supplies headings.
+An empty solution file denotes an unsolved problem. Physics graphics stay in
+the course tree, with paths relative to its root.
 
-### Separate problem and solution fragments
+`\printassignment[problems={02,01}]` selects and orders declarations. Selected
+problems are numbered from 1 in that order in every section. IDs never depend
+on printed numbers. Canonical labels are `prob:<assignment-id>:<problem-id>`;
+`\cref{prob:pset01:02}` refers to the selected problem's displayed number.
+Each assignment may render once in a document. Duplicate assignment IDs,
+duplicate problem declarations, unknown selections, duplicate selected IDs,
+and missing required files are errors. IDs accept letters, digits, hyphens,
+and underscores. Assignment numbers are positive integers, defaulting to the
+next assignment; `id` and `directory` are required. The optional
+`problems-title` key defaults to `Problem Set`.
 
-Each assignment imports matching fragments in order:
+Equations, figures and tables use `assignment.problem.item` numbers. Their
+counters continue for the same problem across its guide, statement, solution
+and discussion. PDF destinations use stable assignment/problem identity.
+Explicit source labels remain ordinary LaTeX labels and must be unique across
+the combined document. Problem headings do not borrow a section counter.
 
-```latex
-% homework/01-pset.tex, after its heading and chapter/section commands
-\input{homework/01-pset/problem01}%
+## Output profiles
 
-\solution{\input{homework/01-pset/solution01}}
+| Mode | Solution/discussion files | Problems |
+| --- | --- | --- |
+| `worked` (default) | Read and shown | `problem-breaks=flow` by default; `page` is available |
+| `worksheet` | Never read | Start on separate pages |
+| `compact` | Never read | Flow without forced breaks |
 
-\input{homework/01-pset/problem02}%
+Guides remain available. Empty guide/discussion sections are omitted.
+Page breaks belong to problem boundaries, independent of solutions. Long
+problems may span pages; the next problem starts on a fresh page in page mode.
 
-\solution{\input{homework/01-pset/solution02}}
-```
-
-```latex
-% homework/01-pset/problem01.tex
-\problem[Griffiths 1.1]%
-Statement of the problem.
-% Reading, Reference, and Hint blocks belong here.
-```
-
-```latex
-% homework/01-pset/solution01.tex
-Work goes here.
-```
-
-Both files are bare fragments with no preamble. The solution file contains
-only the work; its parent supplies the `\solution` wrapper. Keep a matching
-solution file even for an unsolved problem, and keep each pair adjacent in the
-parent. Keep the `%` on the problem import and the blank line before `\solution`
-to end the statement paragraph without adding space between files. Run builds
-from the course repo root and retain repo-root-relative paths for fragments
-and figures.
-
-The existing `\solution` command supplies the heading, closing marker,
-visibility, and page breaks. In `worksheet` and `summary` builds, the hidden
-solution file is not read; reading references and hints stay visible in the
-problem file. Per-problem overrides still use
-`\solution[\SHOW]{\input{...}}` or `\solution[\HIDE]{\input{...}}`.
-Legacy `\solution{Work goes here.}` usage remains supported. No additional
-class command or package is needed, and course Makefiles already track all
-`.tex` fragments in each assignment directory.
-
-## `coursepsets` class options
-
-| Option | Effect |
-| --- | --- |
-| `final` | Hides to-dos. |
-| `worksheet` | Hides solutions, one problem per page. |
-| `summary` | Hides solutions without page breaks. |
-| `expand` | One problem per page. |
-
-`worksheet` is meant to be selected at build time rather than in the source, so
-one set of files yields both the worked and the blank copy:
+Course Makefiles apply build overrides after source defaults:
 
 ```sh
-latexmk -usepretex='\PassOptionsToClass{worksheet}{coursepsets}' homework/01-pset.tex
+latexmk -usepretex='\AtBeginDocument{\courseworksetup{mode=compact}}' homework.tex
 ```
 
-## Conventions
+Class-only mode options are consumed before packages process global options;
+they must not leak into siunitx's unrelated `mode` setting. `final` continues
+to hide todos. Other base-class options are forwarded to article/report.
 
-These are what keep the tree safe to extend and old documents buildable.
+## Environments and notation
 
-- **Everything is prefixed `course`.** Once installed into `TEXMFHOME` these
-  names share a namespace with all of TeX Live, so generic names like
-  `notes.cls` are a collision risk.
-- **Assets are referenced by bare name.** `coursephys.sty` says
-  `\includegraphics{coursework-scriptr}`, and kpathsea resolves it from the
-  installed tree — so documents compile from any working directory. Never
-  reference a path relative to a course repo.
-- **`\providecommand`, not `\newcommand`,** for anything a document might want
-  to redefine locally.
-- **Bold math goes through the `\course@bold` / `\course@bhat` hooks.**
-  `coursepsets` is traditional NFSS plus `mathspec`, where `\bm` is correct;
-  `coursenotes` is `unicode-math`, where `\bm` errors and `\symbf` is correct.
-  A raw `\bm` in shared code breaks the notes build. The same applies to 8-bit
-  NFSS font tricks (see the `txfonts` guard).
-- **Per-class layout differences go through hooks** rather than forked
-  definitions — see `\coursemathtablestart` in `coursemath.sty`, overridden by
-  `coursenotes.cls`.
-- **Bump the date and version** in `\ProvidesClass` / `\ProvidesPackage` when
-  changing a file.
+```latex
+\begin{example}[A title]\label{ex:demo}
+The first word is always content; no label argument is required.
+\end{example}
+\begin{formula}[Reference equation]\label{formula:demo}
+  \integral{x^2}{x}{0}{1} = \evalat{x^3/3}{0}{1}
+\end{formula}
+\begin{mathtable}[caption={Values},label={tab:values},placement=H]{cc}
+  x & x^2 \\ \bottomrule
+\end{mathtable}
+```
 
-## Changing the classes
+The theorem family shares a section-reset counter. Definitions, examples and
+remarks each have their own section-reset counters; summaries reset by
+subsection. `proof`, `note`, `caveat`, `warning`, `question`, and `speculation`
+are also available. Formula references return their sequential formula number,
+independently of the optional displayed tag. No forced line break follows a
+formula.
 
-Documents from past terms are expected to keep compiling and re-rendering the
-same. Prefer additive changes; when something would alter existing output, add
-a class option and leave the default alone. Before committing, rebuild at least
-one real course repo (`make`) rather than trusting a minimal test file — the
-interactions that break here are between packages, and they only surface in a
-full document.
+Math-table options are local to each table. A label requires a caption.
+The array receives a top rule; the author supplies row endings and any bottom
+rule. Standalone defaults are `[ht!]` and a `-1em` lead-in; notes select `[H]`
+and `-2ex`. `\courseenvironmentsetup{table-placement=...,table-top-skip=...}`
+changes those defaults explicitly.
 
-## Adding a subject package
+Use `\paren`, `\bracket`, `\abs`, and `\norm` unstarred for fixed delimiters,
+starred for automatic sizing, or with an optional explicit size such as
+`\bracket[\Big]{x}`. Statistical helpers retain automatically sized notation.
+Use `\deriv[2]{f}{x}`, `\pderiv{F}{T}`, `\uprightvect{v}`, `\unitvect{r}`,
+and `\mathbold{\alpha}`. `\grad` and `\laplacian` are operators. Physics
+constants separate symbols (`\kB`, `\NA`) from rounded quantities
+(`\constantvalue{boltzmann}`, `\constantvalue{avogadro}`).
 
-Follow `coursephys.sty`: name it `courseX.sty`, `\RequirePackage{coursemath}`
-for the shared base, and guard anything that depends on the math engine. Load
-it from a document's preamble with `\usepackage{coursechem}`; only add it to
-the `\RequirePackage` list at the foot of both classes if every document should
-have it. `coursephys` is on that list today only because every repo so far is
-physics; it costs a non-physics document nothing but a few unused macros.
+The complete migration map is in [docs/MIGRATION.md](docs/MIGRATION.md).
+[tests/notation.tex](tests/notation.tex) is a runnable notation specimen.
+
+## Development and installation
+
+Do not run `install.sh` from a review worktree. Use scoped `TEXINPUTS`:
+
+```sh
+TEXINPUTS="$(pwd)/tex/latex/coursework//:" latexmk -xelatex document.tex
+python3 -m unittest discover -s tests -v
+python3 tests/run_api.py
+make -C ../coursework-testing candidate
+```
+
+The regression driver builds every combined/individual document, compact
+handout and worksheet. It records revisions, source hashes, resolved package
+paths, recorder inputs, tool versions, warnings, PDFs, text and page renders.
+`make compare` remains strict against the original baseline. Intentional
+changes are reviewed before saving an explicitly named immutable checkpoint.
+
+All assets are resolved by kpathsea, and original course branches retain their
+existing installation. Merging classes, merging course migrations and choosing
+a font profile are coordinated release steps after review.
