@@ -61,7 +61,7 @@ def main():
    '\\courseworksetup{author={Coursework v2 font review},course-code={Font specimen},course-title={'+title+'},term={September 2026}}\n'
    '\\begin{document}\n\\pagestyle{plain}\n\\setcounter{section}{1}\n'
    '\\ifdefined\\chapter\\setcounter{chapter}{1}\\fi\n'
-   '\\ifdefined\\PrelimWords\\renewcommand{\\PrelimWords}{}\\fi\n'
+   '\\ifdefined\\PrelimText\\renewcommand{\\PrelimText}{}\\fi\n'
    '\\section*{'+title+'}\nSame notation and environment content in each font profile.\n'
    '\\input{tests/notation.tex}\n\\clearpage\\section*{Environment specimen}\n'
    '\\begin{definition}[Vector field]\\label{def:field}A field assigns a vector $\\vect{v}$ to each point.\\end{definition}\n'
