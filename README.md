@@ -201,7 +201,7 @@ paths, recorder inputs, tool versions, warnings, PDFs, text and page renders.
 `make compare` remains strict against the original baseline. Intentional
 changes are reviewed before saving an explicitly named immutable checkpoint.
 
-The permanent testbed and four courses default to this checkout for regression
+The permanent testbed and six courses default to this checkout for regression
 builds. Set `candidate_repository` in their `regression.json` to another checkout;
 `COURSEWORK_TOOLS` overrides the shared scripts directory. Frozen references resolve
 their bundled classes locally and remain valid when their directories move.
@@ -209,3 +209,8 @@ their bundled classes locally and remain valid when their directories move.
 All assets are resolved by kpathsea. The adopted class and course checkouts
 use the existing installation path; recovery branches and frozen checkpoints
 preserve the earlier versions. See `docs/ADOPTION.md` for the activation record.
+
+The two formerly self-contained courses, PHYS 321 and PHYS 432, now use v2 locally.
+See the [adoption report](docs/LEGACY-COURSES-ADOPTION.md) and
+[legacy migration workflow](docs/LEGACY-COURSE-MIGRATION.md) for their baselines,
+source mappings, validation, and archived study guides.

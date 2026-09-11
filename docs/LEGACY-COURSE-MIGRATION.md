@@ -33,6 +33,7 @@ python3 ../coursework.tex/scripts/migrate_legacy.py convert . > build/migration.
 python3 ../coursework.tex/scripts/migrate_legacy.py convert . --write --report build/migration.json
 python3 ../coursework.tex/scripts/migrate_legacy.py convert . # zero operations
 make candidate
+python3 ../coursework.tex/scripts/check_course_migration.py . --output build/migration-validation.json
 make compare
 ```
 

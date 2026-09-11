@@ -104,10 +104,17 @@ def verify(root):
                 if set(solution_inputs)!=expected_solutions:raise RuntimeError('Incomplete worked solutions: '+name)
         checks.append({'pdf':name,'pages':manifest['pdfs'][name]['pages'],'font_profile':'euler' if is_notes else 'pazo',
                        'hidden_solutions':hidden,'loaded_solutions':len(solution_inputs),'labels':len(labels),
-                       'font_paths':sorted({str(p) for p in inputs if p.suffix.lower() in {'.otf','.ttf','.pfb'}})})
+                       'recorder_font_paths':sorted({str(p) for p in inputs if p.suffix.lower() in {'.otf','.ttf','.pfb'}})})
     console=(candidate/'build.log').read_text(errors='replace')
     if re.search(r'Object @[^\n]*already defined',console):raise RuntimeError('Duplicate PDF destinations')
-    return {'passed':True,'source_revision':manifest['testbed']['revision'],'class_revision':manifest['class_revision'],
+    font_files={}
+    for name in ['texgyrepagella-regular.otf','texgyrepagella-italic.otf','texgyrepagella-bold.otf',
+                 'texgyrepagella-bolditalic.otf','Euler-Math.otf','DejaVuSansMono.ttf',
+                 'uplr8a.pfb','uplri8a.pfb','uplb8a.pfb','uplbi8a.pfb','fplmr.pfb','fplmri.pfb']:
+        path=Path(subprocess.check_output(['kpsewhich',name],text=True).strip())
+        if not path.is_file():raise RuntimeError('Selected font is missing: '+name)
+        font_files[name]={'path':str(path),'sha256':r.sha(path)}
+    return {'passed':True,'font_files':font_files,'source_revision':manifest['testbed']['revision'],'class_revision':manifest['class_revision'],
             'baseline_fixture_revision':old['testbed']['revision'],'outputs':len(checks),'problems':checked,
             'empty_solutions':content['empty_solutions'],'preserved_original_assets':preserved,
             'pdf_checks':checks,'remaining_warnings':manifest['warnings']}
