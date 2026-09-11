@@ -73,6 +73,12 @@ class LegacyMigrationTests(unittest.TestCase):
     def test_physics_cross_preserves_bold_symbol(self):
         self.assertEqual(m.migrate_notation(r'\omega \cross r'),r'\omega \mathbold{\times} r')
 
+    def test_manual_tag_uses_unnumbered_equation(self):
+        text=r'\begin{equation}\label{eq:x}x=1\tag{Book 1}\end{equation}'
+        result=r'\begin{equation*}\label{eq:x}x=1\tag{Book 1}\end{equation*}'
+        self.assertEqual(m.explicit_tagged_equations(text),result)
+        self.assertEqual(m.explicit_tagged_equations(result),result)
+
     def test_known_legacy_todo_is_retained(self):
         p=m.split_problems(r'\problem A\solution{B}TODO')[0]
         self.assertIn('TODO',p['statement']);self.assertEqual(p['trailing_annotation'],'TODO')

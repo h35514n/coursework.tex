@@ -162,8 +162,31 @@ def split_problems(text):
     return problems
 
 
+def explicit_tagged_equations(text):
+    """Manual tags do not consume a number; use amsmath's unnumbered form.
+
+    A numbered equation creates its hyperref destination before amsmath sees
+    the tag and backs the counter down, so the next equation can reuse it.
+    """
+    edits=[];opening=None
+    for a,b,name in calls(text,{'begin','end'}):
+        env,end=group(text,b)
+        if env!='equation':continue
+        if name=='begin':
+            if opening is not None:raise MigrationError('Nested equation environment')
+            opening=(a,end)
+        elif opening is not None:
+            start,body=opening
+            if list(calls(text[body:a],{'tag'})):
+                edits.extend([(start,body,r'\begin{equation*}'),(a,end,r'\end{equation*}')])
+            opening=None
+    for a,b,value in reversed(edits):text=text[:a]+value+text[b:]
+    return text
+
+
 def migrate_notation(text, *, notes=False):
     from migrate import migrate_text
+    text=explicit_tagged_equations(text)
     edits=[]
     for a,b,name in commands(text):
         if name=='Sum' and notes:

@@ -53,7 +53,10 @@ derivatives use the v2 helpers. Rich `diffcoeff` syntax, including held-variable
 arguments, remains explicit. Mechanics dot accents stay in a course-local
 package with their original glyphs. Duplicate labels are qualified by assignment
 and problem, with local references resolved together; ambiguous references are
-rejected. Homework and notes have independent label namespaces.
+rejected. Homework and notes have independent label namespaces. Manually tagged
+`equation` displays become `equation*`, preserving their tags without consuming
+a numbered equation destination. The physics package’s bold cross-product
+alias becomes `\mathbold{\times}`.
 
 One known source annotation, the literal `TODO` after mechanics final problem 3's
 solution, moves to the end of that problem's statement so it remains present in
