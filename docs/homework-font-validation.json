@@ -1,0 +1,175 @@
+{
+  "class_revision": "750d53da4d1329ab84f6d6baf74129602fb90a49",
+  "reference": "v2-final",
+  "checkpoint": "v2-pazo-homework",
+  "total_pdfs": 170,
+  "total_pages": 1644,
+  "unchanged_notes": 58,
+  "api_cases": 34,
+  "glyph_comparison": {
+    "reference_revision": "1ba84284231478eb2ebe0ceaa73abf892d1b6cdc",
+    "candidate_revision": "750d53da4d1329ab84f6d6baf74129602fb90a49",
+    "candidate_status": "",
+    "compatibility_adjustment": "Resolve identical prose and mono faces by filename in scratch reference only",
+    "fixture_sha256": "874a8d594ef0f6dc159d6e90b18c3b57a4374e90571b9da341b177b1400fac96",
+    "dpi": 300,
+    "matching_pixels": true,
+    "results": {
+      "old": {
+        "pdf": "/Users/jmromer/Courses/coursework.tex/build/homework-font-restoration/old/specimen.pdf",
+        "pdf_sha256": "4581ba1237a4ae8e57157eabef90dcd5b80d617c59d3ed9112c04d3ff79a3476",
+        "render_sha256": "510b51dc5a7ffdd0b617248552d06900ff145c734c5f669a227c5a0e36b8efd6",
+        "fonts": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nWMJMZX+TeXGyrePagella-Regular-Identity-H CID Type 0C       Identity-H       yes yes yes      5  0\nLRLECV+TeXGyrePagella-Italic-Identity-H CID Type 0C       Identity-H       yes yes yes      7  0\nODXMVV+TeXGyrePagella-Bold-Identity-H CID Type 0C       Identity-H       yes yes yes      9  0\nNIBEAK+URWPalladioL-Ital             Type 1C           WinAnsi          yes yes yes     11  0\nHVFNXZ+URWPalladioL-Roma             Type 1C           WinAnsi          yes yes yes     12  0\nIWZQMN+PazoMath-Italic               Type 1C           Builtin          yes yes yes     13  0\nUQZVBK+PazoMath                      Type 1C           Builtin          yes yes yes     14  0\nBVKRXP+CMR10                         Type 1C           Builtin          yes yes yes     15  0\nGXAQDI+CMEX10                        Type 1C           Builtin          yes yes no      16  0\nYSSGMV+CMSY10                        Type 1C           Builtin          yes yes yes     17  0\nZNMFCD+URWPalladioL-Bold             Type 1C           WinAnsi          yes yes yes     18  0\nELAAMQ+PazoMathBlackboardBold        Type 1C           Builtin          yes yes yes     19  0\nLCFPQB+CMMIB10                       Type 1C           Builtin          yes yes yes     20  0\nYGLZPJ+CMBX10                        Type 1C           Builtin          yes yes yes     21  0\nWDLVFW+CMBSY10                       Type 1C           Builtin          yes yes yes     22  0\nSRSQDW+Kaufmann                      Type 1C           Custom           yes yes no      27  0\nIJFNTQ+Kaufmann-Bold                 Type 1C           Custom           yes yes no      36  0\n",
+        "class_files": {
+          "courseenvironments.sty": "ecfbd5acb98dcb55558003844e6f204cc508c373f118734edcf0801458ad2c30",
+          "coursemath.sty": "62e5434481b21e8bf300e32f5001d6ab7f28738b961c6173bb4ee840c8ed9fb6",
+          "coursework-scriptr.pdf": "54b8fdc20ab5f3a612e1fc0318f02a0a27c8372ffcf9788994b6b8e63e08d4f2",
+          "coursecommon.sty": "8f2f79ade4dd5d72fab1f40d82f763a0925e779227cadbe7a42054cc6cf23451",
+          "coursephys.sty": "2645c75a51d4db91be757d1fc09b95d5fd6c1a1820ae4ac040ee50e1c9bdffcc",
+          "coursenotes.cls": "a444f758f968da8804276cd349e6bb0c521ce423f259bfa5afd21e45bb754587",
+          "courseassignments.sty": "eb58077e12d9cb4b6af056ae495bd48c1b4794619c4c52c7733accde42959cb7",
+          "coursepsets.cls": "9a1f3f011a0709df0916fed448bf106622d140489cbc4f4364fb5ead8a2c6fea",
+          "coursework-boldr.pdf": "56bcafbf42afb329719e81fdb90e426b8e169c5cf0d41c3d095c64561ced5f8a"
+        }
+      },
+      "restored": {
+        "pdf": "/Users/jmromer/Courses/coursework.tex/build/homework-font-restoration/restored/specimen.pdf",
+        "pdf_sha256": "4c3c2cf5a13dc154e23acbd92d06674c2548a3e338102551151a54bf844cb2e4",
+        "render_sha256": "510b51dc5a7ffdd0b617248552d06900ff145c734c5f669a227c5a0e36b8efd6",
+        "fonts": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nFFAQIS+TeXGyrePagella-Regular-Identity-H CID Type 0C       Identity-H       yes yes yes      5  0\nNDOSAJ+TeXGyrePagella-Italic-Identity-H CID Type 0C       Identity-H       yes yes yes      7  0\nXXQGGZ+TeXGyrePagella-Bold-Identity-H CID Type 0C       Identity-H       yes yes yes      9  0\nLDOCWD+URWPalladioL-Ital             Type 1C           WinAnsi          yes yes yes     11  0\nTMXHRN+URWPalladioL-Roma             Type 1C           WinAnsi          yes yes yes     12  0\nHAWYJA+PazoMath-Italic               Type 1C           Builtin          yes yes yes     13  0\nUWDNCV+PazoMath                      Type 1C           Builtin          yes yes yes     14  0\nTYQFBN+CMR10                         Type 1C           Builtin          yes yes yes     15  0\nVEIHIX+CMEX10                        Type 1C           Builtin          yes yes no      16  0\nJKGOHX+CMSY10                        Type 1C           Builtin          yes yes yes     17  0\nWRAAYO+URWPalladioL-Bold             Type 1C           WinAnsi          yes yes yes     18  0\nVBSKGA+PazoMathBlackboardBold        Type 1C           Builtin          yes yes yes     19  0\nDAUSMH+CMMIB10                       Type 1C           Builtin          yes yes yes     20  0\nOTQNPM+CMBX10                        Type 1C           Builtin          yes yes yes     21  0\nYNMXHO+CMBSY10                       Type 1C           Builtin          yes yes yes     22  0\nSRSQDW+Kaufmann                      Type 1C           Custom           yes yes no      27  0\nIJFNTQ+Kaufmann-Bold                 Type 1C           Custom           yes yes no      36  0\n",
+        "class_files": {
+          "courseenvironments.sty": "ecfbd5acb98dcb55558003844e6f204cc508c373f118734edcf0801458ad2c30",
+          "coursemath.sty": "f99da360ef1ee3cc2732d993fcc928a246ce5a3619e1ffab94d80de932623708",
+          "coursefonts.sty": "6405b48c152f7fc334e5ff1c63a834fdae92b627fcf191ee9a041f923fe9288f",
+          "coursework-scriptr.pdf": "54b8fdc20ab5f3a612e1fc0318f02a0a27c8372ffcf9788994b6b8e63e08d4f2",
+          "coursecommon.sty": "4becff5b620ebb33322ca34782be885118c1c78f155c771bc8d1d056f87d4687",
+          "coursephys.sty": "2645c75a51d4db91be757d1fc09b95d5fd6c1a1820ae4ac040ee50e1c9bdffcc",
+          "coursenotes.cls": "679121cb47f06590de79a22c8df285fca3b6558465932bb136b9b49e04a8df5a",
+          "courseassignments.sty": "eb58077e12d9cb4b6af056ae495bd48c1b4794619c4c52c7733accde42959cb7",
+          "coursepsets.cls": "f839e1d839acbbe5284ab37d12e27d9b4951725f153ea5ca152d045a4ace7e6d",
+          "coursework-boldr.pdf": "56bcafbf42afb329719e81fdb90e426b8e169c5cf0d41c3d095c64561ced5f8a"
+        }
+      }
+    }
+  },
+  "installed_outputs_refreshed": 170,
+  "repositories": [
+    {
+      "repository": "/Users/jmromer/Courses/coursework-testing",
+      "source_revision": "5bc61112bd481543a10f30263e83838a03fccd9b",
+      "class_revision": "750d53da4d1329ab84f6d6baf74129602fb90a49",
+      "manifest_sha256": "13da9fc9cc1ad7969f9c36d3545ac6e9104b49150f99c6187b33a4803db64e1d",
+      "pdfs": 46,
+      "pages": 497,
+      "previous_pages": 499,
+      "unchanged_notes": 20,
+      "fonts_verified": true,
+      "no_missing_glyphs_or_duplicate_labels_destinations": true,
+      "baseline_integrity": true,
+      "checkpoint": "/Users/jmromer/Courses/coursework-testing/checkpoints/v2-pazo-homework",
+      "checkpoint_manifest_sha256": "d2e6b0a79754f65c251a83c08b2c2bf5513dff275ca77b69a477c7dc7155b922",
+      "comparison_sha256": "1be9c0636f76565f3d4cb06e747ac9bcd15fde678d0132ec52fd440288885f44",
+      "strict_checkpoint_comparison_passed": true
+    },
+    {
+      "repository": "/Users/jmromer/Courses/phys331-electricity-and-magnetism",
+      "source_revision": "0945a20d057c74629457e8c4733542c0566cdf1c",
+      "class_revision": "750d53da4d1329ab84f6d6baf74129602fb90a49",
+      "manifest_sha256": "ecb9cf0f4729dbf2a44e475ecb2cf54a663f5b558b2a1289e12b9ef4d8ba9ec3",
+      "pdfs": 35,
+      "pages": 425,
+      "previous_pages": 427,
+      "unchanged_notes": 9,
+      "fonts_verified": true,
+      "no_missing_glyphs_or_duplicate_labels_destinations": true,
+      "baseline_integrity": true,
+      "checkpoint": "/Users/jmromer/Courses/phys331-electricity-and-magnetism/checkpoints/v2-pazo-homework",
+      "checkpoint_manifest_sha256": "03d950c4b02955e0242306aa6185c116c3155e7076348318eaaaad15bfe4570c",
+      "comparison_sha256": "de6ffcd0180c5514d5d19ed6f1fa22cb55b3c7602b99392240c609f616c5f1a5",
+      "strict_checkpoint_comparison_passed": true
+    },
+    {
+      "repository": "/Users/jmromer/Courses/phys433-quantum-physics",
+      "source_revision": "1234d1357faa96ba4bd7bdf620d0ada90a3446f1",
+      "class_revision": "750d53da4d1329ab84f6d6baf74129602fb90a49",
+      "manifest_sha256": "7135c4687dd63a5e51d97fec8cad0dffffe1bb8a298fdc80344cf0f84b571175",
+      "pdfs": 34,
+      "pages": 336,
+      "previous_pages": 333,
+      "unchanged_notes": 14,
+      "fonts_verified": true,
+      "no_missing_glyphs_or_duplicate_labels_destinations": true,
+      "baseline_integrity": true,
+      "checkpoint": "/Users/jmromer/Courses/phys433-quantum-physics/checkpoints/v2-pazo-homework",
+      "checkpoint_manifest_sha256": "d8e9d60ef17884b4a8cb0f9085eab8b9a2264c0df3df6d0d921fcc007cc75118",
+      "comparison_sha256": "a5ec0ae3b63976de0cdc12f74201f584143a4f9bb572fd2421bfb47d5f106d27",
+      "strict_checkpoint_comparison_passed": true
+    },
+    {
+      "repository": "/Users/jmromer/Courses/phys440-wave-optics",
+      "source_revision": "0f6ac88ac1db4ce8fea2547574f7768684693f4b",
+      "class_revision": "750d53da4d1329ab84f6d6baf74129602fb90a49",
+      "manifest_sha256": "3c2872cdac93a2dbc531874a4bfab9b1858f6441cd29f048e336f7b6275cef77",
+      "pdfs": 34,
+      "pages": 208,
+      "previous_pages": 208,
+      "unchanged_notes": 14,
+      "fonts_verified": true,
+      "no_missing_glyphs_or_duplicate_labels_destinations": true,
+      "baseline_integrity": true,
+      "checkpoint": "/Users/jmromer/Courses/phys440-wave-optics/checkpoints/v2-pazo-homework",
+      "checkpoint_manifest_sha256": "d7541e67c328a83e059d8c6b9a90548d7cbe8f511be2c85d5efd1cf4c4acbd65",
+      "comparison_sha256": "f6cfb70cb010d5dc82f5a1e857aa8a2defec7ca954eb7254991d891fb1428a70",
+      "strict_checkpoint_comparison_passed": true
+    },
+    {
+      "repository": "/Users/jmromer/Courses/phys491-capstone",
+      "source_revision": "246e9a083485464728cc1b6359775f28b97041c1",
+      "class_revision": "750d53da4d1329ab84f6d6baf74129602fb90a49",
+      "manifest_sha256": "0f56b024fa098a7fb406d29a835c5694166c4bc7e3fb43b8947028dd6cf63650",
+      "pdfs": 21,
+      "pages": 178,
+      "previous_pages": 178,
+      "unchanged_notes": 1,
+      "fonts_verified": true,
+      "no_missing_glyphs_or_duplicate_labels_destinations": true,
+      "baseline_integrity": true,
+      "checkpoint": "/Users/jmromer/Courses/phys491-capstone/checkpoints/v2-pazo-homework",
+      "checkpoint_manifest_sha256": "a7b1fe4602e1c3f9419f11bfdaa358843deae49ac0f4cdadd3336b9d60dd9a98",
+      "comparison_sha256": "1f4e9336bd0811de6fbcf6d37867569f87778299c520ab0cba7b8e954888b7cd",
+      "strict_checkpoint_comparison_passed": true
+    }
+  ],
+  "archives": [
+    {
+      "directory": "/Users/jmromer/Courses/coursework-testing/migration-evidence/homework-font-restoration",
+      "inventory_sha256": "4a1c8bd715fc3b62483be8be14bdd241cf42135d2d9476c3058c02106d728d71",
+      "files": 419
+    },
+    {
+      "directory": "/Users/jmromer/Courses/phys331-electricity-and-magnetism/migration-evidence/homework-font-restoration",
+      "inventory_sha256": "f308fd26abdc98fc8cad87819b057fd894ac99bcafd574b9e483679f94cd7a9c",
+      "files": 419
+    },
+    {
+      "directory": "/Users/jmromer/Courses/phys433-quantum-physics/migration-evidence/homework-font-restoration",
+      "inventory_sha256": "1245295e91deddd5c3ee6b0c3ccd90375dcec82bf81fab0b3da0dbc6c833202e",
+      "files": 301
+    },
+    {
+      "directory": "/Users/jmromer/Courses/phys440-wave-optics/migration-evidence/homework-font-restoration",
+      "inventory_sha256": "4549ac49bb7744b2358424874895c63262b2fff39c71115de683dbe60f34b199",
+      "files": 28
+    },
+    {
+      "directory": "/Users/jmromer/Courses/phys491-capstone/migration-evidence/homework-font-restoration",
+      "inventory_sha256": "27bd4623e6d7e089f6e9062c3a33e9d22ddf98c78ec3a6c77ebb1c89a52e6a86",
+      "files": 28
+    },
+    {
+      "directory": "/Users/jmromer/Courses/coursework.tex/migration-evidence/homework-font-restoration",
+      "inventory_sha256": "622e16d9251333bf01d1780879fdbbe0380ec853133b6729c8dcd9dc4fe200d6",
+      "files": 349
+    }
+  ]
+}

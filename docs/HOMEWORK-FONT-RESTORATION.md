@@ -33,3 +33,41 @@ the reference; frozen baselines and checkpoints are never modified.
 The signed `v2.0.0` tag and `v2-final` checkpoints describe the earlier Unicode
 homework release and remain historical references. Comparisons with them will
 show the intentional homework font and pagination changes.
+
+## Validated restoration
+
+Class revision `750d53d` passes all **170 PDFs / 1,644 pages** and **34 behavioral
+TeX cases**. The positioned glyph specimen matches the pre-font API rendering
+pixel-for-pixel at 300 dpi. All **58 notes outputs** retain identical extracted
+text, page counts, and page renders. Every output resolves the intended modules;
+there are no missing glyphs, duplicate destinations, or duplicate active labels.
+All 170 usual build-folder PDFs were also refreshed through the installed symlink.
+
+| Repository | PDFs | v2.0.0 pages | Restored pages | Unchanged notes |
+| --- | ---: | ---: | ---: | ---: |
+| Testbed | 46 | 499 | 497 | 20 |
+| PHYS 331 | 35 | 427 | 425 | 9 |
+| PHYS 433 | 34 | 333 | 336 | 14 |
+| PHYS 440 | 34 | 208 | 208 | 14 |
+| PHYS 491 | 21 | 178 | 178 | 1 |
+
+The deliberate homework font change alters math glyphs, extracted character
+encodings, equation widths, line breaks, and pagination. The representative
+PHYS 331 heading and enlarged-integral pages were visually inspected. Course
+sources are unchanged. The original-font glyph comparison and unchanged notes
+provide independent checks on the intended scope.
+
+The five local `v2-pazo-homework` checkpoints freeze the restored build. Strict
+comparisons against them pass; use `make compare REFERENCE=v2-pazo-homework` for
+the current font selection. Older references remain intact. Revisions, hashes,
+and evidence locations are recorded in
+[homework-font-validation.json](homework-font-validation.json). Detailed comparisons,
+logs, and API/font specimens survive under each repository's ignored
+`migration-evidence/homework-font-restoration/` directory.
+
+Legacy Computer Modern bold families emit font-size substitution notices when
+the explicit enlarged integrals request intermediate sizes. No glyphs are
+missing. PHYS 331's already overlong equation in `homework/02-pset/solution10.tex`
+returns to its pre-font Pazo overflow of **72.29 pt** (61.61 pt in Unicode Pagella);
+the midterm paragraph overflow returns to **11.39 pt**. These notices and the
+existing content/layout warnings remain visible in the saved logs.

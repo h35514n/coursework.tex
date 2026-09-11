@@ -1,11 +1,17 @@
 # Remaining content and layout issues
 
+Homework now uses its restored original Pazo math font. See
+[HOMEWORK-FONT-RESTORATION.md](HOMEWORK-FONT-RESTORATION.md) for current validation
+and font-size notices. The release-matrix statements below describe v2.0.0;
+the current warning inventory is `checkpoints/v2-pazo-homework/warnings.json`.
+
 The final migration matrix introduces no warnings relative to the reviewed
 font-adoption checkpoint. There are no missing glyphs, duplicate PDF destinations,
 or duplicate active labels. These existing issues remain separate follow-up work:
 
 - **Long equations:** PHYS 331 `homework/02-pset/solution10.tex`, line 64,
-  still overflows by 61.61 points. Its testbed copy has the same warning.
+  overflows by 72.29 points with restored Pazo math (61.61 points at v2.0.0).
+  Its testbed copy has the same warning.
   Reflow that derivation in a dedicated content-layout change.
 - **Paragraph and page fitting:** PHYS 433 has a 14.16-point overflow in its
   first assignment; notes retain smaller overflows and underfull boxes.
