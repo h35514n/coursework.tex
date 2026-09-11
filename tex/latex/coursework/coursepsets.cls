@@ -111,7 +111,9 @@
 {}
 {0em}                        % horizontal separation between label and title body
 {}                           % Before-code (no change)
-[\vspace{-4ex}]
+% Consecutive role/problem headings must reserve real vertical space.
+% Negative title after-code overlaps the first problem's text.
+\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1ex plus .2ex}
 
 \titleformat{\subsubsection}
 [block]                      % The shape of the title (e.g., runin, left, right, etc.)

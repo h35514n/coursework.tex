@@ -7,6 +7,7 @@ import re
 import shutil
 import subprocess
 import sys
+from heading_spacing import check_heading_spacing
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'build/api'
@@ -138,6 +139,7 @@ The position is \mathbold{\mathrm{r}}; an expression is \mathbold{\alpha+r}.
   \ifdim\wd0=\wd1\else\errmessage{Italic bold alphabet lost}\fi
 }{}
 ''',cls=cls))
+    check_heading_spacing(OUT/'ordered/ordered.pdf')
     (OUT/'report.json').write_text(json.dumps(cases,indent=2)+'\n')
     print(f'All {len(cases)} API cases passed.',flush=True)
 

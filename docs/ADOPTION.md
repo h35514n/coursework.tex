@@ -62,3 +62,15 @@ PHYS 331 and its testbed replace two `\bigintssss` uses with standard integrals.
 The shared bold helper now enters math mode when used in prose and preserves
 boldness inside explicit upright/italic alphabets. Three additional behavioral
 cases verify those properties under both classes and standalone legacy math.
+
+## Post-adoption heading-spacing correction
+
+The user reported Guide, Problem Set, and Discussion titles colliding with
+their first problem heading. The class's inherited `\vspace{-4ex}` title
+after-code caused a measured 2.67-point overlap. It is replaced with explicit
+`titlesec` spacing. The first PHYS 331 assignment now has a 17.2-point gap in
+all three sections, verified from PDF text bounds and page renders.
+
+The 25-case API suite passes with an added rendered-heading check; that check
+fails against the pre-fix PDF. The full-matrix counts above describe the font
+adoption checkpoint before this subsequent spacing correction.
