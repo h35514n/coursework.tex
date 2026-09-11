@@ -1,5 +1,10 @@
 # Coursework v2.0.0 finalization
 
+This records the signed v2.0.0 release. Homework mathematics was subsequently
+restored to its original Pazo/Palatino appearance; see
+[HOMEWORK-FONT-RESTORATION.md](HOMEWORK-FONT-RESTORATION.md). The release tags,
+checkpoints, and validation manifests below remain unchanged historical evidence.
+
 Coursework v2 is adopted on the original class and four course `master` branches.
 The local testbed now uses `main`. Pagella prose, Pagella homework mathematics,
 and Euler notes mathematics are the selected defaults. The installed symlink

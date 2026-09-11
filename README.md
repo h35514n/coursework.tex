@@ -6,10 +6,14 @@ migrated courses use this API; recovery branches preserve their v1 sources.
 
 Requires **TeX Live 2026**, including the June 2026 LaTeX kernel, and XeLaTeX.
 Font selection is centralized in `coursefonts.sty`. Both classes use Pagella
-prose; homework uses Pagella mathematics and notes use Euler mathematics.
+prose; homework uses its original Pazo/Palatino mathematics and notes use Euler mathematics.
 These are the adopted defaults, so course preambles need no font options.
-An explicit `font-profile=pagella` or `font-profile=euler` class option changes
-the mathematics only. See [the finalization record](docs/FINALIZATION.md) and
+An explicit `font-profile=pazo`, `font-profile=pagella`, or `font-profile=euler`
+class option selects the mathematics at class-loading time. `pazo` restores the
+pre-migration homework appearance; `pagella` selects Unicode Pagella Math.
+The original `mathspec` call to `\setmathfont{TeX Gyre Pagella Math}` did not
+actually select that font. See [the restoration record](docs/HOMEWORK-FONT-RESTORATION.md),
+[the finalization record](docs/FINALIZATION.md), and
 [the original font comparison](docs/FONT-REVIEW.md).
 
 ## Package responsibilities
@@ -23,7 +27,7 @@ the mathematics only. See [the finalization record](docs/FINALIZATION.md) and
 | `courseenvironments.sty` | Theorems, formulas, math tables and subparts |
 | `coursemath.sty` | Mathematical notation and the bold-symbol backend |
 | `coursephys.sty` | Physics notation, constants, units and script-r assets |
-| `coursefonts.sty` | Pagella prose and the class-specific Unicode math font |
+| `coursefonts.sty` | Pagella prose and the class-specific Pazo or Unicode math font |
 
 Both classes load math and document environments. Load physics explicitly.
 The math and physics packages also work with `article`; they do not select

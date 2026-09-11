@@ -17,7 +17,14 @@
   % Text-font math alphabets otherwise escape the Unicode bold selection.
   \let\mathrm\symbfup\let\mathit\symbfit
   \symbf{#1}\endgroup}{\bm{#1}}}
-\NewDocumentCommand\mathbold{m}{\ensuremath{\course@mathbold{#1}}}
+% mathpazo also defines a math alphabet named \mathbold. Keep the v2
+% expression helper, whichever package is loaded first.
+\IfPackageLoadedTF{mathpazo}
+  {\RenewDocumentCommand\mathbold{m}{\ensuremath{\course@mathbold{#1}}}}
+  {\NewDocumentCommand\mathbold{m}{\ensuremath{\course@mathbold{#1}}}
+   \AddToHook{package/mathpazo/before}{\let\mathbold\@undefined}
+   \AddToHook{package/mathpazo/after}{%
+     \RenewDocumentCommand\mathbold{m}{\ensuremath{\course@mathbold{#1}}}}}
 \NewDocumentCommand\course@boldhat{m}{\IfPackageLoadedTF{unicode-math}{\hat{\symbf{#1}}}{\bm{\hat{#1}}}}
 \NewDocumentCommand\course@uprightbold{m}{\IfPackageLoadedTF{unicode-math}{\symbfup{#1}}{\bm{\mathrm{#1}}}}
 \NewDocumentCommand\course@uprightboldhat{m}{\IfPackageLoadedTF{unicode-math}{\hat{\symbfup{#1}}}{\bm{\hat{\mathrm{#1}}}}}

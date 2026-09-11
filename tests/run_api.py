@@ -18,10 +18,10 @@ EPOCH='1789087534'
 def run(args, **kw):return subprocess.run(args,text=True,capture_output=True,**kw)
 
 
-def compile_case(name, body, *, cls='coursepsets', options='', preamble='', error=None, checks=()):
+def compile_case(name, body, *, cls='coursepsets', options='', preamble='', early_preamble='', error=None, checks=()):
     source=OUT/(name+'.tex');folder=OUT/name;folder.mkdir(parents=True,exist_ok=True)
     source.write_text('\\documentclass'+('['+options+']' if options else '')+'{'+cls+'}\n'+
-      (r'\usepackage{courseenvironments}\usepackage{hyperref}\usepackage{cleveref}' if cls=='article' else '')+
+      early_preamble+'\n'+(r'\usepackage{courseenvironments}\usepackage{hyperref}\usepackage{cleveref}' if cls=='article' else '')+
       '\n\\usepackage{coursephys}\n'+preamble+'\n\\begin{document}\n'+body+'\n\\end{document}\n')
     env={**os.environ,'TEXINPUTS':str(CLASSES)+'//:','SOURCE_DATE_EPOCH':EPOCH,'FORCE_SOURCE_DATE':'1'}
     proc=run(['latexmk','-xelatex','-halt-on-error','-interaction=nonstopmode','-recorder','-outdir='+str(folder),str(source)],cwd=ROOT,env=env)
@@ -58,6 +58,19 @@ def absent(*values):
 
 def label(name,number):
     def check(text,aux,*_):assert '\\newlabel{'+name+'}{{'+number+'}' in aux, f'Wrong label {name}: expected {number}\n{aux}'
+    return check
+
+
+def font_backend(profile):
+    def check(text,aux,fls,log):
+        inputs={Path(line[6:]).name for line in fls.splitlines() if line.startswith('INPUT ')}
+        if profile=='pazo':
+            assert {'mathpazo.sty','bm.sty'} <= inputs, 'Original Pazo backend not loaded'
+            assert not {'unicode-math.sty','mathspec.sty'} & inputs, 'Competing math backend'
+        else:
+            assert 'unicode-math.sty' in inputs, 'Unicode backend not loaded'
+            assert not {'mathpazo.sty','bm.sty','mathspec.sty'} & inputs, 'Competing math backend'
+            assert ('euler-math.sty' in inputs)==(profile=='euler'), 'Wrong Unicode profile'
     return check
 
 
@@ -127,7 +140,8 @@ def main():
 '''
     for cls in ['coursepsets','coursenotes','article']:
         cases.append(compile_case('environments-'+cls,env,cls=cls,checks=[require_text('FirstWordExample','FirstWordRemark','FirstCaption','SecondTable'),label('formula:auto','1'),label('formula:named','2')]))
-        cases.append(compile_case('notation-'+cls,r'\input{tests/notation.tex}',cls=cls))
+        cases.append(compile_case('notation-'+cls,r'\input{tests/notation.tex}',cls=cls,
+          checks=[font_backend('pazo' if cls=='coursepsets' else 'euler')] if cls!='article' else []))
         cases.append(compile_case('integral-sizes-'+cls,r'\input{tests/integral_sizes.tex}',cls=cls))
         cases.append(compile_case('bold-text-'+cls,r'''
 The position is \mathbold{\mathrm{r}}; an expression is \mathbold{\alpha+r}.
@@ -140,6 +154,17 @@ The position is \mathbold{\mathrm{r}}; an expression is \mathbold{\alpha+r}.
   \ifdim\wd0=\wd1\else\errmessage{Italic bold alphabet lost}\fi
 }{}
 ''',cls=cls))
+    for cls,profile in [('coursepsets','pagella'),('coursepsets','euler'),('coursenotes','pazo')]:
+        cases.append(compile_case('font-'+cls+'-'+profile,r'\input{tests/notation.tex}',
+          cls=cls,options='font-profile='+profile,checks=[font_backend(profile)]))
+    for order in ['before','after']:
+        cases.append(compile_case('pazo-'+order+'-notation',r'''
+Outside mathematics: \mathbold{\alpha+\mathrm{r}}.
+\setbox0=\hbox{$\mathbold{\alpha+\mathrm{r}}$}
+\setbox1=\hbox{$\bm{\alpha+\mathrm{r}}$}
+\ifdim\wd0=\wd1\else\errmessage{Pazo replaced the mathbold expression helper}\fi
+''',cls='article',early_preamble=r'\usepackage{mathpazo}' if order=='before' else '',
+          preamble=r'\usepackage{mathpazo}' if order=='after' else '',checks=[font_backend('pazo')]))
     cases.append(compile_case('integral-bad-size',r'$\integral[size=giant]{x}{x}{0}{1}$',error='Unknown integral size'))
     check_heading_spacing(OUT/'ordered/ordered.pdf')
     (OUT/'report.json').write_text(json.dumps(cases,indent=2)+'\n')

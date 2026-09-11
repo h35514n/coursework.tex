@@ -25,7 +25,10 @@
 	style=classicthesis
 }{classicthesis}
 % Load mathematics and the shared font configuration before classicthesis.
-\PassOptionsToPackage{unicode}{coursemath}
+\ExplSyntaxOn
+\str_if_eq:VnF \g__course_font_profile_tl {pazo}
+  {\PassOptionsToPackage{unicode}{coursemath}}
+\ExplSyntaxOff
 \RequirePackage{coursemath}
 \RequirePackage{courseenvironments}
 \RequirePackage{coursefonts}

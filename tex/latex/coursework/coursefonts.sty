@@ -1,13 +1,18 @@
-% Adopted fonts: Pagella prose, Pagella homework math, Euler notes math.
+% Pagella prose, original Pazo homework math, Euler notes math.
 \NeedsTeXFormat{LaTeX2e}[2026-06-01]
-\ProvidesExplPackage{coursefonts}{2026/09/11}{2.0.0}{Explicit Unicode font profiles}
+\ProvidesExplPackage{coursefonts}{2026/09/11}{2.0.1}{Explicit coursework font profiles}
 \RequirePackage{coursecommon}
-\RequirePackage{fontspec}
-\str_if_eq:VnTF\g__course_font_profile_tl{euler}
- {\PassOptionsToPackage{math-style=upright}{unicode-math}
-  \RequirePackage{euler-math}}
- {\RequirePackage{unicode-math}
-  \setmathfont{texgyrepagella-math.otf}}
+\str_if_eq:VnTF \g__course_font_profile_tl {pazo}
+ {\RequirePackage[no-math]{fontspec}
+  % The old mathspec \setmathfont call was a no-op. mathpazo supplied
+  % the actual homework mathematics; keep fontspec from replacing it.
+  \RequirePackage[osf,sc]{mathpazo}}
+ {\RequirePackage{fontspec}
+  \str_if_eq:VnTF\g__course_font_profile_tl{euler}
+   {\PassOptionsToPackage{math-style=upright}{unicode-math}
+    \RequirePackage{euler-math}}
+   {\RequirePackage{unicode-math}
+    \setmathfont{texgyrepagella-math.otf}}}
 \setmainfont{texgyrepagella}[
  Extension=.otf,UprightFont=*-regular,ItalicFont=*-italic,
  BoldFont=*-bold,BoldItalicFont=*-bolditalic,Ligatures=TeX,Numbers=OldStyle]

@@ -1,0 +1,15 @@
+% Stable, common v2 notation for comparison with the pre-font API checkpoint.
+% Each row has an explicit baseline so prose/heading layout cannot mask a
+% glyph or math-spacing change. No font choices are made in this fixture.
+\pagestyle{empty}
+\setlength{\unitlength}{1pt}
+\noindent\begin{picture}(460,530)
+\put(0,510){Pagella prose: Regular, \textit{italic}, \textbf{bold}.}
+\put(0,460){$\displaystyle abcxyzXYZ\quad 0123456789\quad \alpha\beta\gamma\delta\epsilon\theta\phi\psi\omega$}
+\put(0,400){$\displaystyle \Gamma\Delta\Theta\Lambda\Sigma\Omega\quad \frac{a+b}{x^2}\quad \sqrt{x^2+z^2}\quad \left(\frac{1}{x}\right)$}
+\put(0,330){$\displaystyle \int_{-L}^{L}\frac{1}{\sqrt{x^2+z^2}}\,\mathrm{d}x\quad \sum_{n=1}^{\infty}\frac{1}{n^2}\quad \oint \mathbf{E}\cdot\mathrm{d}\mathbf{l}$}
+\put(0,260){$\displaystyle \deriv[2]{f}{x}\quad \pderiv{F}{T}\quad \NN\quad\RR\quad\CC\quad \mathcal{L}\quad\hbar$}
+\put(0,190){$\displaystyle \mathbold{\alpha+r}\quad\vect{v}\quad\uprightvect{v}\quad\unitvect{v}\quad\xhat\quad\grad f\quad\laplacian f$}
+\put(0,120){$\displaystyle \separation\quad\separationvect\quad\separationunit\quad\average{x}\quad\variance{X}\quad\colvector{x\\y\\z}$}
+\put(0,60){Inline: $x_i^2+\alpha$, $\int_0^1f(x)\,\mathrm{d}x$, $\deriv{f}{x}$, and $\xhat$.}
+\end{picture}

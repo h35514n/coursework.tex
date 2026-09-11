@@ -2,6 +2,8 @@
 
 For the completed release, current validation, retained evidence and rollback, see
 [FINALIZATION.md](FINALIZATION.md). This page records the adoption stages.
+The later [homework font restoration](HOMEWORK-FONT-RESTORATION.md) supersedes
+the homework font choice recorded here.
 
 The user approved the v2 API and coordinated course adoption, then selected
 Pagella prose throughout, Pagella mathematics in homework, and Euler mathematics

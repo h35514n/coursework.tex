@@ -5,12 +5,16 @@
 \ProvidesClass{coursepsets}[2026/09/11 v2.0.0 Problem sets and exams]
 
 \RequirePackage{coursecommon}
+\courseworksetup{font-profile=pazo}
 \DeclareOption*{\expandafter\courseworkclassoption\expandafter{\CurrentOption}{article}}
 \ProcessOptions\relax
 
 % ================== Packages and Document Options ==================
 \LoadClass[11pt,letterpaper]{article}
-\PassOptionsToPackage{unicode}{coursemath}
+\ExplSyntaxOn
+\str_if_eq:VnF \g__course_font_profile_tl {pazo}
+  {\PassOptionsToPackage{unicode}{coursemath}}
+\ExplSyntaxOff
 \RequirePackage{coursemath}
 \RequirePackage{courseenvironments}
 \RequirePackage{coursefonts}
