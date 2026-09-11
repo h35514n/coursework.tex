@@ -5,6 +5,7 @@
 \ProvidesClass{coursenotes}[2026/09/11 v2.0.0 Reading notes]
 
 \RequirePackage{coursecommon}
+\courseworksetup{font-profile=euler}
 \DeclareOption*{\expandafter\courseworkclassoption\expandafter{\CurrentOption}{report}}
 \ProcessOptions\relax
 
@@ -15,17 +16,19 @@
 	tocaligned=true,
 	dottedtoc=true,
 	manychapters=true,
-	eulerchapternumbers=true,
+	eulerchapternumbers=false,
 	linedheaders=false,
 	floatperchapter=true,
-	eulermath=true,
+	eulermath=false,
 	beramono=true,
-	palatino=true,
+	palatino=false,
 	style=classicthesis
 }{classicthesis}
 % Load mathematics before classicthesis selects its Unicode math backend.
+\PassOptionsToPackage{unicode}{coursemath}
 \RequirePackage{coursemath}
 \RequirePackage{courseenvironments}
+\RequirePackage{coursefonts}
 \RequirePackage{classicthesis}
 
 \RequirePackage{etoc}                               % For \localtableofcontents
@@ -43,7 +46,7 @@
 \RequirePackage{xcolor}                             % Required. For setting the color of hyperlinks
 
 %----------------------------
-\RequirePackage{mathspec}     % keep after amsmath
+% Font selection is owned by coursefonts; no mathspec     % keep after amsmath
 \RequirePackage{cleveref}
 \RequirePackage[all]{hypcap}  % hypcap: Links go to object instead of caption. [Keep as last package]
 % report restarts page numbering after its title page. Give page 1 only

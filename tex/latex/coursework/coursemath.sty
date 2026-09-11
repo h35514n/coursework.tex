@@ -1,21 +1,18 @@
 % Notation only. Document environments live in courseenvironments.
 \NeedsTeXFormat{LaTeX2e}[2026-06-01]
 \ProvidesPackage{coursemath}[2026/09/11 v2.0.0 Shared mathematics notation]
-\RequirePackage{amssymb}
+\newif\ifcourse@unicode
+\DeclareOption{unicode}{\course@unicodetrue}
+\ProcessOptions\relax
+\ifcourse@unicode\else\RequirePackage{amssymb}\fi
 \RequirePackage{mathtools}
-\RequirePackage{bigints}
-\RequirePackage{bm}
+\ifcourse@unicode\else\RequirePackage{bigints}\fi
+\ifcourse@unicode\else\RequirePackage{bm}\fi
 \RequirePackage[spaced,mleftright]{diffcoeff}
 
 % Backend selection happens when used, allowing unicode-math to load later.
 \NewDocumentCommand\course@mathbold{m}{\IfPackageLoadedTF{unicode-math}{\symbf{#1}}{\bm{#1}}}
-% mathpazo owns an alphabet with this name. Adapt that known interface
-% explicitly; unrelated command collisions still raise a definition error.
-\IfPackageLoadedTF{mathpazo}
-  {\RenewDocumentCommand\mathbold{m}{\course@mathbold{#1}}}
-  {\NewDocumentCommand\mathbold{m}{\course@mathbold{#1}}}
-\AddToHook{package/mathpazo/before}{\let\mathbold\@undefined}
-\AddToHook{package/mathpazo/after}{\RenewDocumentCommand\mathbold{m}{\course@mathbold{#1}}}
+\NewDocumentCommand\mathbold{m}{\course@mathbold{#1}}
 \NewDocumentCommand\course@boldhat{m}{\IfPackageLoadedTF{unicode-math}{\hat{\symbf{#1}}}{\bm{\hat{#1}}}}
 \NewDocumentCommand\course@uprightbold{m}{\IfPackageLoadedTF{unicode-math}{\symbfup{#1}}{\bm{\mathrm{#1}}}}
 \NewDocumentCommand\course@uprightboldhat{m}{\IfPackageLoadedTF{unicode-math}{\hat{\symbfup{#1}}}{\bm{\hat{\mathrm{#1}}}}}
