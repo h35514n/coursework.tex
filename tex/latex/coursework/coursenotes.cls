@@ -10,8 +10,9 @@
 % =====================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{coursenotes}[2026/09/05 v1.0 Reading notes]
+\ProvidesClass{coursenotes}[2026/09/11 v2.0.0 Reading notes]
 
+\RequirePackage{coursecommon}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
 
@@ -76,12 +77,12 @@
 % ============= Shared macro packages =============
 % The notes layout wants math tables pinned in place and pulled a little
 % tighter than the problem-set layout does.
-\providecommand{\coursemathtablestart}{\begin{table}[H]}
-\providecommand{\coursemathtabletopskip}{-2ex}
+
+
 
 \RequirePackage{coursemath}
 \RequirePackage{courseenvironments}
-\RequirePackage{coursephys}
+\courseenvironmentsetup{table-placement=H,table-top-skip=-2ex}
 
 \endinput
 % chktex 17

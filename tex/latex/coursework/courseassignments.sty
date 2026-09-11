@@ -1,0 +1,157 @@
+% Assignment declarations, semantic counters, and ordered rendering.
+\NeedsTeXFormat{LaTeX2e}[2024-06-01]
+\ProvidesExplPackage{courseassignments}{2026/09/11}{2.0.0}{Coursework assignments}
+\RequirePackage{coursecommon}
+\newcounter{assignment}
+\newcounter{problem}[assignment]
+\renewcommand\theproblem{\theassignment.\arabic{problem}}
+\cs_set:Npn \theHassignment{\g__course_assignment_id_tl}
+\cs_set:Npn \theHproblem{\g__course_assignment_id_tl.\g__course_problem_id_tl}
+\clist_map_inline:nn {equation,figure,table}
+  {\cs_set:cpn {the#1}{\theproblem.\arabic{#1}}
+   \cs_set:cpn {theH#1}{\theHproblem.\arabic{#1}}}
+\tl_new:N \g__course_assignment_id_tl
+\tl_new:N \g__course_assignment_title_tl
+\tl_new:N \g__course_directory_tl
+\tl_new:N \g__course_problem_id_tl
+\tl_new:N \g__course_role_tl
+\tl_new:N \g__course_problems_title_tl
+\int_new:N \l__course_assignment_number_int
+\bool_new:N \g__course_printed_bool
+\prop_new:N \g__course_assignment_ids_prop
+\seq_new:N \g__course_declarations_seq
+\prop_new:N \g__course_titles_prop
+\prop_new:N \g__course_objects_prop
+\seq_new:N \l__course_selection_seq
+\clist_new:N \l__course_selection_clist
+\prop_new:N \l__course_selected_prop
+\tl_new:N \l__course_problem_title_tl
+\int_new:N \l__course_ordinal_int
+\bool_new:N \l__course_any_bool
+\msg_new:nnn {coursework}{invalid}{#1}
+\cs_new_protected:Npn \__course_error:n #1 {\msg_fatal:nnn {coursework}{invalid}{#1}}
+\cs_generate_variant:Nn \__course_error:n {e}
+\keys_define:nn {coursework/assignment}
+  { id .tl_gset:N=\g__course_assignment_id_tl,
+    directory .tl_gset:N=\g__course_directory_tl,
+    number .int_set:N=\l__course_assignment_number_int,
+    problems-title .tl_gset:N=\g__course_problems_title_tl }
+\keys_define:nn {coursework/problem}{title .tl_set:N=\l__course_problem_title_tl}
+\keys_define:nn {coursework/print}{problems .clist_set:N=\l__course_selection_clist}
+\cs_new_protected:Npn \__course_check_id:n #1
+  {\regex_match:nnF {\A[A-Za-z0-9][-A-Za-z0-9_]*\Z}{#1}
+    {\__course_error:n {IDs~must~contain~only~letters,~digits,~hyphens,~and~underscores.}}}
+\cs_generate_variant:Nn \__course_check_id:n {V}
+\NewDocumentCommand \assignment {O{}m}
+  {\tl_clear:N \g__course_assignment_id_tl
+   \tl_clear:N \g__course_directory_tl
+   \tl_gset:Nn \g__course_problems_title_tl {Problem~Set}
+   \int_set:Nn \l__course_assignment_number_int {\value{assignment}+1}
+   \keys_set:nn {coursework/assignment}{#1}
+   \__course_check_id:V \g__course_assignment_id_tl
+   \tl_if_empty:NT \g__course_directory_tl {\__course_error:n {Assignment~directory~is~required.}}
+   \prop_if_in:NVTF \g__course_assignment_ids_prop \g__course_assignment_id_tl
+     {\__course_error:n {Duplicate~assignment~ID.}}
+     {\prop_gput:NVn \g__course_assignment_ids_prop \g__course_assignment_id_tl {1}}
+   \int_compare:nNnF {\l__course_assignment_number_int}>{0}
+     {\__course_error:n {Assignment~number~must~be~positive.}}
+   \setcounter{assignment}{\l__course_assignment_number_int-1}\refstepcounter{assignment}
+   \tl_gset:Nn \g__course_assignment_title_tl {#2}
+   \seq_gclear:N \g__course_declarations_seq\prop_gclear:N \g__course_titles_prop
+   \prop_gclear:N \g__course_objects_prop\bool_gset_false:N \g__course_printed_bool
+   \setcounter{section}{\value{assignment}-1}
+   \vspace{-1.75em}\section{#2}
+  }
+\NewDocumentCommand \declareproblem {O{}m}
+  {\tl_if_empty:NT \g__course_assignment_id_tl {\__course_error:n {Declare~an~assignment~first.}}
+   \bool_if:NT \g__course_printed_bool {\__course_error:n {Assignment~already~rendered.}}
+   \__course_check_id:n {#2}
+   \prop_if_in:NnT \g__course_titles_prop {#2}{\__course_error:n {Duplicate~problem~ID.}}
+   \tl_clear:N \l__course_problem_title_tl\keys_set:nn {coursework/problem}{#1}
+   \seq_gput_right:Nn \g__course_declarations_seq {#2}
+   \prop_gput:NnV \g__course_titles_prop {#2}\l__course_problem_title_tl
+  }
+\cs_new:Npn \__course_path:nn #1#2 {\g__course_directory_tl/#1#2.tex}
+\cs_new_protected:Npn \__course_require:nn #1#2
+  {\file_if_exist:nF {\__course_path:nn{#1}{#2}}
+    {\__course_error:e {Required~file~missing:~\__course_path:nn{#1}{#2}}}}
+\cs_new_protected:Npn \__course_restore_objects:n #1
+  {\clist_map_inline:nn {equation,figure,table}
+    {\prop_get:NnNTF \g__course_objects_prop {#1/##1}\l_tmpa_tl
+      {\setcounter{##1}{\l_tmpa_tl}}{\setcounter{##1}{0}}}}
+\cs_new_protected:Npn \__course_save_objects:n #1
+  {\clist_map_inline:nn {equation,figure,table}
+    {\prop_gput:Nne \g__course_objects_prop {#1/##1}{\arabic{##1}}}}
+\cs_new_protected:Npn \__course_heading:n #1
+  {\prop_get:NnN \g__course_titles_prop {#1}\l__course_problem_title_tl
+   % Formatting belongs to the class; this heading has no section counter.
+   \subsubsection*{\textbf{Problem~\int_use:N\l__course_ordinal_int}
+     \tl_if_empty:NF \l__course_problem_title_tl
+       {.\ \textit{\small\l__course_problem_title_tl}}}
+   \phantomsection
+   \addcontentsline{toc}{subsubsection}
+     {Problem~\int_use:N\l__course_ordinal_int
+       \tl_if_empty:NF \l__course_problem_title_tl {.\ \l__course_problem_title_tl}}
+  }
+\cs_new_protected:Npn \__course_render_problem:nn #1#2
+  {\group_begin:
+   \tl_gset:Nn \g__course_problem_id_tl {#2}
+   \setcounter{problem}{\l__course_ordinal_int}
+   \__course_restore_objects:n {#2}
+   \__course_heading:n {#2}
+   \str_if_eq:nnT {#1}{problem}
+     {\setcounter{problem}{\l__course_ordinal_int-1}\refstepcounter{problem}
+      \exp_args:Ne \label {prob:\g__course_assignment_id_tl :#2}}
+   \file_input:n {\__course_path:nn{#1}{#2}}
+   \str_if_eq:nnT {#1}{problem}
+     {\course_if_solutions:T
+       {\par\vspace{0.5em}\noindent\textbf{Solution}\par
+        \file_input:n {\__course_path:nn{solution}{#2}}
+        \par\nobreak\hfill\rule{2mm}{2mm}\par\vspace{0.1em}}}
+   \__course_save_objects:n {#2}
+   \group_end:}
+\cs_new_protected:Npn \__course_render_role:nn #1#2
+  {\bool_set_false:N \l__course_any_bool
+   \seq_map_inline:Nn \l__course_selection_seq
+     {\file_if_exist:nT {\__course_path:nn{#1}{##1}}{\bool_set_true:N\l__course_any_bool}}
+   \bool_if:NT \l__course_any_bool
+     {\tl_if_empty:NF \g__course_role_tl {\clearpage}
+      \tl_gset:Nn \g__course_role_tl {#2}
+      \vspace{-0.5em}\subsection{#2}
+      \int_zero:N \l__course_ordinal_int
+      \seq_map_inline:Nn \l__course_selection_seq
+        {\int_incr:N \l__course_ordinal_int
+         \file_if_exist:nT {\__course_path:nn{#1}{##1}}
+           {\str_if_eq:nnT {#1}{problem}
+             {\int_compare:nNnT {\l__course_ordinal_int}>{1}
+               {\course_if_pagebreak:TF {\clearpage}{\par\vspace{4ex}}}}
+            \__course_render_problem:nn {#1}{##1}}}}}
+\NewDocumentCommand \printassignment {O{}}
+  {\bool_if:NT \g__course_printed_bool {\__course_error:n {Assignment~already~rendered.}}
+   \bool_gset_true:N \g__course_printed_bool
+   \clist_clear:N \l__course_selection_clist\keys_set:nn {coursework/print}{#1}
+   \clist_if_empty:NTF \l__course_selection_clist
+     {\seq_set_eq:NN \l__course_selection_seq \g__course_declarations_seq}
+     {\seq_set_from_clist:NN \l__course_selection_seq \l__course_selection_clist}
+   \seq_if_empty:NT \l__course_selection_seq {\__course_error:n {No~problems~selected.}}
+   \prop_clear:N \l__course_selected_prop
+   \seq_map_inline:Nn \l__course_selection_seq
+     {\prop_if_in:NnF \g__course_titles_prop {##1}{\__course_error:n {Unknown~problem~ID.}}
+      \prop_if_in:NnT \l__course_selected_prop {##1}{\__course_error:n {Duplicate~selected~problem~ID.}}
+      \prop_put:Nnn \l__course_selected_prop {##1}{1}
+      \__course_require:nn{problem}{##1}
+      \course_if_solutions:T {\__course_require:nn{solution}{##1}}}
+   \tl_gclear:N \g__course_role_tl
+   \__course_render_role:nn {guide}{Guide}
+   \exp_args:NnV \__course_render_role:nn {problem}\g__course_problems_title_tl
+   \course_if_solutions:T {\__course_render_role:nn{discussion}{Discussion}}
+  }
+\NewDocumentCommand\priming{m}{\textbf{\textit{Priming:}}~#1}
+\NewDocumentCommand\procedure{m}{\textbf{\textit{Procedure:}}~#1}
+\AddToHook{package/cleveref/after}{\crefname{problem}{problem}{problems}\Crefname{problem}{Problem}{Problems}
+  \crefname{assignment}{assignment}{assignments}\Crefname{assignment}{Assignment}{Assignments}}
+\cs_new:Npn \courseassignmentfooter
+  {\theassignment.~\g__course_assignment_title_tl}
+\cs_new:Npn \courseproblemfooter
+  {\g__course_role_tl~\theproblem}
+\endinput

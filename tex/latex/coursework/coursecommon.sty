@@ -1,0 +1,59 @@
+% Metadata and shared configuration. No layout or subject notation is loaded here.
+\NeedsTeXFormat{LaTeX2e}[2024-06-01]
+\ProvidesExplPackage{coursecommon}{2026/09/11}{2.0.0}{Coursework configuration}
+\prop_new:N \g__course_metadata_prop
+\clist_map_inline:nn {author,course-code,course-title,term,textbook,textbook-author}
+  { \prop_gput:Nnn \g__course_metadata_prop {#1} {}
+    \keys_define:nn {coursework}
+      {#1 .code:n = \prop_gput:Nnn \g__course_metadata_prop {#1} {##1}} }
+\tl_new:N \g__course_mode_tl
+\tl_new:N \g__course_breaks_tl
+\keys_define:nn {coursework}
+  {
+    mode .choices:nn = {worked,worksheet,compact}
+      {\tl_gset:NV \g__course_mode_tl \l_keys_choice_tl},
+    mode .initial:n = worked,
+    problem-breaks .choices:nn = {page,flow}
+      {\tl_gset:NV \g__course_breaks_tl \l_keys_choice_tl},
+    problem-breaks .initial:n = flow
+  }
+\NewDocumentCommand \courseworksetup {m} {\keys_set:nn {coursework}{#1}}
+\NewExpandableDocumentCommand \courseworkvalue {m}
+  {\prop_item:Nn \g__course_metadata_prop {#1}}
+\NewDocumentCommand \courseworkclassoption {mm}
+  {\keys_set_known:nnN {coursework}{#1}\l_tmpa_tl
+   \tl_if_empty:NF \l_tmpa_tl
+     {\exp_args:NV \PassOptionsToClass \l_tmpa_tl {#2}}}
+\prg_new_conditional:Npnn \course_if_solutions: {T,F,TF}
+  {\str_if_eq:VnTF \g__course_mode_tl {worked}{\prg_return_true:}{\prg_return_false:}}
+\prg_new_conditional:Npnn \course_if_pagebreak: {T,F,TF}
+  {\str_case:VnF \g__course_mode_tl
+    {{worksheet}{\prg_return_true:}{compact}{\prg_return_false:}}
+    {\str_if_eq:VnTF \g__course_breaks_tl {page}{\prg_return_true:}{\prg_return_false:}}}
+\tl_new:N \l__course_title_tl
+\tl_new:N \l__course_date_tl
+\keys_define:nn {coursework/title}
+  {title .tl_set:N=\l__course_title_tl,date .tl_set:N=\l__course_date_tl}
+\cs_new_protected:Npn \__course_title_options:n #1
+  {\tl_clear:N \l__course_title_tl
+   \tl_set:Nn \l__course_date_tl {\courseworkvalue{term}}
+   \keys_set:nn {coursework/title}{#1}}
+\NewDocumentCommand \makecourseworktitle {O{}}
+  {\group_begin:
+   \__course_title_options:n {#1}
+   \title{\large\courseworkvalue{course-title}\\\courseworkvalue{course-code}
+     \tl_if_empty:NF\l__course_title_tl{\\\normalsize\l__course_title_tl}}
+   \date{\l__course_date_tl}\author{\courseworkvalue{author}}
+   \maketitle
+   \group_end:}
+\NewDocumentCommand \makeassignmentheading {O{}}
+  {\group_begin:
+   \__course_title_options:n {#1}
+   \begin{minipage}{0.5\textwidth}\begin{flushleft}
+      \courseworkvalue{author}\\\l__course_title_tl
+   \end{flushleft}\end{minipage}
+   \begin{minipage}{0.5\textwidth}\begin{flushright}
+      \courseworkvalue{course-title}\\\l__course_date_tl
+   \end{flushright}\end{minipage}
+   \thispagestyle{empty}\group_end:}
+\endinput

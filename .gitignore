@@ -18,3 +18,5 @@ build/
 .\#*
 .auctex-auto/
 *.el
+
+__pycache__/
