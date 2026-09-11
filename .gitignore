@@ -20,3 +20,6 @@ build/
 *.el
 
 __pycache__/
+
+# Durable local migration evidence; retained by make distclean.
+/migration-evidence/

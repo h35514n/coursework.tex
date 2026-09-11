@@ -157,8 +157,21 @@ def inspect_pdf(pdf, artifact_root, dpi):
             "renders": {str(p.relative_to(artifact_root)): sha(p) for p in images}}
 
 
+def snapshot_classes(artifact_root, manifest):
+    """Resolve frozen bundles locally; historical absolute paths are provenance."""
+    if manifest.get("frozen_fixtures"):
+        directory = artifact_root / "classes"
+        if manifest.get("mode") == "baseline":
+            directory /= "tex/latex/coursework"
+    else:
+        directory = Path(manifest["class_directory"])
+    if not directory.is_dir():
+        raise RuntimeError(f"Class snapshot missing: {directory}")
+    return directory
+
+
 def check_integrity(artifact_root, manifest):
-    directory = Path(manifest["class_directory"])
+    directory = snapshot_classes(artifact_root, manifest)
     if class_files(directory) != manifest["class_files"]:
         raise RuntimeError(f"Class snapshot changed since build: {directory}")
     if manifest.get("frozen_fixtures"):

@@ -3,7 +3,7 @@
 This records the completed review milestone before adoption. For the user's
 subsequent approval, selected fonts, and activation status, see [ADOPTION.md](ADOPTION.md).
 
-The breaking API, balanced-argument source migration, four course migration worktrees, and isolated Unicode font comparison are implemented. Nothing has been merged or installed.
+The breaking API, balanced-argument source migration, four course migration worktrees, and isolated Unicode font comparison are implemented. At that historical milestone, nothing had been merged or installed.
 
 ## Review branches
 
@@ -47,6 +47,6 @@ A real-document diff review caught and fixed diffcoeff consuming a following `[e
 
 Read `docs/MIGRATION.md` for the complete command map and `README.md` for authoring examples. Each course has a `MIGRATION.md` with its pinned baseline and migration milestones. Use `make candidate` for the experimental classes and `make compare` for strict v1 differences. Use `make compare REFERENCE=v2-api` after a reviewed checkpoint has been saved.
 
-The font comparison is `../coursework-fonts/output/pdf/coursework-font-comparison.pdf`; its build/font inventory is summarized in `../coursework-fonts/docs/FONT-REVIEW.md`. Both styles use explicit Unicode math: Pagella homework with either Euler or Pagella notes. The six-page specimen PDF and representative real documents are provided for the user's font choice.
+The preserved font comparison is [the specimen PDF](../output/pdf/coursework-font-comparison.pdf); its build/font inventory is summarized in [FONT-REVIEW.md](FONT-REVIEW.md). Both styles use explicit Unicode math: Pagella homework with either Euler or Pagella notes. The six-page specimen PDF and representative real documents are provided for the user's font choice.
 
-Merging, activating the installed checkout, choosing the final font profile, and migrating the older local-class mechanics/thermal repositories remain outside this milestone.
+Merging, activation, and font selection were subsequent steps and are now complete. The older local-class mechanics/thermal repositories remain outside the migration. See [FINALIZATION.md](FINALIZATION.md) for current locations and release status.

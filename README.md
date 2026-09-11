@@ -9,7 +9,7 @@ Font selection is centralized in `coursefonts.sty`. Both classes use Pagella
 prose; homework uses Pagella mathematics and notes use Euler mathematics.
 These are the adopted defaults, so course preambles need no font options.
 An explicit `font-profile=pagella` or `font-profile=euler` class option changes
-the mathematics only. See [the adoption record](docs/ADOPTION.md) and
+the mathematics only. See [the finalization record](docs/FINALIZATION.md) and
 [the original font comparison](docs/FONT-REVIEW.md).
 
 ## Package responsibilities
@@ -196,6 +196,11 @@ handout and worksheet. It records revisions, source hashes, resolved package
 paths, recorder inputs, tool versions, warnings, PDFs, text and page renders.
 `make compare` remains strict against the original baseline. Intentional
 changes are reviewed before saving an explicitly named immutable checkpoint.
+
+The permanent testbed and four courses default to this checkout for regression
+builds. Set `candidate_repository` in their `regression.json` to another checkout;
+`COURSEWORK_TOOLS` overrides the shared scripts directory. Frozen references resolve
+their bundled classes locally and remain valid when their directories move.
 
 All assets are resolved by kpathsea. The adopted class and course checkouts
 use the existing installation path; recovery branches and frozen checkpoints

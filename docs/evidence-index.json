@@ -1,0 +1,140 @@
+{
+  "description": "Byte-verified relocation and preservation before temporary worktree removal. Historical embedded absolute paths are provenance; current locations are listed here.",
+  "archives": [
+    {
+      "source": "/Users/jmromer/Courses/phys331-electricity-and-magnetism-migration/baseline",
+      "destination": "phys331-electricity-and-magnetism/baseline",
+      "files": 1125,
+      "tree_sha256": "11066a5d4665f30cd3de2a2441ab4c39b3c59d7f260a7fd61b51e16e5785dd8f",
+      "manifest_sha256": "b81ed37d1033466b83dcf9cf5b30c38dc4f65a1cb03d9da4c1155a4ce85738e1"
+    },
+    {
+      "source": "/Users/jmromer/Courses/phys331-electricity-and-magnetism-migration/checkpoints",
+      "destination": "phys331-electricity-and-magnetism/checkpoints",
+      "files": 2211,
+      "tree_sha256": "34e9b838b87d5010cb7240dd86093b156577f7fcf2f6f72e10095999848452b8",
+      "manifest_sha256": null
+    },
+    {
+      "source": "/Users/jmromer/Courses/phys331-electricity-and-magnetism-migration/build",
+      "destination": "phys331-electricity-and-magnetism/migration-evidence/phys331-electricity-and-magnetism-migration/build",
+      "files": 1666,
+      "tree_sha256": "9267600f9df3d6a087000a51587accd93bb0d942e7ed76041e36da35177efb81",
+      "manifest_sha256": null
+    },
+    {
+      "source": "/Users/jmromer/Courses/phys433-quantum-physics-migration/baseline",
+      "destination": "phys433-quantum-physics/baseline",
+      "files": 956,
+      "tree_sha256": "25736778b553a00898577ac13a994ef1c5db2ab1a30aa0e8806efe409d9faf84",
+      "manifest_sha256": "86f79bd1f19f5044ecf02c9366302fcd8f1c8448438836abf9fad42f29e607ce"
+    },
+    {
+      "source": "/Users/jmromer/Courses/phys433-quantum-physics-migration/checkpoints",
+      "destination": "phys433-quantum-physics/checkpoints",
+      "files": 1837,
+      "tree_sha256": "9d4ac21ffa2d464ff73966f56777049f39eaff1745e0ed95b15c3cef2645948e",
+      "manifest_sha256": null
+    },
+    {
+      "source": "/Users/jmromer/Courses/phys433-quantum-physics-migration/build",
+      "destination": "phys433-quantum-physics/migration-evidence/phys433-quantum-physics-migration/build",
+      "files": 1377,
+      "tree_sha256": "6c0ee7a2509a2cb7e5e4517968c36e13434060fa16ad65b5af744d8b4c5000a2",
+      "manifest_sha256": null
+    },
+    {
+      "source": "/Users/jmromer/Courses/phys440-wave-optics-migration/baseline",
+      "destination": "phys440-wave-optics/baseline",
+      "files": 771,
+      "tree_sha256": "f132516d0d9a469c5f76e2c615a0b2af00ebd38168a8346d7938c80648a455c6",
+      "manifest_sha256": "126946c4719d7fefa3883c0c9b5706fbc4d60629c23b0b3df72c1ad715a77e1d"
+    },
+    {
+      "source": "/Users/jmromer/Courses/phys440-wave-optics-migration/checkpoints",
+      "destination": "phys440-wave-optics/checkpoints",
+      "files": 1425,
+      "tree_sha256": "f4fbba642cb719f1307f3638bdc9298c563a29f24830688244eb38aab7c4fc2f",
+      "manifest_sha256": null
+    },
+    {
+      "source": "/Users/jmromer/Courses/phys440-wave-optics-migration/build",
+      "destination": "phys440-wave-optics/migration-evidence/phys440-wave-optics-migration/build",
+      "files": 958,
+      "tree_sha256": "30bf17bb08d710198acc3b812bb1de047f2f1b9a885905f8bb381edc186eaf06",
+      "manifest_sha256": null
+    },
+    {
+      "source": "/Users/jmromer/Courses/phys491-capstone-migration/baseline",
+      "destination": "phys491-capstone/baseline",
+      "files": 583,
+      "tree_sha256": "7341a037a14b45b08f0edfba99a88bac9ced05d155e550c5634609d2838c27f0",
+      "manifest_sha256": "ca0a6b5f0f48196a9f4a1d5beaba89a88668663845ab709938ec06e0a49c9392"
+    },
+    {
+      "source": "/Users/jmromer/Courses/phys491-capstone-migration/checkpoints",
+      "destination": "phys491-capstone/checkpoints",
+      "files": 1049,
+      "tree_sha256": "c8a6086b66db1f523add67199adb75b072ab4fdd6bc1e1c153d496773ddf6880",
+      "manifest_sha256": null
+    },
+    {
+      "source": "/Users/jmromer/Courses/phys491-capstone-migration/build",
+      "destination": "phys491-capstone/migration-evidence/phys491-capstone-migration/build",
+      "files": 751,
+      "tree_sha256": "181c43a163aa34bfd0b9674f083654e514b84cbe74c9415101b4870fed5afcdc",
+      "manifest_sha256": null
+    },
+    {
+      "source": "/Users/jmromer/Courses/coursework-refactor/build",
+      "destination": "coursework.tex/migration-evidence/coursework-refactor/build",
+      "files": 300,
+      "tree_sha256": "ebabbacfd2194571a17106e7668e07f5e219d3a5a735432db255ac6b9e8fc490",
+      "manifest_sha256": null
+    },
+    {
+      "source": "/Users/jmromer/Courses/coursework-fonts/build",
+      "destination": "coursework.tex/migration-evidence/coursework-fonts/build",
+      "files": 328,
+      "tree_sha256": "7bf658524eb8d58ac0ef09f08f0cddc68dcd22058ff57e6eff3c4e7eca6c2532",
+      "manifest_sha256": null
+    },
+    {
+      "source": "/Users/jmromer/Courses/coursework-testing/build",
+      "destination": "coursework-testing/migration-evidence/pre-finalization/build",
+      "files": 2255,
+      "tree_sha256": "d807a5350efe77cc0def71e777e604f16328db207ed58e489e80e1972b89025a",
+      "manifest_sha256": null
+    },
+    {
+      "destination": "coursework.tex/migration-evidence/inventory.json",
+      "sha256": "884b892929b77a97b72f9e564ae15641706322640d529c10bf3dd99c8f455d24",
+      "files": 629
+    },
+    {
+      "destination": "coursework-testing/migration-evidence/inventory.json",
+      "sha256": "d34db0c69edf71f4f04f63376f234835349b86931e0b63f3e5fe60919c9151b3",
+      "files": 2255
+    },
+    {
+      "destination": "phys331-electricity-and-magnetism/migration-evidence/inventory.json",
+      "sha256": "b93ffd2b993e043a967ab3901c273aa0fd92e3eafdf77293520319c8ca895690",
+      "files": 1666
+    },
+    {
+      "destination": "phys433-quantum-physics/migration-evidence/inventory.json",
+      "sha256": "84200ac112ffc56796d5140e76e6b165e6f3c6b6fefe72c3dde898454d8fabfc",
+      "files": 1377
+    },
+    {
+      "destination": "phys440-wave-optics/migration-evidence/inventory.json",
+      "sha256": "7f22c68ea49fe249f75f1b91339ec87807704043078165a0be6b58688f9f871b",
+      "files": 958
+    },
+    {
+      "destination": "phys491-capstone/migration-evidence/inventory.json",
+      "sha256": "c0c792491337b679d4cfd4297961178d243fdd70994362dda22586c44c34d366",
+      "files": 751
+    }
+  ]
+}

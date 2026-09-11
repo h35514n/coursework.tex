@@ -35,10 +35,23 @@ fi
 
 echo
 echo "Verifying kpathsea can resolve the package:"
-for f in coursenotes.cls coursepsets.cls coursemath.sty coursephys.sty; do
-	printf '  %-18s %s\n' "$f" "$(kpsewhich "$f" || echo 'NOT FOUND')"
+verify_file() {
+	f=$1
+	shift
+	resolved=$(kpsewhich -progname=xelatex "$@" "$f") || {
+		echo "error: $f cannot be resolved" >&2
+		exit 1
+	}
+	[ "$resolved" -ef "$src/$f" ] || {
+		echo "error: $f resolves to $resolved instead of $src/$f" >&2
+		exit 1
+	}
+	printf '  %-24s %s\n' "$f" "$resolved"
+}
+for f in coursenotes.cls coursepsets.cls coursecommon.sty courseassignments.sty \
+         courseenvironments.sty coursemath.sty coursephys.sty coursefonts.sty; do
+	verify_file "$f"
 done
 for f in coursework-scriptr.pdf coursework-boldr.pdf; do
-	printf '  %-18s %s\n' "$f" \
-		"$(kpsewhich -progname=xelatex -format='graphic/figure' "$f" || echo 'NOT FOUND')"
+	verify_file "$f" -format='graphic/figure'
 done
