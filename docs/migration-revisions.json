@@ -1,0 +1,62 @@
+[
+  {
+    "name": "coursework-testing",
+    "path": "/Users/jmromer/Courses/coursework-testing",
+    "baseline_class": "ba1b2e007c51f0696d70e3e67d2875669fdb6d3a",
+    "baseline_fixture": "3dccae7fb0d8e938d51bfecdd2d7a22719f994ea",
+    "migration_revision": "848cb2e96e4c8ae0c2dbf194c0eb3effaed2ad48",
+    "pdfs": 46,
+    "baseline_pages": 517,
+    "candidate_pages": 488,
+    "baseline_warnings": 601,
+    "candidate_warnings": 356
+  },
+  {
+    "name": "phys331-electricity-and-magnetism-migration",
+    "path": "/Users/jmromer/Courses/phys331-electricity-and-magnetism-migration",
+    "baseline_class": "ba1b2e007c51f0696d70e3e67d2875669fdb6d3a",
+    "baseline_fixture": "a094191b5a6317e541d71cc73d3ae4b69684139f",
+    "migration_revision": "2ab244c0211d82e7a659a721822ebca27bff1b9b",
+    "pdfs": 35,
+    "baseline_pages": 445,
+    "candidate_pages": 416,
+    "baseline_warnings": 382,
+    "candidate_warnings": 187
+  },
+  {
+    "name": "phys433-quantum-physics-migration",
+    "path": "/Users/jmromer/Courses/phys433-quantum-physics-migration",
+    "baseline_class": "ba1b2e007c51f0696d70e3e67d2875669fdb6d3a",
+    "baseline_fixture": "b967d971a98a5c2456543ac7aebfde40a8fc28d8",
+    "migration_revision": "8e1370e70dc4d2e39e1434e9d51cd41c80c28743",
+    "pdfs": 34,
+    "baseline_pages": 374,
+    "candidate_pages": 331,
+    "baseline_warnings": 683,
+    "candidate_warnings": 338
+  },
+  {
+    "name": "phys440-wave-optics-migration",
+    "path": "/Users/jmromer/Courses/phys440-wave-optics-migration",
+    "baseline_class": "ba1b2e007c51f0696d70e3e67d2875669fdb6d3a",
+    "baseline_fixture": "1c849d7836796bd153e5c50f16e3502201071d6b",
+    "migration_revision": "f2dff052a20d0262fc36638648da4053afd15929",
+    "pdfs": 34,
+    "baseline_pages": 272,
+    "candidate_pages": 208,
+    "baseline_warnings": 204,
+    "candidate_warnings": 93
+  },
+  {
+    "name": "phys491-capstone-migration",
+    "path": "/Users/jmromer/Courses/phys491-capstone-migration",
+    "baseline_class": "ba1b2e007c51f0696d70e3e67d2875669fdb6d3a",
+    "baseline_fixture": "c810c5c65946a1f6720343d3adb3ca20cea8a7c1",
+    "migration_revision": "2f690bb2c61f2e14d955e808eeef8712fb6f4b2e",
+    "pdfs": 21,
+    "baseline_pages": 242,
+    "candidate_pages": 178,
+    "baseline_warnings": 52,
+    "candidate_warnings": 6
+  }
+]
