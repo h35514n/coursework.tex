@@ -263,6 +263,29 @@
 	\textbf{\textit{Priming:}} #1%
 }
 
+% ============= Procedure =============
+% \procedure{<text>} labels a high-level stepwise solving roadmap, matching
+% the visual style of \priming. Content is typically a
+% \begin{enumerate}...\end{enumerate} of short imperative steps naming the
+% specific equations/techniques used, e.g.:
+%   \procedure{
+%   \begin{enumerate}
+%     \item Start from Eq 1.12 and the Schroedinger equation.
+%     \item Note that this system is stationary.
+%   \end{enumerate}
+%   }
+% Used ONLY in discussionNN.tex, as the FIRST block -- prepended before any
+% reflective Discussion prose. Because it lives in discussionNN.tex (not
+% guideNN.tex), it inherits Discussion's \@solutionvis gating: hidden in
+% `worksheet`/`summary` builds, shown only in the default build, same as the
+% rest of Discussion.
+% Safety net: `grep -L '\\procedure{' discussion*.tex` finds discussion
+% files still missing one, mirroring \priming's own
+% `grep -L '\\priming{' guide*.tex` check.
+\providecommand{\procedure}[1]{%
+	\textbf{\textit{Procedure:}} #1%
+}
+
 % ============= Guide Inclusion =============
 % \includeguide[<title>]{<pset dir>}{<NN>} — only if <dir>/guideNN.tex
 % exists — labels and inputs it. Always visible: unlike Solution/
