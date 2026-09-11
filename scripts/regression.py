@@ -283,6 +283,7 @@ def compare_images(left, right, diff):
 
 def compare(reference=None):
     reference = reference or BASELINE
+    comparison = ROOT / "build" / ("comparison" if reference == BASELINE else "comparison-" + reference.name)
     baseline = json.loads((reference / "manifest.json").read_text())
     candidate = json.loads((CANDIDATE / "manifest.json").read_text())
     check_integrity(reference, baseline)
@@ -291,9 +292,9 @@ def compare(reference=None):
         raise RuntimeError("Candidate fixtures changed since build; run make candidate first.")
     if baseline["render_dpi"] != candidate["render_dpi"] or baseline["tools"] != candidate["tools"]:
         raise RuntimeError("Tool versions or render resolution differ; use the baseline toolchain.")
-    if COMPARISON.exists():
-        shutil.rmtree(COMPARISON)
-    COMPARISON.mkdir(parents=True)
+    if comparison.exists():
+        shutil.rmtree(comparison)
+    comparison.mkdir(parents=True)
     results = []
     for name in sorted(baseline["pdfs"].keys() | candidate["pdfs"].keys()):
         left, right = baseline["pdfs"].get(name), candidate["pdfs"].get(name)
@@ -301,7 +302,7 @@ def compare(reference=None):
             results.append({"pdf": name, "missing": "baseline" if left is None else "candidate"})
             continue
         text_equal = left["text_sha256"] == right["text_sha256"]
-        diffs = COMPARISON / "diffs" / Path(name).with_suffix("")
+        diffs = comparison / "diffs" / Path(name).with_suffix("")
         if not text_equal:
             diffs.mkdir(parents=True, exist_ok=True)
             delta = difflib.unified_diff((reference / left["text"]).read_text().splitlines(True),
@@ -329,7 +330,7 @@ def compare(reference=None):
               "candidate_testbed_revision": candidate["testbed"]["revision"],
               "existing_warnings": baseline["warnings"], "new_warnings": added,
               "resolved_warnings": removed, "pdfs": results}
-    write_json(COMPARISON / "report.json", report)
+    write_json(comparison / "report.json", report)
     lines = ["# Coursework comparison", "", f"Result: **{'PASS' if passed else 'DIFFERENCES'}**", "",
              f"Compared {len(results)} PDFs at {baseline['render_dpi']} dpi.", "",
              f"Baseline classes: `{baseline['class_revision']}`.",
@@ -345,8 +346,8 @@ def compare(reference=None):
                          f"{'same' if row['text_equal'] else 'DIFF'} | {len(row['changed_pages'])} |")
     lines += ["", "See `report.json` for warning details and `diffs/` for text and image differences.",
               "Matching output establishes regression equivalence, not the absence of inherited layout or content issues."]
-    (COMPARISON / "report.md").write_text("\n".join(lines) + "\n")
-    print(f"{'PASS' if passed else 'DIFFERENCES'}: {COMPARISON / 'report.md'}", flush=True)
+    (comparison / "report.md").write_text("\n".join(lines) + "\n")
+    print(f"{'PASS' if passed else 'DIFFERENCES'}: {comparison / 'report.md'}", flush=True)
     return 0 if passed else 1
 
 
