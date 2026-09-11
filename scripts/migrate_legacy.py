@@ -321,7 +321,7 @@ def convert(root):
         r'\listoftodos\clearpage'+'\n'+r'\pagenumbering{arabic}'+'\n'+r'\makecourseworktitle[title={Assignments}]'+'\n'+
         r'\tableofcontents\newpage'+'\n'+r'\makeassignmentheading[title={Assignments}]'+'\n\n'+
         '\n'.join(r'\subfile{'+a['path'][:-4]+'}' for a in mapping['assignments'])+'\n\n'+r'\end{document}'+'\n')
-    changes['notes.tex']=original['notes.tex'].replace(r'\documentclass{notes}',r'\documentclass{coursenotes}').replace(r'\usepackage{subfiles}'+'\n','')
+    changes['notes.tex']=original['notes.tex'].replace(r'\documentclass{notes}',r'\documentclass{coursenotes}').replace(r'\usepackage{subfiles}'+'\n','').replace(r'\input{course}',r'\input{course}'+'\n'+r'\labelformat{section}{\thechapter.#1}')
     for name in ['notes.cls','problemsets.cls']:changes[name]=None
     if dialect=='mechanics':
         changes['mechanicsnotation.sty']=r'''% Course-specific Newton notation: preserve the original accent glyphs.
