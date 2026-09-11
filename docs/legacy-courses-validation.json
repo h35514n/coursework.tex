@@ -1,0 +1,112 @@
+{
+  "class_evidence": {
+    "repository": ".",
+    "retained_inventory": {
+      "file_count": 319,
+      "path": "migration-evidence/legacy-courses/inventory.json",
+      "sha256": "de387c857516b0960c15e24bdcd2d7e4d2585954fc667c4abfcb94dd73a8ca60"
+    },
+    "runtime_files": {
+      "courseassignments.sty": "eb58077e12d9cb4b6af056ae495bd48c1b4794619c4c52c7733accde42959cb7",
+      "coursecommon.sty": "4becff5b620ebb33322ca34782be885118c1c78f155c771bc8d1d056f87d4687",
+      "courseenvironments.sty": "ecfbd5acb98dcb55558003844e6f204cc508c373f118734edcf0801458ad2c30",
+      "coursefonts.sty": "6405b48c152f7fc334e5ff1c63a834fdae92b627fcf191ee9a041f923fe9288f",
+      "coursemath.sty": "f99da360ef1ee3cc2732d993fcc928a246ce5a3619e1ffab94d80de932623708",
+      "coursenotes.cls": "679121cb47f06590de79a22c8df285fca3b6558465932bb136b9b49e04a8df5a",
+      "coursephys.sty": "2645c75a51d4db91be757d1fc09b95d5fd6c1a1820ae4ac040ee50e1c9bdffcc",
+      "coursepsets.cls": "f839e1d839acbbe5284ab37d12e27d9b4951725f153ea5ca152d045a4ace7e6d",
+      "coursework-boldr.pdf": "56bcafbf42afb329719e81fdb90e426b8e169c5cf0d41c3d095c64561ced5f8a",
+      "coursework-scriptr.pdf": "54b8fdc20ab5f3a612e1fc0318f02a0a27c8372ffcf9788994b6b8e63e08d4f2"
+    },
+    "tests": {
+      "behavioral_tex": 34,
+      "existing_regression_harness_python": 9,
+      "migration_and_snapshot_python": 24
+    }
+  },
+  "courses": {
+    "phys321-classical-mechanics": {
+      "baseline_class_revision": "97a2e9cd2fb5f538958274b401da697634226255",
+      "baseline_fixture_revision": "24e511dc05ca791ee42e0c18ebea53ecaccbd184",
+      "checkpoint_class_revision": "41d0e4bf1c3c9f3988fb22fe6abbbb8a180c626b",
+      "empty_solutions": 0,
+      "evidence_files": {
+        "baseline/manifest.json": "babe01a789bb750836e0f436fea6affdb5eefc4548d61f2b9a4d5df3c835dc72",
+        "checkpoints/v2-adopted/manifest.json": "24946055f0c9cb43d5cf14bd9c03a0f54a7cc89e9cde50f0d43f2006b46dec8e",
+        "migration-content.json": "7de28a79d08f61dcc00014a41b68089ed115d4fc74a4cec3a0d07f03ca417a8e",
+        "migration-evidence/comparison-legacy/report.json": "517b18368995d0031b45d9e90e943bd4fc37190b1218b72d0abaefbe9af3b74b",
+        "migration-evidence/installed-build.json": "a60e2d200b0875f998ff91d08d96663afdda8843f1801041ff943f58ccee098f",
+        "migration-evidence/original/inventory.json": "0deb4d7fd0c757eb9c6d608a9ee534aed9e4d677645373251e81ddc9f33e6c25",
+        "migration-evidence/post-adoption-candidate-manifest.json": "c5098cb4f752fa93750d0c4cca8e56cc8765fe4b72eef9ec7e221ff747a13e24",
+        "migration-evidence/post-adoption-comparison/report.json": "ba9fd5f1a10a9fd649810bc64db467c3ea63691128a22f13a556091765490b3f",
+        "migration-evidence/post-adoption-validation.json": "abb96bfad73f2b3caec97e5ba04092a06fd8e43f359abd7ea6436087618e9c76",
+        "migration-evidence/preparation-comparison/report.json": "d9433a7cb43eb52ad9795dd01061627cfeb41c9c8ceb6b0da57b096d6fd51aeb",
+        "migration-evidence/validation.json": "76051a71f9e2d014b26f0de543e6519ea05bf47744f85a79405c350c098e505f",
+        "migration-evidence/visual-review.json": "f07a7f02dd037e1754b3cff3be3903acd3f5f02d9d44b7f76a82cb3f9a437248",
+        "migration-evidence/warning-backlog.json": "d3c07a970153cb0cf6c10ca36accbf3580ea221d149a9f4d26bede04452d552e",
+        "migration-map.json": "dbcfb9e6228b30e37ef09279e8d84a54ae52450385dacc2fe736c84abfb27971"
+      },
+      "original_checkout_builds_passed": true,
+      "outputs": 38,
+      "pages": 366,
+      "post_adoption_class_revision": "9086706fac321a232061e5cc2a431ccddd5441ee",
+      "problems": 72,
+      "recovery_revision": "14c974480faf7fb97878b094cee548cd06d6a3da",
+      "release_tag": "coursework-v2-adopted",
+      "repository": "../phys321-classical-mechanics",
+      "retained_inventory": {
+        "file_count": 3634,
+        "path": "migration-evidence/retained-files.json",
+        "sha256": "c71af2bb277dd0999bf4217d8ef7a61f1b334318ee1fa03b20e5b0e569ea00fe"
+      },
+      "source_revision": "bbd2529aaa78abb8ff560b107c6b507ab13fa244",
+      "strict_comparison_passed": true,
+      "tag_object": "ea415ccf25b8e2636fb694dc285e2938ad66bbcd",
+      "unchanged_original_assets": 44
+    },
+    "phys432-thermal-physics": {
+      "baseline_class_revision": "0451fb7b5f345e5c30c4b2463b7352f89b50c5ea",
+      "baseline_fixture_revision": "0b4e24b296c087f7af4e3a8b4ba3c86dcfdcfaff",
+      "checkpoint_class_revision": "41d0e4bf1c3c9f3988fb22fe6abbbb8a180c626b",
+      "empty_solutions": 13,
+      "evidence_files": {
+        "baseline/manifest.json": "68291364f91952352df038b5bf304084a4a5258ffd87f7e154ed7ad0aa523330",
+        "checkpoints/v2-adopted/manifest.json": "99a1ed10f73333db1c60141f1eca793273cbf4cb8212ec7feb4369e816a48de9",
+        "migration-content.json": "68b5288024f79b3d87a8679b2b26a5d08a6898a58cce34d259982ad48ad286d2",
+        "migration-evidence/comparison-legacy/report.json": "c4469b9000cbef14f9cefa02f6679d4c3c1fece4792954c527947c87b34993c5",
+        "migration-evidence/installed-build.json": "597f7f13f357f900ab45e213f6c675b50828a7cbdbbb18adbacbda6640369d57",
+        "migration-evidence/original/inventory.json": "3b3d780c3442de5799e7bd42a17fdaada158baec978eaa220c6c05fc94d547fb",
+        "migration-evidence/post-adoption-candidate-manifest.json": "ba6f5e0c40e01b62234b74f704145ac33af251d1e3c7f3061dcf00732ccf55a3",
+        "migration-evidence/post-adoption-comparison/report.json": "990ab25066a7020f93a446fdcc27f883facfcdeeb0c7516dab10038260eda3e6",
+        "migration-evidence/post-adoption-validation.json": "e17970fd2e228cca472c7b19c986f5a8b1a4b61624dc29e0f9f8703f72d18c73",
+        "migration-evidence/preparation-comparison/report.json": "2fdd0a006c118f016a23717e35a146ccd5b5da7a1b0ab2a2729acb0001d7b355",
+        "migration-evidence/validation.json": "5b5f563521bc5e36fc45e3d2e36df09b8879f920b6c93e76d584e1c7c3fbc6d3",
+        "migration-evidence/visual-review.json": "d4ca559d489180dae71fb85ad3e5d725a92b66e30466c045ef8491aeef80d5da",
+        "migration-evidence/warning-backlog.json": "cc102b35db72c011cdc5999fcafcb82aef5189ac5024ae9536cad8171ebbe174",
+        "migration-map.json": "1ffd4aa10b746b85d102b1ea06825100523a532a0e4c3471d0911979227c7344"
+      },
+      "original_checkout_builds_passed": true,
+      "outputs": 64,
+      "pages": 752,
+      "post_adoption_class_revision": "9086706fac321a232061e5cc2a431ccddd5441ee",
+      "problems": 193,
+      "recovery_revision": "fdcdf4ebc92d6c19121ffc0e3e4557ba692c19b1",
+      "release_tag": "coursework-v2-adopted",
+      "repository": "../phys432-thermal-physics",
+      "retained_inventory": {
+        "file_count": 8743,
+        "path": "migration-evidence/retained-files.json",
+        "sha256": "5ce046e95146c6358f9f27dbab3e47f33ef8df0e5453a4bfe520234c4c104e77"
+      },
+      "source_revision": "cdf957dc184d8418e9660ffce3e8fc1503711b54",
+      "strict_comparison_passed": true,
+      "tag_object": "62fdd6a82a17e18be7b327e1c50dd9c6cabba111",
+      "unchanged_original_assets": 9
+    }
+  },
+  "date": "2026-09-11",
+  "runtime_reference_revision": "41d0e4bf1c3c9f3988fb22fe6abbbb8a180c626b",
+  "schema": 1,
+  "scope": "Local PHYS 321 and PHYS 432 adoption; no publication",
+  "tooling_revision": "9086706fac321a232061e5cc2a431ccddd5441ee"
+}
