@@ -1,5 +1,9 @@
 # Coursework v2
 
+**[Read the authoring guide](https://h35514n.github.io/coursework.tex/)** — recipes,
+complete command and environment references, and compiled examples with source downloads.
+See [guide maintenance](docs/guide/CONTRIBUTING.md) for local builds and publication.
+
 XeLaTeX classes and notation for course notes, assignments, exams, worksheets,
 and compact problem handouts. Version 2 is a breaking API change. All six
 migrated courses (PHYS 321, 331, 432, 433, 440, and 491) use this API; recovery

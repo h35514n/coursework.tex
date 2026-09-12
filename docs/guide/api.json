@@ -1,0 +1,839 @@
+{
+  "internal": {
+    "courseworkclassoption": "Class option forwarding and filtering helper.",
+    "courseassignmentfooter": "Class-owned footer implementation.",
+    "courseproblemfooter": "Class-owned footer implementation."
+  },
+  "entries": [
+    {
+      "name": "courseworksetup",
+      "module": "coursecommon",
+      "signature": "\\courseworksetup{key=value,...}",
+      "description": "Set course metadata and output configuration. Repeated calls replace the keys supplied and retain other values. Font selection is consumed when the class loads; choose a font with a class option.",
+      "arguments": "A comma-separated key list; brace values containing commas or LaTeX. See the configuration tables below.",
+      "example": "metadata",
+      "group": "configuration",
+      "kind": "command"
+    },
+    {
+      "name": "courseworkvalue",
+      "module": "coursecommon",
+      "signature": "\\courseworkvalue{key}",
+      "description": "Expand one of the six metadata values. This accessor is for metadata, not mode, breaks, or fonts.",
+      "arguments": "key: author, course-code, course-title, term, textbook, or textbook-author. Each defaults to empty.",
+      "example": "title",
+      "group": "configuration",
+      "kind": "command"
+    },
+    {
+      "name": "makecourseworktitle",
+      "module": "coursecommon",
+      "signature": "\\makecourseworktitle[title={...},date={...}]",
+      "description": "Produce a title using course title, code, author, and date. Does not add contents or assignment headings.",
+      "arguments": "Optional title defaults to empty; date defaults to the configured term. Front-matter page breaks and numbering remain explicit.",
+      "example": "title",
+      "group": "configuration",
+      "kind": "command"
+    },
+    {
+      "name": "makeassignmentheading",
+      "module": "coursecommon",
+      "signature": "\\makeassignmentheading[title={...},date={...}]",
+      "description": "Produce a two-column heading with author and title on the left and course title and date on the right. Sets the current page style to empty.",
+      "arguments": "Optional title defaults to empty; date defaults to the configured term. Front-matter page breaks and numbering remain explicit.",
+      "example": "title",
+      "group": "configuration",
+      "kind": "command"
+    },
+    {
+      "name": "assignment",
+      "module": "courseassignments",
+      "signature": "\\assignment[id=...,directory=...,number=...,problems-title={...}]{title}",
+      "description": "Begin a new assignment and reset its declarations. Each assignment ID must be unique in the document.",
+      "arguments": "title: assignment heading. Required id starts with a letter or digit, followed by letters, digits, hyphens, or underscores. Required directory is relative to the compilation root. number is a positive integer, defaulting to the next assignment. problems-title defaults to Problem Set.",
+      "example": "assignment",
+      "group": "assignments",
+      "kind": "command"
+    },
+    {
+      "name": "declareproblem",
+      "module": "courseassignments",
+      "signature": "\\declareproblem[title={...}]{id}",
+      "description": "Declare a problem after its assignment and before rendering. A declaration supplies a stable ID and an optional display title; it does not read any fragment.",
+      "arguments": "id uses the assignment ID character rules and must be unique within the assignment. title defaults to empty.",
+      "example": "assignment",
+      "group": "assignments",
+      "kind": "command"
+    },
+    {
+      "name": "printassignment",
+      "module": "courseassignments",
+      "signature": "\\printassignment[problems={02,01}]",
+      "description": "Render the current assignment once. Selected problems are numbered from 1 in the specified order in every role. Canonical labels use prob:<assignment-id>:<problem-id>; reference values include the assignment number.",
+      "arguments": "problems: comma-separated IDs. Omitted or empty selects all declarations in declaration order. Duplicate or unknown selections, no problems, repeat rendering, and missing required files are errors.",
+      "example": "assignment",
+      "group": "assignments",
+      "kind": "command"
+    },
+    {
+      "name": "priming",
+      "module": "courseassignments",
+      "signature": "\\priming{text}",
+      "description": "Introduce a short priming paragraph with a bold italic label.",
+      "arguments": "text: content following the label.",
+      "example": "assignment-notes",
+      "group": "assignments",
+      "kind": "command"
+    },
+    {
+      "name": "procedure",
+      "module": "courseassignments",
+      "signature": "\\procedure{text}",
+      "description": "Introduce a short procedure paragraph with a bold italic label.",
+      "arguments": "text: content following the label.",
+      "example": "assignment-notes",
+      "group": "assignments",
+      "kind": "command"
+    },
+    {
+      "name": "NN",
+      "module": "coursemath",
+      "signature": "\\NN",
+      "description": "Natural numbers in blackboard bold. Works in text or math.",
+      "arguments": "No arguments.",
+      "example": "sets",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "ZZ",
+      "module": "coursemath",
+      "signature": "\\ZZ",
+      "description": "Integers in blackboard bold. Works in text or math.",
+      "arguments": "No arguments.",
+      "example": "sets",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "QQ",
+      "module": "coursemath",
+      "signature": "\\QQ",
+      "description": "Rational numbers in blackboard bold. Works in text or math.",
+      "arguments": "No arguments.",
+      "example": "sets",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "RR",
+      "module": "coursemath",
+      "signature": "\\RR",
+      "description": "Real numbers in blackboard bold. Works in text or math.",
+      "arguments": "No arguments.",
+      "example": "sets",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "CC",
+      "module": "coursemath",
+      "signature": "\\CC",
+      "description": "Complex numbers in blackboard bold. Works in text or math.",
+      "arguments": "No arguments.",
+      "example": "sets",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "dd",
+      "module": "coursemath",
+      "signature": "\\dd",
+      "description": "Upright differential d. Use inside mathematics.",
+      "arguments": "No arguments; write the variable and desired spacing separately.",
+      "example": "calculus",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "deriv",
+      "module": "coursemath",
+      "signature": "\\deriv[order]{expression}{variable}",
+      "description": "Ordinary derivative using diffcoeff. Use inside mathematics. A following bracketed expression is not consumed as an evaluation point.",
+      "arguments": "order defaults to 1; expression may be empty to form an operator. variable is the differentiation variable.",
+      "example": "calculus",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "pderiv",
+      "module": "coursemath",
+      "signature": "\\pderiv[order]{expression}{variable}",
+      "description": "Partial derivative using diffcoeff. Use inside mathematics. A following bracketed expression is not consumed as an evaluation point.",
+      "arguments": "order defaults to 1; expression may be empty to form an operator. variable is the differentiation variable.",
+      "example": "calculus",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "integral",
+      "module": "coursemath",
+      "signature": "\\integral[size=normal|medium|large]{expression}{variable}{lower}{upper}",
+      "description": "Integral with upright differential. Works in text or math. Size changes only the sign; medium and large enlarge the display sign by one or two relsize steps. Nested calls reset to normal.",
+      "arguments": "size defaults to normal and unknown values are errors. Empty lower/upper arguments omit those bounds. All four braced arguments are required.",
+      "example": "integrals",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "evalat",
+      "module": "coursemath",
+      "signature": "\\evalat{expression}{lower}{upper}",
+      "description": "Evaluate an expression at two bounds using a right evaluation bar. Works in text or math.",
+      "arguments": "expression: evaluated expression; lower and upper: endpoint expressions (either can be empty).",
+      "example": "calculus",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "evalbracket",
+      "module": "coursemath",
+      "signature": "\\evalbracket{expression}{lower}{upper}",
+      "description": "Evaluate an expression at two bounds using a left square bracket and right evaluation bar. Works in text or math.",
+      "arguments": "expression: evaluated expression; lower and upper: endpoint expressions (either can be empty).",
+      "example": "calculus",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "paren",
+      "module": "coursemath",
+      "signature": "\\paren{expression}; \\paren*{expression}; \\paren[\\Big]{expression}",
+      "description": "Paired parentheses. Unstarred uses fixed size; starred sizes automatically. Use in math mode.",
+      "arguments": "expression: enclosed content. Optional explicit size such as \\big or \\Big is an alternative to the star.",
+      "example": "delimiters",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "bracket",
+      "module": "coursemath",
+      "signature": "\\bracket{expression}; \\bracket*{expression}; \\bracket[\\Big]{expression}",
+      "description": "Paired square brackets. Unstarred uses fixed size; starred sizes automatically. Use in math mode.",
+      "arguments": "expression: enclosed content. Optional explicit size such as \\big or \\Big is an alternative to the star.",
+      "example": "delimiters",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "abs",
+      "module": "coursemath",
+      "signature": "\\abs{expression}; \\abs*{expression}; \\abs[\\Big]{expression}",
+      "description": "Paired absolute-value bars. Unstarred uses fixed size; starred sizes automatically. Use in math mode.",
+      "arguments": "expression: enclosed content. Optional explicit size such as \\big or \\Big is an alternative to the star.",
+      "example": "delimiters",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "norm",
+      "module": "coursemath",
+      "signature": "\\norm{expression}; \\norm*{expression}; \\norm[\\Big]{expression}",
+      "description": "Paired norm bars. Unstarred uses fixed size; starred sizes automatically. Use in math mode.",
+      "arguments": "expression: enclosed content. Optional explicit size such as \\big or \\Big is an alternative to the star.",
+      "example": "delimiters",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "average",
+      "module": "coursemath",
+      "signature": "\\average{expression}",
+      "description": "Angle-bracket average. Works in text or math.",
+      "arguments": "expression: contents; for covariance, supply a pair such as X,Y in the same argument.",
+      "example": "statistics",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "expectation",
+      "module": "coursemath",
+      "signature": "\\expectation{expression}",
+      "description": "Expectation E with square brackets. Works in text or math.",
+      "arguments": "expression: contents; for covariance, supply a pair such as X,Y in the same argument.",
+      "example": "statistics",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "variance",
+      "module": "coursemath",
+      "signature": "\\variance{expression}",
+      "description": "Variance Var with fixed parentheses. Works in text or math.",
+      "arguments": "expression: contents; for covariance, supply a pair such as X,Y in the same argument.",
+      "example": "statistics",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "covariance",
+      "module": "coursemath",
+      "signature": "\\covariance{expression}",
+      "description": "Covariance Cov with automatically sized parentheses. Works in text or math.",
+      "arguments": "expression: contents; for covariance, supply a pair such as X,Y in the same argument.",
+      "example": "statistics",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "probability",
+      "module": "coursemath",
+      "signature": "\\probability{expression}",
+      "description": "Probability P with automatically sized parentheses. Works in text or math.",
+      "arguments": "expression: contents; for covariance, supply a pair such as X,Y in the same argument.",
+      "example": "statistics",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "conditionalprob",
+      "module": "coursemath",
+      "signature": "\\conditionalprob{event}{condition}",
+      "description": "Conditional probability with an automatically sized middle bar. Works in text or math.",
+      "arguments": "event: event expression; condition: conditioning expression.",
+      "example": "statistics",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "mathbold",
+      "module": "coursemath",
+      "signature": "\\mathbold{expression}",
+      "description": "Bold mathematics in text or math. Selects bm for legacy math and the Unicode bold alphabet with unicode-math. Nested upright/italic alphabets retain their shape.",
+      "arguments": "expression: a symbol or full math expression.",
+      "example": "bold",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "slashfrac",
+      "module": "coursemath",
+      "signature": "\\slashfrac{numerator}{denominator}",
+      "description": "Compact raised/lowered slash fraction. Works in text or math.",
+      "arguments": "numerator and denominator: math expressions.",
+      "example": "misc-math",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "mathtext",
+      "module": "coursemath",
+      "signature": "\\mathtext[prefix]{text}",
+      "description": "Insert text between half-em spaces inside mathematics.",
+      "arguments": "prefix defaults to empty; use punctuation such as a comma if needed. text is set with \\text.",
+      "example": "misc-math",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "combinations",
+      "module": "coursemath",
+      "signature": "\\combinations{n}{k}",
+      "description": "Write n choose k in C notation. Use inside mathematics.",
+      "arguments": "n: total count; k: selected count.",
+      "example": "misc-math",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "permutations",
+      "module": "coursemath",
+      "signature": "\\permutations{n}{k}",
+      "description": "Write n-permute-k in P notation. Use inside mathematics.",
+      "arguments": "n: total count; k: selected count.",
+      "example": "misc-math",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "colvector",
+      "module": "coursemath",
+      "signature": "\\colvector[alignment]{a\\\\b\\\\c}",
+      "description": "Parenthesized column array. Use inside mathematics.",
+      "arguments": "alignment defaults to r; l and c are also useful. Separate rows with \\\\.",
+      "example": "misc-math",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "questioneq",
+      "module": "coursemath",
+      "signature": "\\questioneq",
+      "description": "Equals sign annotated above with a question mark. Use inside mathematics.",
+      "arguments": "No arguments.",
+      "example": "misc-math",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "checkeq",
+      "module": "coursemath",
+      "signature": "\\checkeq",
+      "description": "Equals sign annotated above with a check mark. Use inside mathematics.",
+      "arguments": "No arguments.",
+      "example": "misc-math",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "crosseq",
+      "module": "coursemath",
+      "signature": "\\crosseq",
+      "description": "Equals sign annotated above with a cross. Use inside mathematics.",
+      "arguments": "No arguments.",
+      "example": "misc-math",
+      "group": "mathematics",
+      "kind": "command"
+    },
+    {
+      "name": "vect",
+      "module": "coursephys",
+      "signature": "\\vect{symbol}",
+      "description": "Bold vector. Works in text or math and follows the active math backend.",
+      "arguments": "symbol: vector symbol, including Greek letters where supported by the font.",
+      "example": "vectors",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "uprightvect",
+      "module": "coursephys",
+      "signature": "\\uprightvect{symbol}",
+      "description": "Upright bold vector. Works in text or math and follows the active math backend.",
+      "arguments": "symbol: vector symbol, including Greek letters where supported by the font.",
+      "example": "vectors",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "unitvect",
+      "module": "coursephys",
+      "signature": "\\unitvect{symbol}",
+      "description": "Bold vector with a hat. Works in text or math and follows the active math backend.",
+      "arguments": "symbol: vector symbol, including Greek letters where supported by the font.",
+      "example": "vectors",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "uprightunitvect",
+      "module": "coursephys",
+      "signature": "\\uprightunitvect{symbol}",
+      "description": "Upright bold vector with a hat. Works in text or math and follows the active math backend.",
+      "arguments": "symbol: vector symbol, including Greek letters where supported by the font.",
+      "example": "vectors",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "xhat",
+      "module": "coursephys",
+      "signature": "\\xhat",
+      "description": "Convenience unit-vector symbol with a bold hat. Latin vectors are upright; theta and phi follow the Greek math alphabet. Use inside mathematics.",
+      "arguments": "No arguments.",
+      "example": "unit-vectors",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "yhat",
+      "module": "coursephys",
+      "signature": "\\yhat",
+      "description": "Convenience unit-vector symbol with a bold hat. Latin vectors are upright; theta and phi follow the Greek math alphabet. Use inside mathematics.",
+      "arguments": "No arguments.",
+      "example": "unit-vectors",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "zhat",
+      "module": "coursephys",
+      "signature": "\\zhat",
+      "description": "Convenience unit-vector symbol with a bold hat. Latin vectors are upright; theta and phi follow the Greek math alphabet. Use inside mathematics.",
+      "arguments": "No arguments.",
+      "example": "unit-vectors",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "rhat",
+      "module": "coursephys",
+      "signature": "\\rhat",
+      "description": "Convenience unit-vector symbol with a bold hat. Latin vectors are upright; theta and phi follow the Greek math alphabet. Use inside mathematics.",
+      "arguments": "No arguments.",
+      "example": "unit-vectors",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "shat",
+      "module": "coursephys",
+      "signature": "\\shat",
+      "description": "Convenience unit-vector symbol with a bold hat. Latin vectors are upright; theta and phi follow the Greek math alphabet. Use inside mathematics.",
+      "arguments": "No arguments.",
+      "example": "unit-vectors",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "thetahat",
+      "module": "coursephys",
+      "signature": "\\thetahat",
+      "description": "Convenience unit-vector symbol with a bold hat. Latin vectors are upright; theta and phi follow the Greek math alphabet. Use inside mathematics.",
+      "arguments": "No arguments.",
+      "example": "unit-vectors",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "phihat",
+      "module": "coursephys",
+      "signature": "\\phihat",
+      "description": "Convenience unit-vector symbol with a bold hat. Latin vectors are upright; theta and phi follow the Greek math alphabet. Use inside mathematics.",
+      "arguments": "No arguments.",
+      "example": "unit-vectors",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "grad",
+      "module": "coursephys",
+      "signature": "\\grad",
+      "description": "Bold nabla gradient operator; does not consume the following expression. Use inside mathematics.",
+      "arguments": "No arguments. Supply the function or field after the command.",
+      "example": "vectors",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "laplacian",
+      "module": "coursephys",
+      "signature": "\\laplacian",
+      "description": "Bold nabla squared with following thin space. Use inside mathematics.",
+      "arguments": "No arguments. Supply the function or field after the command.",
+      "example": "vectors",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "separation",
+      "module": "coursephys",
+      "signature": "\\separation",
+      "description": "Script r for separation notation, drawn from the bundled PDF glyph assets. Works in text or math.",
+      "arguments": "No arguments. Both glyph PDFs must remain resolvable through kpathsea.",
+      "example": "regions",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "separationvect",
+      "module": "coursephys",
+      "signature": "\\separationvect",
+      "description": "Bold script r for separation notation, drawn from the bundled PDF glyph assets. Works in text or math.",
+      "arguments": "No arguments. Both glyph PDFs must remain resolvable through kpathsea.",
+      "example": "regions",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "separationunit",
+      "module": "coursephys",
+      "signature": "\\separationunit",
+      "description": "Hatted bold script r for separation notation, drawn from the bundled PDF glyph assets. Works in text or math.",
+      "arguments": "No arguments. Both glyph PDFs must remain resolvable through kpathsea.",
+      "example": "regions",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "volumeregion",
+      "module": "coursephys",
+      "signature": "\\volumeregion",
+      "description": "Volume domain v. Uses legacy txmi glyphs or ordinary italic Unicode letters, depending on the math backend. Use inside mathematics.",
+      "arguments": "No arguments.",
+      "example": "regions",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "surfaceregion",
+      "module": "coursephys",
+      "signature": "\\surfaceregion",
+      "description": "Surface domain s. Uses legacy txmi glyphs or ordinary italic Unicode letters, depending on the math backend. Use inside mathematics.",
+      "arguments": "No arguments.",
+      "example": "regions",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "pathregion",
+      "module": "coursephys",
+      "signature": "\\pathregion",
+      "description": "Path domain p. Uses legacy txmi glyphs or ordinary italic Unicode letters, depending on the math backend. Use inside mathematics.",
+      "arguments": "No arguments.",
+      "example": "regions",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "kB",
+      "module": "coursephys",
+      "signature": "\\kB",
+      "description": "Boltzmann constant symbol. Works in text or math. This is a symbol, not a numeric value.",
+      "arguments": "No arguments.",
+      "example": "constants",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "NA",
+      "module": "coursephys",
+      "signature": "\\NA",
+      "description": "Avogadro constant symbol. Works in text or math. This is a symbol, not a numeric value.",
+      "arguments": "No arguments.",
+      "example": "constants",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "dbar",
+      "module": "coursephys",
+      "signature": "\\dbar",
+      "description": "Barred differential symbol for an inexact differential. Use inside mathematics.",
+      "arguments": "No arguments; supply the quantity afterward.",
+      "example": "constants",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "constantvalue",
+      "module": "coursephys",
+      "signature": "\\constantvalue{boltzmann|avogadro}",
+      "description": "Rounded constant with SI units: 1.381 × 10⁻²³ J/K or 6.022 × 10²³ mol⁻¹. These preserve the library values rather than asserting exact SI definitions. Works in text or math.",
+      "arguments": "Required name is boltzmann or avogadro. Other names are errors.",
+      "example": "constants",
+      "group": "physics",
+      "kind": "command"
+    },
+    {
+      "name": "theorem",
+      "module": "courseenvironments",
+      "signature": "\\begin{theorem}[title] ... \\end{theorem}",
+      "description": "Shares the theorem counter, reset by section. Put a normal \\label in a numbered environment body; the first braced word is content, not a special label argument.",
+      "arguments": "Optional title may be omitted. Body is ordinary text and may contain mathematics.",
+      "example": "env-theorem",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "lemma",
+      "module": "courseenvironments",
+      "signature": "\\begin{lemma}[title] ... \\end{lemma}",
+      "description": "Shares the theorem counter, reset by section. Put a normal \\label in a numbered environment body; the first braced word is content, not a special label argument.",
+      "arguments": "Optional title may be omitted. Body is ordinary text and may contain mathematics.",
+      "example": "env-lemma",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "corollary",
+      "module": "courseenvironments",
+      "signature": "\\begin{corollary}[title] ... \\end{corollary}",
+      "description": "Shares the theorem counter, reset by section. Put a normal \\label in a numbered environment body; the first braced word is content, not a special label argument.",
+      "arguments": "Optional title may be omitted. Body is ordinary text and may contain mathematics.",
+      "example": "env-corollary",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "proposition",
+      "module": "courseenvironments",
+      "signature": "\\begin{proposition}[title] ... \\end{proposition}",
+      "description": "Shares the theorem counter, reset by section. Put a normal \\label in a numbered environment body; the first braced word is content, not a special label argument.",
+      "arguments": "Optional title may be omitted. Body is ordinary text and may contain mathematics.",
+      "example": "env-proposition",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "conjecture",
+      "module": "courseenvironments",
+      "signature": "\\begin{conjecture}[title] ... \\end{conjecture}",
+      "description": "Shares the theorem counter, reset by section. Put a normal \\label in a numbered environment body; the first braced word is content, not a special label argument.",
+      "arguments": "Optional title may be omitted. Body is ordinary text and may contain mathematics.",
+      "example": "env-conjecture",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "algorithm",
+      "module": "courseenvironments",
+      "signature": "\\begin{algorithm}[title] ... \\end{algorithm}",
+      "description": "Shares the theorem counter, reset by section. Put a normal \\label in a numbered environment body; the first braced word is content, not a special label argument.",
+      "arguments": "Optional title may be omitted. Body is ordinary text and may contain mathematics.",
+      "example": "env-algorithm",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "definition",
+      "module": "courseenvironments",
+      "signature": "\\begin{definition}[title] ... \\end{definition}",
+      "description": "Has its own counter, reset by section. Put a normal \\label in a numbered environment body; the first braced word is content, not a special label argument.",
+      "arguments": "Optional title may be omitted. Body is ordinary text and may contain mathematics.",
+      "example": "env-definition",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "example",
+      "module": "courseenvironments",
+      "signature": "\\begin{example}[title] ... \\end{example}",
+      "description": "Has its own counter, reset by section. Put a normal \\label in a numbered environment body; the first braced word is content, not a special label argument.",
+      "arguments": "Optional title may be omitted. Body is ordinary text and may contain mathematics.",
+      "example": "env-example",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "remark",
+      "module": "courseenvironments",
+      "signature": "\\begin{remark}[title] ... \\end{remark}",
+      "description": "Has its own counter, reset by section. Put a normal \\label in a numbered environment body; the first braced word is content, not a special label argument.",
+      "arguments": "Optional title may be omitted. Body is ordinary text and may contain mathematics.",
+      "example": "env-remark",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "summary",
+      "module": "courseenvironments",
+      "signature": "\\begin{summary}[title] ... \\end{summary}",
+      "description": "Has its own counter, reset by subsection. Put a normal \\label in a numbered environment body; the first braced word is content, not a special label argument.",
+      "arguments": "Optional title may be omitted. Body is ordinary text and may contain mathematics.",
+      "example": "env-summary",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "note",
+      "module": "courseenvironments",
+      "signature": "\\begin{note}[title] ... \\end{note}",
+      "description": "Unnumbered. Put a normal \\label in a numbered environment body; the first braced word is content, not a special label argument.",
+      "arguments": "Optional title may be omitted. Body is ordinary text and may contain mathematics.",
+      "example": "env-note",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "caveat",
+      "module": "courseenvironments",
+      "signature": "\\begin{caveat}[title] ... \\end{caveat}",
+      "description": "Unnumbered. Put a normal \\label in a numbered environment body; the first braced word is content, not a special label argument.",
+      "arguments": "Optional title may be omitted. Body is ordinary text and may contain mathematics.",
+      "example": "env-caveat",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "warning",
+      "module": "courseenvironments",
+      "signature": "\\begin{warning}[title] ... \\end{warning}",
+      "description": "Unnumbered. Put a normal \\label in a numbered environment body; the first braced word is content, not a special label argument.",
+      "arguments": "Optional title may be omitted. Body is ordinary text and may contain mathematics.",
+      "example": "env-warning",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "question",
+      "module": "courseenvironments",
+      "signature": "\\begin{question}[title] ... \\end{question}",
+      "description": "Unnumbered. Put a normal \\label in a numbered environment body; the first braced word is content, not a special label argument.",
+      "arguments": "Optional title may be omitted. Body is ordinary text and may contain mathematics.",
+      "example": "env-question",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "speculation",
+      "module": "courseenvironments",
+      "signature": "\\begin{speculation}[title] ... \\end{speculation}",
+      "description": "Unnumbered. Put a normal \\label in a numbered environment body; the first braced word is content, not a special label argument.",
+      "arguments": "Optional title may be omitted. Body is ordinary text and may contain mathematics.",
+      "example": "env-speculation",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "proof",
+      "module": "courseenvironments",
+      "signature": "\\begin{proof}[title] ... \\end{proof}",
+      "description": "Proof environment supplied by amsthm, loaded by courseenvironments. Ends with its proof marker. Unnumbered.",
+      "arguments": "Optional title replaces Proof. Use \\qedhere inside a final display when needed.",
+      "example": "env-proof",
+      "group": "environments",
+      "kind": "dependency-environment"
+    },
+    {
+      "name": "formula",
+      "module": "courseenvironments",
+      "signature": "\\begin{formula}[tag] ... \\end{formula}",
+      "description": "A math display with a bold textual tag and a separate sequential formula counter. References return the counter, even when a custom tag is shown. The counter does not reset by section.",
+      "arguments": "Optional tag defaults to Formula N. Body is already in math mode; put \\label inside the environment. Does not force a following line break.",
+      "example": "env-formula",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "subparts",
+      "module": "courseenvironments",
+      "signature": "\\begin{subparts} \\item ... \\end{subparts}",
+      "description": "Enumerated subparts labeled (a), (b), and so on.",
+      "arguments": "No arguments. Begin each part with \\item.",
+      "example": "env-subparts",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "mathtable",
+      "module": "courseenvironments",
+      "signature": "\\begin{mathtable}[caption={...},label={...},placement=H]{columns} ... \\end{mathtable}",
+      "description": "Floating table containing a math array with an automatic top rule. Per-table options are local.",
+      "arguments": "columns: array alignment. caption and label default to empty; a label requires a caption. placement defaults to ht! (H in notes). Supply row endings and any \\bottomrule yourself.",
+      "example": "env-mathtable",
+      "group": "environments",
+      "kind": "environment"
+    },
+    {
+      "name": "tableheading",
+      "module": "courseenvironments",
+      "signature": "\\tableheading{top}{bottom}",
+      "description": "Two-line centered text heading for a math-table column.",
+      "arguments": "top and bottom are text, not raw math; wrap any math in dollar signs.",
+      "example": "env-mathtable",
+      "group": "environments",
+      "kind": "command"
+    },
+    {
+      "name": "courseenvironmentsetup",
+      "module": "courseenvironments",
+      "signature": "\\courseenvironmentsetup{table-placement=...,table-top-skip=...}",
+      "description": "Set global defaults for subsequent math tables. Notes select H and -2ex; other contexts default to ht! and -1em.",
+      "arguments": "table-placement: LaTeX float placement. table-top-skip: a TeX length or skip.",
+      "example": "env-mathtable",
+      "group": "environments",
+      "kind": "command"
+    }
+  ]
+}

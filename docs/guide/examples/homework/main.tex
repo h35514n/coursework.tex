@@ -1,0 +1,19 @@
+\documentclass[mode=worked,section-breaks=flow]{coursepsets}
+\usepackage{coursephys}
+% example:metadata
+\courseworksetup{
+  author={Alex Student}, course-code={PHYS 101},
+  course-title={Motion and Energy}, term={Fall 2026},
+  textbook={Course notebook}, textbook-author={Course staff}
+}
+% endexample
+\begin{document}
+% example:title
+\makecourseworktitle[title={Homework}]
+\tableofcontents\clearpage
+\makeassignmentheading[title={Problem Set 1}]
+\par
+Course: \courseworkvalue{course-code}.\par
+% endexample
+\input{assignment.tex}
+\end{document}

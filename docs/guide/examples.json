@@ -1,0 +1,104 @@
+[
+  {
+    "id": "homework-worked",
+    "title": "Homework: worked",
+    "project": "homework",
+    "root": "main.tex",
+    "mode": "worked"
+  },
+  {
+    "id": "homework-worksheet",
+    "title": "Homework: worksheet",
+    "project": "homework",
+    "root": "main.tex",
+    "mode": "worksheet"
+  },
+  {
+    "id": "homework-compact",
+    "title": "Homework: compact",
+    "project": "homework",
+    "root": "main.tex",
+    "mode": "compact"
+  },
+  {
+    "id": "homework-subfile",
+    "title": "Standalone assignment",
+    "project": "homework",
+    "root": "standalone.tex"
+  },
+  {
+    "id": "notes",
+    "title": "Reading notes",
+    "project": "notes",
+    "root": "main.tex"
+  },
+  {
+    "id": "notes-subfile",
+    "title": "Standalone chapter",
+    "project": "notes",
+    "root": "chapters/energy.tex"
+  },
+  {
+    "id": "reference-coursepsets",
+    "title": "Reference specimens: coursepsets",
+    "project": "shared",
+    "root": "reference-coursepsets.tex",
+    "files": [
+      "reference-coursepsets.tex",
+      "notation.tex",
+      "environments.tex"
+    ]
+  },
+  {
+    "id": "reference-coursenotes",
+    "title": "Reference specimens: coursenotes",
+    "project": "shared",
+    "root": "reference-coursenotes.tex",
+    "files": [
+      "reference-coursenotes.tex",
+      "notation.tex",
+      "environments.tex"
+    ]
+  },
+  {
+    "id": "reference-article",
+    "title": "Reference specimens: article",
+    "project": "shared",
+    "root": "reference-article.tex",
+    "files": [
+      "reference-article.tex",
+      "notation.tex",
+      "environments.tex"
+    ]
+  },
+  {
+    "id": "font-pazo",
+    "title": "Font profile: pazo",
+    "project": "shared",
+    "root": "font-pazo.tex",
+    "files": [
+      "font-pazo.tex",
+      "font.tex"
+    ]
+  },
+  {
+    "id": "font-pagella",
+    "title": "Font profile: pagella",
+    "project": "shared",
+    "root": "font-pagella.tex",
+    "files": [
+      "font-pagella.tex",
+      "font.tex"
+    ]
+  },
+  {
+    "id": "font-euler",
+    "title": "Font profile: euler",
+    "project": "shared",
+    "root": "font-euler.tex",
+    "files": [
+      "font-euler.tex",
+      "font.tex"
+    ]
+  }
+]

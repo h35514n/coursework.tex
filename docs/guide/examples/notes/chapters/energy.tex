@@ -1,0 +1,18 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+% example:chapter
+\chapter{Energy and work}
+\localtableofcontents
+\section{A conserved quantity}
+\begin{definition}[Kinetic energy]\label{def:kinetic}
+For mass $m$ and speed $v$, the kinetic energy is $K=mv^2/2$.
+\end{definition}
+\begin{formula}[Work]\label{formula:work}
+  W=\integral{F(x)}{x}{a}{b}
+\end{formula}
+For constant mass, \cref{def:kinetic,formula:work} connect force and motion.
+\begin{example}[A constant force]
+If $F(x)=F_0$, then $W=F_0(b-a)$.
+\end{example}
+% endexample
+\end{document}

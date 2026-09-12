@@ -1,0 +1,30 @@
+title: Coursework
+description: XeLaTeX recipes and reference for homework, notes, and shared notation.
+url: https://h35514n.github.io
+baseurl: /coursework.tex
+theme: just-the-docs
+color_scheme: light
+search_enabled: true
+search:
+  heading_level: 3
+  focus_shortcut_key: k
+  tokenizer_separator: '/[\s\\/]+/'
+enable_copy_code_button: true
+heading_anchors: true
+back_to_top: true
+back_to_top_text: Back to top
+aux_links:
+  "Source on GitHub":
+    - https://github.com/h35514n/coursework.tex
+footer_content: 'Coursework v2 · Built from the same sources as the examples.'
+permalink: pretty
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - api.json
+  - examples.json
+  - CONTRIBUTING.md
+kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false

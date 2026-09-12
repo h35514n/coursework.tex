@@ -1,0 +1,13 @@
+.main-content h1 { font-weight: 650; letter-spacing: -.035em; }
+.main-content h2 { margin-top: 2.5rem; }
+.main-content .preview { border: 1px solid #e5e7eb; border-radius: 6px; background: white; width: 100%; max-width: 690px; height: auto; }
+.main-content .eyebrow { color: #506378; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; }
+.main-content .lead { font-size: 1.2rem; line-height: 1.6; color: #526173; }
+.main-content .api-meta { color: #526173; font-size: .85rem; }
+.main-content .example-links { margin: 1rem 0; }
+.main-content details { margin: .8rem 0; }
+.main-content summary { cursor: pointer; color: #274e76; }
+.main-content pre { tab-size: 2; }
+.main-content .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 1.8rem 0; }
+.main-content .card { display: block; padding: 1.2rem; border: 1px solid #e5e7eb; border-radius: 8px; }
+.main-content .card strong { display: block; margin-bottom: .4rem; }
