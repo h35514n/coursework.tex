@@ -1,0 +1,348 @@
+{
+  "archives": {
+    "coursework.tex": {
+      "archive_inventory": "coursework.tex/migration-evidence/workspace-cleanup/inventory.json",
+      "files": 6207,
+      "inventory_sha256": "951d8533b162e2485376b09829dfb2475fa19092206e12987bd2bd84bab2bb93",
+      "new_archive_bytes": 154189140,
+      "removed_entries": [
+        "build/final-api.log",
+        "build/final-matrix-summary.json",
+        "build/final-reviewed-summary.json",
+        "build/final-visual-review",
+        "build/homework-flow-api.log",
+        "build/homework-flow-check",
+        "build/homework-flow-python.log",
+        "build/homework-font-api.log",
+        "build/homework-font-glyph-check.log",
+        "build/notes-font-restoration",
+        "build/post-cleanup-smoke-summary.json",
+        "build/text-glyph-review.json"
+      ],
+      "working_copy_bytes": 419315270
+    },
+    "phys321-classical-mechanics": {
+      "archive_inventory": "phys321-classical-mechanics/migration-evidence/workspace-cleanup/inventory.json",
+      "files": 789,
+      "inventory_sha256": "358c147c4c50cfb23020a40445d86b7c803cba47d3e19c089e2f3c4b2f8914ca",
+      "new_archive_bytes": 6859526,
+      "removed_entries": [
+        "build/candidate",
+        "build/comparison-v2-adopted",
+        "build/homework-flow-build.log",
+        "build/regression.lock",
+        "notes.toc",
+        "problems.aux",
+        "problems.log",
+        "problems.out",
+        "problems.toc",
+        "problemsets.aux",
+        "problemsets.toc"
+      ],
+      "working_copy_bytes": 65469580
+    },
+    "phys331-electricity-and-magnetism": {
+      "archive_inventory": "phys331-electricity-and-magnetism/migration-evidence/workspace-cleanup/inventory.json",
+      "files": 1531,
+      "inventory_sha256": "1e7b7363e64008a7d5183e97ffed05c46b2710494c0a7bfb34f7769b17100537",
+      "new_archive_bytes": 2997214,
+      "removed_entries": [
+        "build/candidate",
+        "build/comparison-v2-final",
+        "build/comparison-v2-pagella-euler",
+        "build/comparison-v2-pazo-homework",
+        "build/final-matrix.log",
+        "build/heading-spacing-installed.log",
+        "build/homework-flow-build.log",
+        "build/homework-font-checkpoint-check.log",
+        "build/homework-font-compare.log",
+        "build/homework-font-installed.log",
+        "build/homework-font-matrix.log",
+        "build/integral-sizes-installed.log",
+        "build/post-cleanup-smoke",
+        "build/regression.lock",
+        "build/summaries",
+        "build/v2-adoption",
+        "build/v2-font-activation"
+      ],
+      "working_copy_bytes": 134841571
+    },
+    "phys432-thermal-physics": {
+      "archive_inventory": "phys432-thermal-physics/migration-evidence/workspace-cleanup/inventory.json",
+      "files": 1460,
+      "inventory_sha256": "4d2ca4cd8ddde9120a5b8d876252e4540623091900c80100d5a2603158876872",
+      "new_archive_bytes": 11020365,
+      "removed_entries": [
+        "build/candidate",
+        "build/comparison-v2-adopted",
+        "build/homework-flow-build.log",
+        "build/regression.lock",
+        "assignments.toc",
+        "notes.aux",
+        "notes.log",
+        "notes.out",
+        "notes.toc"
+      ],
+      "working_copy_bytes": 88316438
+    },
+    "phys433-quantum-physics": {
+      "archive_inventory": "phys433-quantum-physics/migration-evidence/workspace-cleanup/inventory.json",
+      "files": 1213,
+      "inventory_sha256": "ad9cec7d1dcc0fa5da1855882a3673a7529d9ce0c1e3a529e27dc3aec1bf7816",
+      "new_archive_bytes": 1783298,
+      "removed_entries": [
+        "build/candidate",
+        "build/comparison-v2-final",
+        "build/comparison-v2-pagella-euler",
+        "build/comparison-v2-pazo-homework",
+        "build/final-matrix.log",
+        "build/homework-flow-build.log",
+        "build/homework-font-checkpoint-check.log",
+        "build/homework-font-compare.log",
+        "build/homework-font-installed.log",
+        "build/homework-font-matrix.log",
+        "build/post-cleanup-smoke",
+        "build/regression.lock",
+        "build/summaries",
+        "build/v2-adoption",
+        "build/v2-font-activation"
+      ],
+      "working_copy_bytes": 94304891
+    },
+    "phys440-wave-optics": {
+      "archive_inventory": "phys440-wave-optics/migration-evidence/workspace-cleanup/inventory.json",
+      "files": 713,
+      "inventory_sha256": "d31c950ee662c5df791ecfb53c44b0a0efc941c823ce49fbdd47da1abaf13504",
+      "new_archive_bytes": 938501,
+      "removed_entries": [
+        "build/candidate",
+        "build/comparison-v2-final",
+        "build/comparison-v2-pagella-euler",
+        "build/comparison-v2-pazo-homework",
+        "build/final-matrix.log",
+        "build/homework-flow-build.log",
+        "build/homework-font-checkpoint-check.log",
+        "build/homework-font-compare.log",
+        "build/homework-font-installed.log",
+        "build/homework-font-matrix.log",
+        "build/post-cleanup-smoke",
+        "build/regression.lock",
+        "build/summaries",
+        "build/v2-adoption",
+        "build/v2-font-activation"
+      ],
+      "working_copy_bytes": 19231516
+    },
+    "phys491-capstone": {
+      "archive_inventory": "phys491-capstone/migration-evidence/workspace-cleanup/inventory.json",
+      "files": 540,
+      "inventory_sha256": "3ba9f58f0f10b528b0fd7ae4fa49242fcd7e27ccf11fe994eadbe69a93969a7e",
+      "new_archive_bytes": 990819,
+      "removed_entries": [
+        "build/candidate",
+        "build/comparison-v2-final",
+        "build/comparison-v2-pagella-euler",
+        "build/comparison-v2-pazo-homework",
+        "build/final-matrix.log",
+        "build/homework-flow-build.log",
+        "build/homework-font-checkpoint-check.log",
+        "build/homework-font-compare.log",
+        "build/homework-font-installed.log",
+        "build/homework-font-matrix.log",
+        "build/post-cleanup-smoke",
+        "build/regression.lock",
+        "build/summaries",
+        "build/v2-adoption",
+        "build/v2-font-activation"
+      ],
+      "working_copy_bytes": 11783111
+    }
+  },
+  "date": "2026-09-11",
+  "preservation": {
+    "all_course_content_and_runtime_hashes_unchanged": true,
+    "all_refs_unchanged": true,
+    "phys331_working_edit_unchanged": true,
+    "snapshots_verified": [
+      "phys321-classical-mechanics/baseline",
+      "phys321-classical-mechanics/checkpoints/v2-adopted",
+      "phys331-electricity-and-magnetism/baseline",
+      "phys331-electricity-and-magnetism/checkpoints/v2-api",
+      "phys331-electricity-and-magnetism/checkpoints/v2-final",
+      "phys331-electricity-and-magnetism/checkpoints/v2-pagella-euler",
+      "phys331-electricity-and-magnetism/checkpoints/v2-pazo-homework",
+      "phys432-thermal-physics/baseline",
+      "phys432-thermal-physics/checkpoints/v2-adopted",
+      "phys433-quantum-physics/baseline",
+      "phys433-quantum-physics/checkpoints/v2-api",
+      "phys433-quantum-physics/checkpoints/v2-final",
+      "phys433-quantum-physics/checkpoints/v2-pagella-euler",
+      "phys433-quantum-physics/checkpoints/v2-pazo-homework",
+      "phys440-wave-optics/baseline",
+      "phys440-wave-optics/checkpoints/v2-api",
+      "phys440-wave-optics/checkpoints/v2-final",
+      "phys440-wave-optics/checkpoints/v2-pagella-euler",
+      "phys440-wave-optics/checkpoints/v2-pazo-homework",
+      "phys491-capstone/baseline",
+      "phys491-capstone/checkpoints/v2-api",
+      "phys491-capstone/checkpoints/v2-final",
+      "phys491-capstone/checkpoints/v2-pagella-euler",
+      "phys491-capstone/checkpoints/v2-pazo-homework"
+    ],
+    "unchanged_evidence_files": 39325
+  },
+  "publication": "Signed local commits only; no pushes or tag changes.",
+  "repositories": {
+    "coursework.tex": {
+      "changed_files": [
+        {
+          "path": "README.md",
+          "sha256": "6054cb377e04a38e2661152f3f690d7655584a7bfa1bc2d20a6b43bb9cc3c087"
+        },
+        {
+          "path": "docs/FINALIZATION.md",
+          "sha256": "f1e5c657b0c1455e2dbbd539bf1eee958b60b9e419b1d2480db805bf72c17431"
+        },
+        {
+          "path": "docs/FONT-REVIEW.md",
+          "sha256": "75337b05c0abbc25118727c19da07425f118279eec22fec0a80447f79e3c76d7"
+        },
+        {
+          "path": "docs/KNOWN-ISSUES.md",
+          "sha256": "705e0b64faeace39037bdd3cf86288f5d104f61e7e5b6bdd1475ba016070bcd0"
+        },
+        {
+          "path": "docs/REFACTOR-REPORT.md",
+          "sha256": "98c457bf9ebf5208881c6948b56b38f6a403094a599b8c37df1e1fec7eff5f57"
+        },
+        {
+          "path": "tests/README.md",
+          "sha256": "adc17e6ba0cfe0f131d800fa1f411eae875beb1e177288e5f03434b8052fbe61"
+        }
+      ],
+      "starting_revision": "eb41ec8b3303c98cf4937ac81bbf4721ed928127",
+      "starting_status": ""
+    },
+    "phys321-classical-mechanics": {
+      "changed_files": [
+        {
+          "path": "Makefile",
+          "sha256": "f3f94dafe2609d7a87a43c562fd05faae4e8f8a72915583990798ac14024c261"
+        },
+        {
+          "path": "README.md",
+          "sha256": "4645e82b908be8efc55bc6ea910eeb6109f6565d06b64880405e99e11fa240d3"
+        }
+      ],
+      "starting_revision": "6eaf15eb1a7982443e3dd366dc7b693088628f41",
+      "starting_status": ""
+    },
+    "phys331-electricity-and-magnetism": {
+      "changed_files": [
+        {
+          "path": "MIGRATION.md",
+          "sha256": "5372441e05c803b06406cdb4e0ae23ea2e3b950689fbb0b62f091a1037803d73"
+        },
+        {
+          "path": "Makefile",
+          "sha256": "4d42c0efc3c18f4d9a4836c0a3d9e3d3cc5ebfc6bcc79ab92d27d0846f4861ce"
+        },
+        {
+          "path": "README.md",
+          "sha256": "27e6c8f4e19d857244d7d2264b903aedfe0b821e8e2a46d1e4365a9e562a5432"
+        }
+      ],
+      "starting_revision": "ac72505ec7c9c4e5852c6222c8f3a659e008ad2d",
+      "starting_status": " M homework.tex\n"
+    },
+    "phys432-thermal-physics": {
+      "changed_files": [
+        {
+          "path": "Makefile",
+          "sha256": "7a0bcdbf3f60be4cac100cae6b5de12a41ce05d8e086f23c17d21a7f63fd3388"
+        },
+        {
+          "path": "README.md",
+          "sha256": "3e64642216485815a0fbc09e92bb3fdbd0161e814356dea1f88bce8d2bf70fcc"
+        }
+      ],
+      "starting_revision": "1dd7721719062289c893948c432106b13aeec77a",
+      "starting_status": ""
+    },
+    "phys433-quantum-physics": {
+      "changed_files": [
+        {
+          "path": "MIGRATION.md",
+          "sha256": "c696fe0728f874a82a5fad6c5838a1a58f693962fd8018124bf2cb9c229236f4"
+        },
+        {
+          "path": "Makefile",
+          "sha256": "4d42c0efc3c18f4d9a4836c0a3d9e3d3cc5ebfc6bcc79ab92d27d0846f4861ce"
+        },
+        {
+          "path": "README.md",
+          "sha256": "deb37ba0f1d272063e64d8cc6cf2a4e134d6e2bd8db81d5d28a79f0a36a2a131"
+        }
+      ],
+      "starting_revision": "56d3ccf712dae196f28f3a7e20236f955cbbedd0",
+      "starting_status": ""
+    },
+    "phys440-wave-optics": {
+      "changed_files": [
+        {
+          "path": "MIGRATION.md",
+          "sha256": "002f5f13fefbca4aefca5805abd3abc1f8ca89dd26e368352e8b43847971a40b"
+        },
+        {
+          "path": "Makefile",
+          "sha256": "4d42c0efc3c18f4d9a4836c0a3d9e3d3cc5ebfc6bcc79ab92d27d0846f4861ce"
+        },
+        {
+          "path": "README.md",
+          "sha256": "2b4d67e0e6d7001648d6d33632227d6a5435f1f692dde6e9156c3edadc702512"
+        }
+      ],
+      "starting_revision": "eb8693661aa9c89b1d70204e139099ec667a1675",
+      "starting_status": ""
+    },
+    "phys491-capstone": {
+      "changed_files": [
+        {
+          "path": "MIGRATION.md",
+          "sha256": "5fc936dd5c9ce6f36b36fdc24a72e3a0732b92395ab0cf6993a0fb3c7a42b653"
+        },
+        {
+          "path": "Makefile",
+          "sha256": "7a0bcdbf3f60be4cac100cae6b5de12a41ce05d8e086f23c17d21a7f63fd3388"
+        },
+        {
+          "path": "README.md",
+          "sha256": "ef50a9bd860bbda5f1f644df886fd4bed84663cf7f3e8b7af78d0345e0fdfcb5"
+        }
+      ],
+      "starting_revision": "3a452835609d03a99509653e2a065168ff11523e",
+      "starting_status": ""
+    }
+  },
+  "validation": {
+    "ambiguous_prefix_rejections": 20,
+    "checks": [
+      "matching common Makefile rules",
+      "unchanged existing LaTeX/viewer recipes",
+      "exact names precede prefix matching",
+      "build configuration and glyph dependencies",
+      "installed module and recorder resolution",
+      "no hidden solution/discussion inputs",
+      "no missing glyphs or duplicate labels/destinations"
+    ],
+    "editor_routing_tests": 32,
+    "font_notices": "PHYS 331 enlarged-integral size substitutions match its preserved homework-font-installed.log.",
+    "inventory": "coursework.tex/migration-evidence/workspace-cleanup/validation-sha256.json",
+    "inventory_sha256": "3049fe33b85cb2a3f9a583f41c974b4d315a13a3804b7f42d8d829502f9e36d0",
+    "python_tests": 24,
+    "readme_tex_examples": 24,
+    "smoke_outputs": 15,
+    "smoke_pages": 712,
+    "valid_make_aliases": 476
+  }
+}

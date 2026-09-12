@@ -1,3 +1,11 @@
+> Workspace status: the former testbed and migration worktrees are no longer
+> present. Paths and testbed results below are historical. Consult the
+> [cleanup record](WORKSPACE-CLEANUP.md) for current commands and evidence.
+
+> `scripts/font_review.py` is a historical reproduction utility requiring the
+> original testbed layout. Use the current font checks in `tests/README.md`
+> for the installed defaults. The original specimen PDF remains preserved.
+
 # Coursework font review
 
 The later [notes styling restoration](NOTES-FONT-RESTORATION.md) supersedes

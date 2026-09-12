@@ -1,3 +1,7 @@
+> Workspace status: the former testbed and migration worktrees are no longer
+> present. Paths and testbed results below are historical. Consult the
+> [cleanup record](WORKSPACE-CLEANUP.md) for current commands and evidence.
+
 # Coursework v2.0.0 finalization
 
 The later [notes styling restoration](NOTES-FONT-RESTORATION.md) supersedes

@@ -1,8 +1,9 @@
 # Coursework v2
 
 XeLaTeX classes and notation for course notes, assignments, exams, worksheets,
-and compact problem handouts. Version 2 is a breaking API change. The four
-migrated courses use this API; recovery branches preserve their v1 sources.
+and compact problem handouts. Version 2 is a breaking API change. All six
+migrated courses (PHYS 321, 331, 432, 433, 440, and 491) use this API; recovery
+branches preserve their v1 sources.
 
 Requires **TeX Live 2026**, including the June 2026 LaTeX kernel, and XeLaTeX.
 Font selection is centralized in `coursefonts.sty`. Both classes use Pagella
@@ -209,7 +210,7 @@ Do not run `install.sh` from a review worktree. Use scoped `TEXINPUTS`:
 TEXINPUTS="$(pwd)/tex/latex/coursework//:" latexmk -xelatex document.tex
 python3 -m unittest discover -s tests -v
 python3 tests/run_api.py
-make -C ../coursework-testing candidate
+make -C ../phys432-thermal-physics candidate
 ```
 
 The regression driver builds every combined/individual document, compact
@@ -217,9 +218,14 @@ handout and worksheet. It records revisions, source hashes, resolved package
 paths, recorder inputs, tool versions, warnings, PDFs, text and page renders.
 `make compare` remains strict against the original baseline. Intentional
 changes are reviewed before saving an explicitly named immutable checkpoint.
+Existing checkpoints predate later font and course-source changes; strict
+comparisons may therefore report previously accepted differences. Read the
+revision-specific reports before interpreting them as new regressions.
 
-The permanent testbed and six courses default to this checkout for regression
-builds. Set `candidate_repository` in their `regression.json` to another checkout;
+All six course repositories default to this checkout for regression builds.
+The former `coursework-testing` repository is no longer present; historical
+reports mentioning it describe the earlier migration workspace. Set
+`candidate_repository` in a course’s `regression.json` to another checkout;
 `COURSEWORK_TOOLS` overrides the shared scripts directory. Frozen references resolve
 their bundled classes locally and remain valid when their directories move.
 
@@ -231,3 +237,6 @@ The two formerly self-contained courses, PHYS 321 and PHYS 432, now use v2 local
 See the [adoption report](docs/LEGACY-COURSES-ADOPTION.md) and
 [legacy migration workflow](docs/LEGACY-COURSE-MIGRATION.md) for their baselines,
 source mappings, validation, and archived study guides.
+
+Current maintenance checks and evidence locations are in the
+[workspace cleanup record](docs/WORKSPACE-CLEANUP.md).

@@ -23,5 +23,6 @@ against the original API checkpoint at 300 dpi.
 
 `tests/test_legacy_migration.py` covers the two self-contained course dialects,
 embedded/imported solution extraction, label disambiguation, archival exclusions,
-and relocated local-class snapshots. Existing regression-harness tests remain
-in the retained testbed and can target this checkout with `COURSEWORK_TOOLS`.
+and relocated local-class snapshots. These snapshot tests run from this repository. The additional harness tests
+reported during the original migration belonged to the former testbed, which
+is no longer present; do not count them as part of the current local test suite.

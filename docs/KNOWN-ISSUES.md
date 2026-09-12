@@ -1,35 +1,32 @@
 # Remaining content and layout issues
 
-Homework now uses its restored original Pazo math font. See
-[HOMEWORK-FONT-RESTORATION.md](HOMEWORK-FONT-RESTORATION.md) for current validation
-and font-size notices. The release-matrix statements below describe v2.0.0;
-the current warning inventory is `checkpoints/v2-pazo-homework/warnings.json`.
+The current defaults are Pagella prose, Pazo/Palatino homework mathematics,
+and Pagella notes mathematics with AMS Euler chapter numerals. All six courses
+use the shared classes. No API or font decision remains pending.
 
-The final migration matrix introduces no warnings relative to the reviewed
-font-adoption checkpoint. There are no missing glyphs, duplicate PDF destinations,
-or duplicate active labels. These existing issues remain separate follow-up work:
+Warnings are evidence tied to particular revisions, not a single evergreen
+checkpoint. The [homework restoration](HOMEWORK-FONT-RESTORATION.md),
+[legacy course adoption](LEGACY-COURSES-ADOPTION.md), and
+[notes restoration](NOTES-FONT-RESTORATION.md) record their respective inventories.
+The [cleanup record](WORKSPACE-CLEANUP.md) links the current smoke-build logs.
+Historical reports and frozen manifests retain their original results.
 
-- **Long equations:** PHYS 331 `homework/02-pset/solution10.tex`, line 64,
-  overflows by 72.29 points with restored Pazo math (61.61 points at v2.0.0).
-  Its testbed copy has the same warning.
-  Reflow that derivation in a dedicated content-layout change.
-- **Paragraph and page fitting:** PHYS 433 has a 14.16-point overflow in its
-  first assignment; notes retain smaller overflows and underfull boxes.
-  Notes also retain classicthesis page-height warnings. Review these locally
-  without changing the global font or spacing defaults.
-- **Standalone references:** the thermal testbed's Useful mathematics chapter
-  references `sec:velocity_distribution`, and its Maxwell–Boltzmann chapter
-  references `eq:guassian_integral`. Both resolve in combined notes; standalone
-  builds omit their target chapters. Keep the warnings visible unless external
-  chapter-reference support is added deliberately.
-- **Package and bookmark notices:** unicode-math reports its math-command and
-  mathtools bracket ownership; classicthesis reports its footmisc configuration.
-  The thermal notes also retain hyperref PDF-string notices. These are recorded,
-  not suppressed. Bookmark wording can be reviewed separately from printed math.
+- **Long equations:** PHYS 331's second assignment recorded a 72.29-point
+  overflow in solution 10 with restored Pazo math. PHYS 433's first assignment
+  recorded a 14.16-point overflow. Reflow these in dedicated content changes.
+- **Mechanics layout:** legacy-course validation recorded content overflows up
+  to 60.17 points. These are preserved in that course's warning backlog.
+- **Thermal notes:** the Pagella restoration recorded a 35.56-point overflow
+  in a long probability-list item and smaller overflows in other chapters.
+  Paragraph fitting and classicthesis page-height warnings remain visible.
+- **Standalone references:** thermal's Useful mathematics chapter references
+  `sec:velocity_distribution`; its Maxwell–Boltzmann chapter references
+  `eq:guassian_integral`. They resolve in combined notes but point outside the
+  standalone chapter. Keep these warnings visible.
+- **Package and bookmark notices:** math-command ownership, mathtools bracket
+  configuration, footmisc configuration, and PDF-string notices are recorded
+  where emitted. Review bookmark wording separately from printed mathematics.
 
-Every occurrence remains in each repository's `checkpoints/v2-final/warnings.json`.
-The preserved comparison reports distinguish existing and resolved warnings;
-there are no new warning entries. See [FINALIZATION.md](FINALIZATION.md).
-
-The older mechanics and thermal repositories with local classes remain outside
-this migration. No additional API or font decisions are pending.
+The latest font validation introduced no missing glyphs, duplicate active labels,
+duplicate PDF destinations, or font-substitution warnings. Current smoke checks
+report their own results; older warning counts are not claims about edited sources.

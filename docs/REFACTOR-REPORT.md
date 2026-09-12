@@ -1,3 +1,7 @@
+> Workspace status: the former testbed and migration worktrees are no longer
+> present. Paths and testbed results below are historical. Consult the
+> [cleanup record](WORKSPACE-CLEANUP.md) for current commands and evidence.
+
 # Coursework v2 review report
 
 This records the completed review milestone before adoption. For the user's
