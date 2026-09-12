@@ -1,5 +1,8 @@
 # Coursework v2 adoption
 
+The later [notes styling restoration](NOTES-FONT-RESTORATION.md) supersedes
+the Euler notes choice recorded here; this report retains its historical results.
+
 For the completed release, current validation, retained evidence and rollback, see
 [FINALIZATION.md](FINALIZATION.md). This page records the adoption stages.
 The later [homework font restoration](HOMEWORK-FONT-RESTORATION.md) supersedes

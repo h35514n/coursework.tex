@@ -1,5 +1,8 @@
 # Coursework v2.0.0 finalization
 
+The later [notes styling restoration](NOTES-FONT-RESTORATION.md) supersedes
+the Euler notes choice recorded here; this report retains its historical results.
+
 This records the signed v2.0.0 release. Homework mathematics was subsequently
 restored to its original Pazo/Palatino appearance; see
 [HOMEWORK-FONT-RESTORATION.md](HOMEWORK-FONT-RESTORATION.md). The release tags,

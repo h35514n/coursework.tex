@@ -15,6 +15,12 @@ be included in either class or in an article loading the shared packages.
 The real-course regression driver is `scripts/regression.py`; set
 `COURSEWORK_TEST_ROOT` to the course root when invoking it directly.
 
+`python3 tests/check_notes_font.py` checks the notes default against an explicit
+Pagella selection, verifies the font families found in the saved thermal PDF,
+and checks mixed-case contents lettering with chapter and local contents.
+`python3 tests/check_homework_font.py` verifies the restored Pazo homework glyphs
+against the original API checkpoint at 300 dpi.
+
 `tests/test_legacy_migration.py` covers the two self-contained course dialects,
 embedded/imported solution extraction, label disambiguation, archival exclusions,
 and relocated local-class snapshots. Existing regression-harness tests remain

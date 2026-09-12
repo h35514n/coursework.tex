@@ -1,0 +1,477 @@
+{
+  "class_parent_revision": "737bf6975825eb5f19cdc7d017e5929a972ec3a1",
+  "tested_class_files": {
+    "courseassignments.sty": "1c668f1ec34f321bbbdbba4253225cbc681587eb12e9c78331f38d0dedce899a",
+    "coursecommon.sty": "f77f382d63787ca34913962796b0dc0023804b5cd0092012ff4349352fb8a36f",
+    "courseenvironments.sty": "ecfbd5acb98dcb55558003844e6f204cc508c373f118734edcf0801458ad2c30",
+    "coursefonts.sty": "466ece72651dba97303fcda0fb975851d597af8bcc95b4b5fbc0d818d41ea98d",
+    "coursemath.sty": "f99da360ef1ee3cc2732d993fcc928a246ce5a3619e1ffab94d80de932623708",
+    "coursenotes.cls": "b44e3c302ec1ff440999da6dc0e749a10006dbd14d098ffffd220fe17144165d",
+    "coursephys.sty": "2645c75a51d4db91be757d1fc09b95d5fd6c1a1820ae4ac040ee50e1c9bdffcc",
+    "coursepsets.cls": "f839e1d839acbbe5284ab37d12e27d9b4951725f153ea5ca152d045a4ace7e6d",
+    "coursework-boldr.pdf": "56bcafbf42afb329719e81fdb90e426b8e169c5cf0d41c3d095c64561ced5f8a",
+    "coursework-scriptr.pdf": "54b8fdc20ab5f3a612e1fc0318f02a0a27c8372ffcf9788994b6b8e63e08d4f2"
+  },
+  "source_revisions": {
+    "phys321-classical-mechanics": {
+      "revision": "28cd6d356a43aca0135ac7dac5aaedcac2885495",
+      "initial_status": "",
+      "notes_and_preamble_hashes": {
+        "notes.tex": "e77c5e907785c2d3bb11af3b4893ca408b5a00fc3d19251c2b38a00aa63f18e3",
+        "course.tex": "2a76926810d38dae9f4f3a090aab01812eb62549c7f9055c2a6618686f9c4dae",
+        "notes/chapter01-appendix.tex": "b6fe1240eeb5fd7db0194a5c1be9313f21f2fba0a02c1b6f399fca374014fa74",
+        "notes/chapter01.tex": "f70376bf1c3ffc2f9640954ca9f2d859cb5a807ed5ba8b6e77bce8d8d6577e4c",
+        "notes/chapter02.tex": "06e71e9b8539fb82776c3ba26c2d3ab5281eb5c49cd9614c9e42decc4616ac40",
+        "notes/chapter03.tex": "f2eb6113534a8d24f1af0a256d5f79519ef2bb8a97800e4751f7703284085005",
+        "notes/chapter04.tex": "d7cb24dbe0cb7e3a971970ca18d61b9f43ef7888835a9db2a319aa2b37ef7471",
+        "notes/chapter06.tex": "1a9dbc6fa8da5a65fec5f6e4ecd56f67de69ee188753f3e66eaa59cbf442f6e5",
+        "notes/chapter07.tex": "8365ea2465e30a89ce57ae65a3369672039d2094e712b51917d302410ba2fac4",
+        "notes/chapter09.tex": "1e8eeedbc291b0d7715b9bcf1d481fc94ca603a6595ad2928c8983b17f0c1f75"
+      }
+    },
+    "phys331-electricity-and-magnetism": {
+      "revision": "ac72505ec7c9c4e5852c6222c8f3a659e008ad2d",
+      "initial_status": " M homework.tex\n",
+      "notes_and_preamble_hashes": {
+        "notes.tex": "1ad914b752a69873b23c5baa2e2c9c9f34403ec0c8f6ec4338308325362c1aa7",
+        "course.tex": "0e0ff17e5c4ef6a2bf8895de3ab54a942ff7dc7b24c5f79284d329b7500f8bf3",
+        "notes/01-vector-analysis.tex": "0b413b3a1c14bfa73bfcf41846ee7dbbf536104064e963ced4ae4a4c7225750a",
+        "notes/02-electrostatics.tex": "6cfe3608bda9d121192296133f7ff2a385cd9e31d466ad44db6cfdfb7e7aff7b",
+        "notes/03-potentials.tex": "15b9272660eb7e272b1cafaaf31415f4f44b89018c62abd75a82046fb5ae440a",
+        "notes/04-electric-fields.tex": "92da382393863bc7091a1ef520072acaff6b30442c120d30937bac155284aaf9",
+        "notes/05-magnetostatics.tex": "c636f48a0e2960a4383bdbac619725625f36286eb28cd638b8a0827e9dbdfb7f",
+        "notes/06-magnetic-fields.tex": "b10a1e2a53ac4a19e5a0735329aa7d471f8d23f2c48d5c7ea93b8e544b3aeab6",
+        "notes/07-electrodynamics.tex": "8dee28e8528f0ecee31c9e06af15c9a3bfe28501616e2af9a39fcf1403ff664c",
+        "notes/08-conservation-laws.tex": "37d7d03f113a36532318aa0cce389efafa81239c1bd6037b27c8df7541d401e2"
+      }
+    },
+    "phys432-thermal-physics": {
+      "revision": "275e1a8a9326d6a0037df58c47fff7ce5fa53c90",
+      "initial_status": "",
+      "notes_and_preamble_hashes": {
+        "notes.tex": "8896d685783b39d09fbe49ddf721268b97f6b4c7c5c4aaf23b45172239a9b3e8",
+        "course.tex": "a4c908a3a4e951cfa94aad07956a87184283effc5eed3f63db2e09de8f316f68",
+        "notes/01-introduction.tex": "167d6797751bba230da7ef91fad4d3bdf7799b7340a0ffff8266db710e2ef834",
+        "notes/01-useful-maths.tex": "9eab2b3410755dc741d239fb5380cf48f83df237a4571e5777a9b15194dcd662",
+        "notes/02-heat.tex": "a25c65590ba606628925a16d232c2a10de04fb88a6601ed443bf69685e1bc61b",
+        "notes/03-probability.tex": "3fd973cb3520790cfb9459fa13cc8e9276d5a8fd73cbbd07df4d7aa14c63a52d",
+        "notes/04-temperature-and-boltzmann.tex": "9c396ca04c953a15937907ffcf6b46bb4d501f4788d32091556d3ed9a21325bb",
+        "notes/05-mb-distribution.tex": "686b1863e4b51701893f9f4cfc9946503f37e9105904d74877732a83bcbb5136",
+        "notes/06-pressure.tex": "fd08c7d14a1da7fc1c0561bd941150013fe3bfb3e75125b5f40cb1234764b49f",
+        "notes/11-energy.tex": "ae8a52d4b2d50165e1a28a81d933df5e84b44490b49ac06816b3ec91f0e990e7",
+        "notes/12-isothermal-adiabatic.tex": "755e7f670361c2bdfa2d189ecc9b5639a11c12f72e232ecea798a57d48ce43c5",
+        "notes/14-entropy.tex": "bd5cb5f52dc9f64a0c7661642f469b6d9ae991caec6a42c57cc8c7fe0f0d33d6",
+        "notes/15-information-theory.tex": "42ac93da615d7b0969c52ff421f343a26c2f3ffb08480f97131dcaba4762da18",
+        "notes/16-thermodynamic-potentials.tex": "4c768701e552e393c232869c48a53a44494c92128df07a1915d238d8387908a1",
+        "notes/18-the-third-law.tex": "95fd5e9f4e16507b11e8bbd2cdb3bb6245c372bb48570696559ed2c6bc554e02",
+        "notes/19-equipartition-of-energy.tex": "5c085824256a17c7cc3acc6a11f5f21da52722dd786159e177c567a8bd03ff93",
+        "notes/20-the-partition-function.tex": "ed0f739589439c4ec7cc9e34167cad8279e67bf9719216de9b8ee51b667afa10",
+        "notes/21-statistical-mechanics-of-an-ideal-gas.tex": "393ef2650dbb920460a1c92d112f3a4debd150edd7ab031a2917056cc3454186",
+        "notes/23-photons.tex": "028adbdde8a59343ada14e05a56ecde185fcacfe93f5727fc74180e58e2585cb",
+        "notes/24-phonons.tex": "35a5a559defc741ba28a8c67ca7964d32a11998b02992cfead1db458a2ac2e8e",
+        "notes/33-brownian-motion-and-fluctuations.tex": "9884dc9d7a749a03a3a415b973ef5fc8d7d02374441ce7862e7841a6be2eb1f7"
+      }
+    },
+    "phys433-quantum-physics": {
+      "revision": "56d3ccf712dae196f28f3a7e20236f955cbbedd0",
+      "initial_status": "",
+      "notes_and_preamble_hashes": {
+        "notes.tex": "ffad9921689e002c8a02088b2c1516c81cb9b07fe94d16da8ff54b192f585dde",
+        "course.tex": "2ced1f50c773160b06c66845f0ffdfc58f50924454a6c549b47e795a6df0fec9",
+        "notes/01-wave-function.tex": "1961846b66838d59732fd5baf028ef05492ded91bfe9a00104b7603c2429c5f1",
+        "notes/02-time-independent-schrodinger.tex": "856c3c3aff83a7a46cf0cc1f3735a82da4dfc3124b7a000eb85044c7344516fa",
+        "notes/03-formalism.tex": "0bb3a813320a97647fd5a9fb2d324be69aa5231965842c39866f7bd81e266b48",
+        "notes/04-three-dimensions.tex": "91508d03f829d3b3e83ce35043fe5a1be337d4e431c9322dce8ccdf85ac9c339",
+        "notes/05-identical-particles.tex": "7461125581cc37bd94f4aa780c0d8b23e9a7d1738a0f003dad1e60a6cd086ef2",
+        "notes/06-symmetries.tex": "0c819cae74182447dae26bbbe363a4b4f7136473d9bec0aa45d2a4d65ebeac29",
+        "notes/07-perturbation-theory.tex": "30db2c16d23057ab421944defe634d0f4fcccbc06e5d59d8f36ae2ff911c10ac",
+        "notes/08-variational-principle.tex": "c5884f9883f5d9723da75d2fc741da3d5fe6c9d80b267925916bf65eb75650bb",
+        "notes/09-wkb-approximation.tex": "2529f91840bc05a812bcc729fce7f824525679ed00420efadf123a08a5d41c02",
+        "notes/10-scattering.tex": "04c0444a4da1e167812662b394c8db678ef8a2eac0730bf53b33c342fe9ec001",
+        "notes/11-quantum-dynamics.tex": "4aea0eb77848e1bb214792d4f1f44f69139c2a73b0f1e82694e61e914c3fdc67",
+        "notes/12-afterword.tex": "d37ada4dbfaaffdd1675f13068ad996783c409c0d6107d255118c0d37801b441",
+        "notes/a-linear-algebra.tex": "00f0ab1f03ee44330b6d60abf2cdfb4056dda21956d38acbc97856f0f391792f"
+      }
+    },
+    "phys440-wave-optics": {
+      "revision": "eb8693661aa9c89b1d70204e139099ec667a1675",
+      "initial_status": "",
+      "notes_and_preamble_hashes": {
+        "notes.tex": "36705a4a5aac0d12236fff526861583f36d8c96e4dcdac85a026fb602b33be17",
+        "course.tex": "b655709f2cf611c13ff9487d446ab33218209b0284707996f57168fa2396afb2",
+        "notes/01-brief-history.tex": "4ef3a90dea1d22bb13f713cb83d07e969ee1237435b7a22896d13434ef78eae3",
+        "notes/02-wave-motion.tex": "a69f85d52c61d944d3840eb49daebaaec51f0699856e45927aaae2a596ce3504",
+        "notes/03-electromagnetic-theory.tex": "9cca5445237925f20ab298dcd024c9da2affbad14266ddd75635f554669d68b1",
+        "notes/04-propagation-of-light.tex": "f58ec028891e69077b81e34f83d4ba7aeab248165cf776f270127eec40a69302",
+        "notes/05-geometrical-optics.tex": "c27942d64180f903a9b45ed5fd839b8d1accbf79bfeb7223fdbe3683041bd85f",
+        "notes/06-more-geometrical-optics.tex": "b7defee880abb765c1b5f0d8f822d6d69595dda5c95355389797c2858d4aae33",
+        "notes/07-superposition.tex": "4a51f747bc6b070b8bcbe5b77a429f9951162d5126a361d7d2e0c8ff9e65fd2b",
+        "notes/08-polarization.tex": "411163f8cb0226ae8d75d753366f8c3ed4bfe85c8769e6dddf82c67e098c845e",
+        "notes/09-interference.tex": "70f5134930317870d03cd42a636a609a7dba72f0cc9b328e65ad498279c01476",
+        "notes/10-diffraction.tex": "1cabf3ac8cd602efcc4e5507477e40e0bbe06fb9e0f5c8998440e9484f8e239b",
+        "notes/11-fourier-optics.tex": "53d65b917e1b32a5692c234e6386a560fd9e635a085c248e7e0b35f7ecb2e64e",
+        "notes/12-coherence-theory.tex": "7b6517a149770228b1b999b7f03559ec73fc66e45ba8b72037f2cc7520e148f1",
+        "notes/13-modern-optics.tex": "9cb8a305101ed15c5ead2d93bf912a8e2940784da8e2f385966ff41e0b2113ae"
+      }
+    },
+    "phys491-capstone": {
+      "revision": "3a452835609d03a99509653e2a065168ff11523e",
+      "initial_status": "",
+      "notes_and_preamble_hashes": {
+        "notes.tex": "6f6cbbc6b3f5ea916f81779a07540bd580307647e37e806241f62bd83f4cc9b8",
+        "course.tex": "d83901eaaef0756641437ab94ae0993fdf5c7896fe3f7a9d4338aeac29d3b09f"
+      }
+    }
+  },
+  "reference": {
+    "path": "/Users/jmromer/Courses/phys432-thermal-physics/migration-evidence/supplied-pdfs/notes.pdf",
+    "sha256": "7a78036c7e3d0dc150313215321270b767958562ba680481ed50bccb4926635c",
+    "pages": 44,
+    "restored_pages": 45,
+    "matching_embedded_font_families": [
+      "EURB10",
+      "TeXGyrePagella-Bold-Identity-H",
+      "TeXGyrePagella-Italic-Identity-H",
+      "TeXGyrePagella-Regular-Identity-H",
+      "TeXGyrePagellaMath-Regular-Identity-H"
+    ]
+  },
+  "notes_outputs": 67,
+  "notes_pages_before": 190,
+  "notes_pages_after": 188,
+  "api_cases": 39,
+  "python_tests": 24,
+  "notes_font_check": "passed",
+  "homework_glyph_comparison_dpi": 300,
+  "homework_matching_glyphs": true,
+  "homework_combined_matching_pages": 123,
+  "installed_notes_verified": 67,
+  "accepted_changes": [
+    "Pagella Math restores conventional italic math variables from the saved PDF.",
+    "Main contents use ordinary mixed-case Pagella with a compact chapter-number column.",
+    "Chapter display numerals use the saved PDF's AMS Euler bold face at 70pt.",
+    "Thermal combined notes and standalone probability each lose one page relative to Euler mathematics.",
+    "Existing v2 paragraph, environment, table and reference behavior is retained; the 2024 PDF is a font/style reference, not a whole-document pixel baseline."
+  ],
+  "warning_changes": {
+    "phys321-classical-mechanics:notes.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys321-classical-mechanics:notes/chapter01-appendix.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys321-classical-mechanics:notes/chapter01.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys321-classical-mechanics:notes/chapter02.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys321-classical-mechanics:notes/chapter03.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys321-classical-mechanics:notes/chapter04.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys321-classical-mechanics:notes/chapter06.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys321-classical-mechanics:notes/chapter07.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys321-classical-mechanics:notes/chapter09.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys331-electricity-and-magnetism:notes.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys331-electricity-and-magnetism:notes/01-vector-analysis.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys331-electricity-and-magnetism:notes/02-electrostatics.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys331-electricity-and-magnetism:notes/03-potentials.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys331-electricity-and-magnetism:notes/04-electric-fields.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys331-electricity-and-magnetism:notes/05-magnetostatics.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys331-electricity-and-magnetism:notes/06-magnetic-fields.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys331-electricity-and-magnetism:notes/07-electrodynamics.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys331-electricity-and-magnetism:notes/08-conservation-laws.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes.tex": {
+      "new": {
+        "Overfull \\hbox (35.56187pt too wide) in paragraph at lines 75--76": 1,
+        "Overfull \\hbox (4.10022pt too wide) in paragraph at lines 194--199": 1,
+        "Overfull \\hbox (1.33601pt too wide) in paragraph at lines 209--211": 1,
+        "Overfull \\hbox (0.9801pt too wide) in paragraph at lines 21--26": 1
+      },
+      "removed": {
+        "Overfull \\vbox (7.5pt too high) has occurred while \\output is active []": 1,
+        "Overfull \\hbox (33.40192pt too wide) in paragraph at lines 75--76": 1,
+        "Overfull \\hbox (6.35626pt too wide) in paragraph at lines 194--199": 1,
+        "Overfull \\hbox (1.32402pt too wide) in paragraph at lines 209--211": 1
+      }
+    },
+    "phys432-thermal-physics:notes/01-introduction.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/01-useful-maths.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/02-heat.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/03-probability.tex": {
+      "new": {
+        "Overfull \\hbox (35.56187pt too wide) in paragraph at lines 75--76": 1,
+        "Overfull \\hbox (4.10022pt too wide) in paragraph at lines 194--199": 1
+      },
+      "removed": {
+        "Overfull \\vbox (7.5pt too high) has occurred while \\output is active []": 1,
+        "Overfull \\hbox (33.40192pt too wide) in paragraph at lines 75--76": 1,
+        "Overfull \\hbox (6.35626pt too wide) in paragraph at lines 194--199": 1
+      }
+    },
+    "phys432-thermal-physics:notes/04-temperature-and-boltzmann.tex": {
+      "new": {
+        "Overfull \\hbox (1.33601pt too wide) in paragraph at lines 209--211": 1
+      },
+      "removed": {
+        "Overfull \\hbox (1.32402pt too wide) in paragraph at lines 209--211": 1
+      }
+    },
+    "phys432-thermal-physics:notes/05-mb-distribution.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/06-pressure.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/11-energy.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/12-isothermal-adiabatic.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/14-entropy.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/15-information-theory.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/16-thermodynamic-potentials.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/18-the-third-law.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/19-equipartition-of-energy.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/20-the-partition-function.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/21-statistical-mechanics-of-an-ideal-gas.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/23-photons.tex": {
+      "new": {
+        "Overfull \\hbox (0.9801pt too wide) in paragraph at lines 21--26": 1
+      },
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/24-phonons.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys432-thermal-physics:notes/33-brownian-motion-and-fluctuations.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys433-quantum-physics:notes.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys433-quantum-physics:notes/01-wave-function.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys433-quantum-physics:notes/02-time-independent-schrodinger.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys433-quantum-physics:notes/03-formalism.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys433-quantum-physics:notes/04-three-dimensions.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys433-quantum-physics:notes/05-identical-particles.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys433-quantum-physics:notes/06-symmetries.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys433-quantum-physics:notes/07-perturbation-theory.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys433-quantum-physics:notes/08-variational-principle.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys433-quantum-physics:notes/09-wkb-approximation.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys433-quantum-physics:notes/10-scattering.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys433-quantum-physics:notes/11-quantum-dynamics.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys433-quantum-physics:notes/12-afterword.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys433-quantum-physics:notes/a-linear-algebra.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys440-wave-optics:notes.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys440-wave-optics:notes/01-brief-history.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys440-wave-optics:notes/02-wave-motion.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys440-wave-optics:notes/03-electromagnetic-theory.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys440-wave-optics:notes/04-propagation-of-light.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys440-wave-optics:notes/05-geometrical-optics.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys440-wave-optics:notes/06-more-geometrical-optics.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys440-wave-optics:notes/07-superposition.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys440-wave-optics:notes/08-polarization.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys440-wave-optics:notes/09-interference.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys440-wave-optics:notes/10-diffraction.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys440-wave-optics:notes/11-fourier-optics.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys440-wave-optics:notes/12-coherence-theory.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys440-wave-optics:notes/13-modern-optics.tex": {
+      "new": {},
+      "removed": {}
+    },
+    "phys491-capstone:notes.tex": {
+      "new": {},
+      "removed": {}
+    }
+  },
+  "evidence": {
+    "path": "migration-evidence/notes-font-restoration",
+    "index": "migration-evidence/notes-font-restoration/sha256.json",
+    "index_sha256": "b6275f283de3a6637cd3762451886480f131144729f826cc076b74d29a39847b",
+    "files": 2735
+  },
+  "tool_versions": {
+    "xelatex": {
+      "executable": "/Library/TeX/texbin/xelatex",
+      "version": "XeTeX 3.141592653-2.6-0.999998 (TeX Live 2026)\nkpathsea version 6.4.2\nCopyright 2026 SIL International, Jonathan Kew and Khaled Hosny.\nThere is NO warranty.  Redistribution of this software is\ncovered by the terms of both the XeTeX copyright and\nthe Lesser GNU General Public License.\nFor more information about these matters, see the file\nnamed COPYING and the XeTeX source.\nPrimary author of XeTeX: Jonathan Kew.\nCompiled with ICU version 78.2; using 78.2\nCompiled with zlib version 1.3.2; using 1.3.2\nCompiled with FreeType2 version 2.14.1; using 2.14.1\nCompiled with Graphite2 version 1.3.14; using 1.3.14\nCompiled with HarfBuzz version 12.3.2; using 12.3.2\nCompiled with libpng version 1.6.55; using 1.6.55\nCompiled with pplib version v2.2\nUsing Mac OS X Core Text and Cocoa frameworks"
+    },
+    "latexmk": {
+      "executable": "/Library/TeX/texbin/latexmk",
+      "version": "Latexmk, John Collins, 9 March 2026. Version 4.88"
+    },
+    "pdftoppm": {
+      "executable": "/opt/homebrew/bin/pdftoppm",
+      "version": "pdftoppm version 26.09.0\nCopyright 2005-2026 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC"
+    },
+    "pdftotext": {
+      "executable": "/opt/homebrew/bin/pdftotext",
+      "version": "pdftotext version 26.09.0\nCopyright 2005-2026 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC"
+    },
+    "magick": {
+      "executable": "/opt/homebrew/bin/magick",
+      "version": "Version: ImageMagick 7.1.2-31 Q16-HDRI aarch64 8309dc92a:20260903 https://imagemagick.org\nCopyright: (C) 1999 ImageMagick Studio LLC\nLicense: https://imagemagick.org/license/\nFeatures: Cipher DPC HDRI Modules \nDelegates (built-in): bzlib freetype heic jng jpeg lcms ltdl lzma png tiff webp xml zlib zstd\nCompiler: clang (21.0.0)"
+    }
+  }
+}

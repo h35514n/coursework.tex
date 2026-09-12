@@ -12,7 +12,7 @@ import migrate_legacy as m
 import regression as r
 
 
-def verify(root):
+def verify(root, notes_profile='pagella'):
     candidate=root/'build/candidate';manifest=json.loads((candidate/'manifest.json').read_text())
     r.check_integrity(candidate,manifest)
     if manifest['testbed']!=r.source_info(root):raise RuntimeError('Candidate sources changed')
@@ -65,8 +65,12 @@ def verify(root):
         inputs=[(root/line[6:]).resolve() for line in fls.splitlines() if line.startswith('INPUT ')]
         package_names={p.name for p in inputs};is_notes=name=='notes.pdf' or name.startswith('notes/')
         if 'mathspec.sty' in package_names or 'physics.sty' in package_names:raise RuntimeError('Legacy font/physics package loaded: '+name)
-        needed={'unicode-math.sty','euler-math.sty'} if is_notes else {'mathpazo.sty','bm.sty'}
+        needed={'unicode-math.sty'} if is_notes else {'mathpazo.sty','bm.sty'}
         if not needed<=package_names:raise RuntimeError('Wrong font backend: '+name)
+        if is_notes and ('euler-math.sty' in package_names)!=(notes_profile=='euler'):
+            raise RuntimeError('Wrong notes math profile: '+name)
+        if is_notes and notes_profile=='pagella' and 'texgyrepagella-math.otf' not in package_names:
+            raise RuntimeError('Missing Pagella math font: '+name)
         if not is_notes and 'unicode-math.sty' in package_names:raise RuntimeError('Unicode homework font: '+name)
         if re.search(r'Missing character:|Undefined control sequence|multiply defined|LaTeX Error:',log):raise RuntimeError('Critical TeX diagnostic: '+name)
         labels={};counts=Counter()
@@ -102,14 +106,16 @@ def verify(root):
             if not hidden:
                 expected_solutions={f"homework/{a['id']}/solution{n:02}.tex" for a in assignments for n in range(1,a['problems']+1)}
                 if set(solution_inputs)!=expected_solutions:raise RuntimeError('Incomplete worked solutions: '+name)
-        checks.append({'pdf':name,'pages':manifest['pdfs'][name]['pages'],'font_profile':'euler' if is_notes else 'pazo',
+        checks.append({'pdf':name,'pages':manifest['pdfs'][name]['pages'],'font_profile':notes_profile if is_notes else 'pazo',
                        'hidden_solutions':hidden,'loaded_solutions':len(solution_inputs),'labels':len(labels),
                        'recorder_font_paths':sorted({str(p) for p in inputs if p.suffix.lower() in {'.otf','.ttf','.pfb'}})})
     console=(candidate/'build.log').read_text(errors='replace')
     if re.search(r'Object @[^\n]*already defined',console):raise RuntimeError('Duplicate PDF destinations')
     font_files={}
     for name in ['texgyrepagella-regular.otf','texgyrepagella-italic.otf','texgyrepagella-bold.otf',
-                 'texgyrepagella-bolditalic.otf','Euler-Math.otf','DejaVuSansMono.ttf',
+                 'texgyrepagella-bolditalic.otf',
+                 'Euler-Math.otf' if notes_profile=='euler' else 'texgyrepagella-math.otf',
+                 'eurb10.pfb','DejaVuSansMono.ttf',
                  'uplr8a.pfb','uplri8a.pfb','uplb8a.pfb','uplbi8a.pfb','fplmr.pfb','fplmri.pfb']:
         path=Path(subprocess.check_output(['kpsewhich',name],text=True).strip())
         if not path.is_file():raise RuntimeError('Selected font is missing: '+name)
@@ -122,8 +128,10 @@ def verify(root):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('repository',type=Path);parser.add_argument('--output',type=Path)
+    parser.add_argument('--notes-profile',choices=['pagella','euler'],default='pagella',
+                        help='Expected notes mathematics; use euler for historical migration builds')
     opts=parser.parse_args();root=opts.repository.resolve()
-    report=verify(root)
+    report=verify(root,notes_profile=opts.notes_profile)
     if opts.output:r.write_json(opts.output,report)
     print(f"PASS: {report['outputs']} outputs, {report['problems']} problems, {report['preserved_original_assets']} original assets")
 

@@ -1,5 +1,8 @@
 # PHYS 321 and PHYS 432: local Coursework v2 adoption
 
+The later [notes styling restoration](NOTES-FONT-RESTORATION.md) supersedes
+the Euler notes choice recorded here; this report retains its historical results.
+
 Completed September 11, 2026. Both original local `master` branches now contain
 the validated migration and have signed `coursework-v2-adopted` tags. No remote
 was created and nothing was pushed. The two course migration worktrees and the

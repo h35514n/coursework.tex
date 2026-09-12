@@ -1,0 +1,28 @@
+% The saved thermal notes use mixed-case contents entries, Pagella Math,
+% and AMS Euler display numerals. The body also exercises local contents.
+\setcounter{tocdepth}{0}
+\tableofcontents
+\setcounter{tocdepth}{1}
+\chapter{Mixed Case Chapter}
+\localtableofcontents
+\section{Thermal notation}
+Pagella prose with \textit{italic} and \textbf{bold} text.
+\[
+  E=\frac{3}{2}\kB T,\qquad
+  \alpha\beta\gamma\theta\phi\omega,\qquad
+  \integral[size=large]{e^{-x^2}}{x}{-\infty}{\infty}=\sqrt{\pi},\qquad
+  \pderiv{F}{T}=-S.
+\]
+\[
+  \vect{v}\quad\unitvect{v}\quad\uprightvect{r}\quad\xhat\quad
+  \mathbold{\alpha+r}\quad\separation\quad\separationvect\quad\dbar Q
+\]
+\begin{definition}[Energy]\label{def:energy}
+  The energy is $E$; the entropy is $S$.
+\end{definition}
+\begin{mathtable}[caption={Thermal quantities},label=tab:thermal]{cc}
+  \tableheading{Quantity}{Symbol} & \tableheading{Derivative}{Expression}\\
+  F & \pderiv{F}{T}\\
+  \bottomrule
+\end{mathtable}
+See \cref{def:energy,tab:thermal}.

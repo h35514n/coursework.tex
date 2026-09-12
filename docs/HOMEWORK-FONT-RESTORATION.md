@@ -1,5 +1,8 @@
 # Restore the original homework mathematics
 
+The later [notes styling restoration](NOTES-FONT-RESTORATION.md) supersedes
+the Euler notes choice recorded here; this report retains its historical results.
+
 The homework default is again Pazo/Palatino mathematics with Pagella prose.
 Notes retain Pagella prose and Euler mathematics. The v2 API, heading-spacing
 fix, and explicit integral sizes remain in place. No course source changes

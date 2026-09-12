@@ -180,7 +180,7 @@ def main():
     for cls in ['coursepsets','coursenotes','article']:
         cases.append(compile_case('environments-'+cls,env,cls=cls,checks=[require_text('FirstWordExample','FirstWordRemark','FirstCaption','SecondTable'),label('formula:auto','1'),label('formula:named','2')]))
         cases.append(compile_case('notation-'+cls,r'\input{tests/notation.tex}',cls=cls,
-          checks=[font_backend('pazo' if cls=='coursepsets' else 'euler')] if cls!='article' else []))
+          checks=[font_backend('pazo' if cls=='coursepsets' else 'pagella')] if cls!='article' else []))
         cases.append(compile_case('integral-sizes-'+cls,r'\input{tests/integral_sizes.tex}',cls=cls))
         cases.append(compile_case('bold-text-'+cls,r'''
 The position is \mathbold{\mathrm{r}}; an expression is \mathbold{\alpha+r}.
@@ -193,7 +193,7 @@ The position is \mathbold{\mathrm{r}}; an expression is \mathbold{\alpha+r}.
   \ifdim\wd0=\wd1\else\errmessage{Italic bold alphabet lost}\fi
 }{}
 ''',cls=cls))
-    for cls,profile in [('coursepsets','pagella'),('coursepsets','euler'),('coursenotes','pazo')]:
+    for cls,profile in [('coursepsets','pagella'),('coursepsets','euler'),('coursenotes','pazo'),('coursenotes','euler')]:
         cases.append(compile_case('font-'+cls+'-'+profile,r'\input{tests/notation.tex}',
           cls=cls,options='font-profile='+profile,checks=[font_backend(profile)]))
     for order in ['before','after']:

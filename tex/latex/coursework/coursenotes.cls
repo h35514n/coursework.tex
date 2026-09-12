@@ -5,7 +5,7 @@
 \ProvidesClass{coursenotes}[2026/09/11 v2.0.0 Reading notes]
 
 \RequirePackage{coursecommon}
-\courseworksetup{font-profile=euler}
+\courseworksetup{font-profile=pagella}
 \DeclareOption*{\expandafter\courseworkclassoption\expandafter{\CurrentOption}{report}}
 \ProcessOptions\relax
 
@@ -33,6 +33,16 @@
 \RequirePackage{courseenvironments}
 \RequirePackage{coursefonts}
 \RequirePackage{classicthesis}
+
+% Match the saved pre-migration notes: plain Pagella contents entries and
+% the original AMS Euler chapter numerals. Keep this display font separate
+% from the mathematics backend (including when a profile is overridden).
+\DeclareFixedFont{\course@chapterNumber}{U}{eur}{b}{n}{70}
+\let\chapterNumber\course@chapterNumber
+\renewcommand{\cftchapfont}{\normalfont}
+\renewcommand{\cftchappresnum}{}
+\renewcommand{\cftchapaftersnumb}{}
+\setlength{\cftchapnumwidth}{1.75em}
 
 \RequirePackage{etoc}                               % For \localtableofcontents
 \RequirePackage{fontspec}

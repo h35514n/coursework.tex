@@ -1,5 +1,8 @@
 # Coursework font review
 
+The later [notes styling restoration](NOTES-FONT-RESTORATION.md) supersedes
+the Euler notes choice recorded here; this report retains its historical results.
+
 **Subsequent correction:** the original homework math was Pazo/Palatino, not
 Unicode Pagella Math. The `mathspec` font-selection line had no effect.
 Homework now restores that original appearance; notes keep Euler mathematics.
