@@ -1,21 +1,21 @@
 [
   {
     "id": "homework-worked",
-    "title": "Homework: worked",
+    "title": "Worked homework",
     "project": "homework",
     "root": "main.tex",
     "mode": "worked"
   },
   {
     "id": "homework-worksheet",
-    "title": "Homework: worksheet",
+    "title": "Homework worksheet",
     "project": "homework",
     "root": "main.tex",
     "mode": "worksheet"
   },
   {
     "id": "homework-compact",
-    "title": "Homework: compact",
+    "title": "Compact homework",
     "project": "homework",
     "root": "main.tex",
     "mode": "compact"
@@ -40,7 +40,7 @@
   },
   {
     "id": "reference-coursepsets",
-    "title": "Reference specimens: coursepsets",
+    "title": "Notation and environments: homework",
     "project": "shared",
     "root": "reference-coursepsets.tex",
     "files": [
@@ -51,7 +51,7 @@
   },
   {
     "id": "reference-coursenotes",
-    "title": "Reference specimens: coursenotes",
+    "title": "Notation and environments: notes",
     "project": "shared",
     "root": "reference-coursenotes.tex",
     "files": [
@@ -62,7 +62,7 @@
   },
   {
     "id": "reference-article",
-    "title": "Reference specimens: article",
+    "title": "Notation and environments: article",
     "project": "shared",
     "root": "reference-article.tex",
     "files": [

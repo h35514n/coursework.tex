@@ -1,5 +1,5 @@
 title: Coursework
-description: XeLaTeX recipes and reference for homework, notes, and shared notation.
+description: Use XeLaTeX to create homework and notes with shared notation.
 url: https://h35514n.github.io
 baseurl: /coursework.tex
 theme: just-the-docs
@@ -16,7 +16,7 @@ back_to_top_text: Back to top
 aux_links:
   "Source on GitHub":
     - https://github.com/h35514n/coursework.tex
-footer_content: 'Coursework v2 · Built from the same sources as the examples.'
+footer_content: 'Coursework v2 · The guide and examples use the same source files.'
 permalink: pretty
 exclude:
   - Gemfile

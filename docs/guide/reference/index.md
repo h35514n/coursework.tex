@@ -8,17 +8,23 @@ permalink: /reference/
 
 # Public interfaces
 
-Each entry gives its loading requirements, complete signature, arguments, behavior, and runnable example. Square brackets denote optional arguments; braces denote required arguments. Placeholder signatures explain syntax; the separate examples contain compilable code.
+Each entry gives the required packages, signature, arguments, behavior, and a complete example.
+Square brackets identify optional arguments.
+Braces identify required arguments.
+Signatures contain placeholders to explain syntax.
+The separate examples contain code that you can compile.
 
-| Module | Responsibility | Loaded by the classes? |
+| Module | Purpose | Class support |
 | --- | --- | --- |
-| `coursepsets.cls` | Homework layout, headers, footers, and assignment support | Select with `\documentclass` |
+| `coursepsets.cls` | Homework layout, headers, footers, and assignments | Select with `\documentclass` |
 | `coursenotes.cls` | Notes layout, chapters, and contents | Select with `\documentclass` |
-| `coursecommon.sty` | Metadata and shared configuration | Both |
-| `courseassignments.sty` | Assignment declarations and rendering | Homework only |
-| `courseenvironments.sty` | Theorems, formulas, math tables, and subparts | Both |
-| `coursemath.sty` | Mathematics and bold-symbol backend | Both |
-| `coursephys.sty` | Physics, constants, units, and script-r assets | Explicit load |
-| `coursefonts.sty` | Prose and mathematics font selection | Both |
+| `coursecommon.sty` | Metadata and shared configuration | Both classes |
+| `courseassignments.sty` | Assignment declarations and output | Homework only |
+| `courseenvironments.sty` | Theorems, formulas, mathematics tables, and subparts | Both classes |
+| `coursemath.sty` | Mathematics notation and bold symbols | Both classes |
+| `coursephys.sty` | Physics, constants, units, and script-r assets | Load explicitly |
+| `coursefonts.sty` | Prose and mathematics fonts | Both classes |
 
-See the [alphabetical index]({{ '/command-index/' | relative_url }}) to find a specific command. Implementation helpers and commands inherited wholesale from third-party packages are not part of the custom API catalog. Useful inherited commands appear in recipes with upstream links.
+Use the [command index]({{ '/command-index/' | relative_url }}) to find a command.
+The catalog excludes internal helpers and most commands from third-party packages.
+The guide links to third-party documentation where examples use inherited commands.

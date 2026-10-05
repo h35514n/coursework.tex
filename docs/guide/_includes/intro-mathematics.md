@@ -1,7 +1,15 @@
-Loaded by both classes, or explicitly with `\usepackage{coursemath}`. This package supplies notation without setting page layout or fonts. Standard text accents such as `\L` and `\u` remain intact.
+Both classes load `coursemath`.
+You can also load it explicitly with `\usepackage{coursemath}`.
+It supplies notation.
+It does not select page layout or fonts.
+Standard text accents such as `\L` and `\u` retain their meanings.
 
-The `unicode` package option avoids legacy symbol/bold packages when the document will supply `unicode-math`. The coursework classes select this automatically for Pagella and Euler profiles. In a plain article using Unicode math, load `coursemath` with `[unicode]` before `unicode-math`; otherwise the default legacy backend is suitable.
+With the `unicode` option, the package does not load legacy symbol or bold packages.
+The coursework classes select it automatically for Pagella and Euler profiles.
+For a Unicode article, load `coursemath` with `[unicode]` before `unicode-math`.
+For other articles, use the default legacy backend.
 
-Individual entries specify whether math mode is required. The wrappers do not all insert `\ensuremath`.
+Individual entries identify commands that require math mode.
+Some commands do not insert `\ensuremath`.
 
-Notation uses [mathtools](https://ctan.org/pkg/mathtools), [diffcoeff](https://ctan.org/pkg/diffcoeff), and either [bm](https://ctan.org/pkg/bm) or [unicode-math](https://ctan.org/pkg/unicode-math).
+The package uses [mathtools](https://ctan.org/pkg/mathtools), [diffcoeff](https://ctan.org/pkg/diffcoeff), and either [bm](https://ctan.org/pkg/bm) or [unicode-math](https://ctan.org/pkg/unicode-math).

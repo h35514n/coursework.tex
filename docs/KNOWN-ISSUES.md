@@ -5,10 +5,10 @@ and Pagella notes mathematics with AMS Euler chapter numerals. All six courses
 use the shared classes. No API or font decision remains pending.
 
 Warnings are evidence tied to particular revisions, not a single evergreen
-checkpoint. The [homework restoration](HOMEWORK-FONT-RESTORATION.md),
-[legacy course adoption](LEGACY-COURSES-ADOPTION.md), and
-[notes restoration](NOTES-FONT-RESTORATION.md) record their respective inventories.
-The [cleanup record](WORKSPACE-CLEANUP.md) links the current smoke-build logs.
+checkpoint. The [homework restoration](history/HOMEWORK-FONT-RESTORATION.md),
+[legacy course adoption](history/LEGACY-COURSES-ADOPTION.md), and
+[notes restoration](history/NOTES-FONT-RESTORATION.md) record their respective inventories.
+The [cleanup record](history/WORKSPACE-CLEANUP.md) links the current smoke-build logs.
 Historical reports and frozen manifests retain their original results.
 
 - **Long equations:** PHYS 331's second assignment recorded a 72.29-point

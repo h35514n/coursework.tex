@@ -1,32 +1,42 @@
 ---
 layout: default
-title: Homework recipes
+title: Homework
 nav_order: 3
 ---
 
-# Declare once, choose the output
+# Create homework
 
-`coursepsets` loads the assignment renderer, shared metadata, mathematics, environments, and fonts. Add physics explicitly when you need it.
+`coursepsets` loads assignment output, metadata, mathematics, environments, and fonts.
+For physics notation, load `coursephys` explicitly.
 
-## Share the course identity
+## Set course metadata
 
-Put this configuration in the main preamble, or in a shared `course.tex` file loaded by homework and notes:
+Put the configuration in the main preamble.
+Alternatively, put it in a shared `course.tex` file that homework and notes load.
 
 {% include snippets/metadata.md %}
 
-The six metadata fields accept LaTeX. Repeated setup calls replace only the values supplied.
+The six metadata fields accept LaTeX.
+Each setup call replaces the supplied values and retains the other values.
 
-## Assemble front matter explicitly
+## Add front matter
 
 {% include snippets/title.md %}
 
-Title generation, contents, page numbering, todos, and assignment headings are separate operations. For visible todos, omit `final`; use `\listoftodos` and `\clearpage` where desired. The `final` class option suppresses todos in homework.
+Title generation, contents, page numbers, todos, and assignment headings are separate operations.
+For visible todos, omit the `final` class option.
+Use `\listoftodos` to print the list.
+Use `\clearpage` where you require a page break.
+The `final` option suppresses todos in homework.
 
-## Declare and render an assignment
+## Declare and print an assignment
 
 {% include snippets/assignment.md %}
 
-The example selects problem `02` first, so its displayed reference is **1.1**; problem `01` becomes **1.2**. The IDs and reference labels retain their identities even when selection order changes.
+The example selects problem `02` first.
+Its displayed reference is **1.1**.
+Problem `01` becomes **1.2**.
+The IDs and reference labels retain their identities when the selection order changes.
 
 ```text
 main.tex
@@ -40,9 +50,17 @@ fragments/
   discussion02.tex
 ```
 
-Each selected problem requires a `problem<ID>.tex` file. Worked mode also requires a `solution<ID>.tex` file, which may be empty for an unsolved problem. Guides and discussions are optional. Fragments contain content only: the renderer supplies their headings and the solution closing marker.
+Each selected problem requires a `problem<ID>.tex` file.
+Worked mode also requires a `solution<ID>.tex` file.
+For an unsolved problem, the solution file can be empty.
+Guide and discussion files are optional.
+Fragments contain content only.
+The assignment renderer supplies headings and the solution closing marker.
 
-A Guide or Discussion section is created when at least one corresponding selected file exists. An existing empty file can still create a heading; omit the file when you want that role omitted. Discussions are rendered only in worked mode.
+The renderer creates a Guide or Discussion section if at least one selected file for that role exists.
+An existing empty file can create a heading.
+To omit an optional role, omit its file.
+Discussion sections appear only in worked mode.
 
 {% include snippets/assignment-notes.md %}
 
@@ -50,23 +68,26 @@ A Guide or Discussion section is created when at least one corresponding selecte
 
 | Class option | Result | Problem boundaries |
 | --- | --- | --- |
-| `mode=worked` | Guides, statements, solutions, and discussions | Flow by default; `problem-breaks=page` is available |
-| `mode=worksheet` | Guides and statements; solution/discussion files are never read | Separate pages |
-| `mode=compact` | Guides and statements; solution/discussion files are never read | Flow |
+| `mode=worked` | Guides, statements, solutions, and discussions | Continuous output by default. `problem-breaks=page` is available. |
+| `mode=worksheet` | Guides and statements. The renderer never reads solution or discussion files. | Separate pages |
+| `mode=compact` | Guides and statements. The renderer never reads solution or discussion files. | Continuous output |
 
-Compare [worked]({{ '/examples/homework-worked/' | relative_url }}), [worksheet]({{ '/examples/homework-worksheet/' | relative_url }}), and [compact]({{ '/examples/homework-compact/' | relative_url }}) outputs of the same project.
+Compare the [worked]({{ '/examples/homework-worked/' | relative_url }}), [worksheet]({{ '/examples/homework-worksheet/' | relative_url }}), and [compact]({{ '/examples/homework-compact/' | relative_url }}) outputs.
+These outputs use the same project.
 
-## Control the three kinds of breaks
+## Set page breaks
 
-| Setting | Default | Controls |
+| Setting | Default | Effect |
 | --- | --- | --- |
-| `problem-breaks=page\|flow` | `flow` | Problem boundaries in worked mode; worksheet and compact choose their own behavior |
-| `assignment-breaks=page\|flow` | `flow` | Before subsequent assignments |
-| `section-breaks=page\|flow` | `page` | Between Guide, Problem Set, and Discussion |
+| `problem-breaks=page\|flow` | `flow` | Problem boundaries in worked mode. Worksheet and compact modes have their own behavior. |
+| `assignment-breaks=page\|flow` | `flow` | Breaks before subsequent assignments |
+| `section-breaks=page\|flow` | `page` | Breaks between Guide, Problem Set, and Discussion sections |
 
-The first assignment and first role do not introduce automatic leading breaks. Long problems can span multiple pages. Explicit breaks inside content or front matter remain in force.
+The first assignment and first role do not add automatic leading breaks.
+Long problems can span multiple pages.
+Explicit breaks in content and front matter still apply.
 
-For a fully flowing worked document, override source defaults at begin-document time:
+For continuous worked output, override source defaults when the document starts:
 
 ```sh
 latexmk -xelatex -jobname=homework-flow \
@@ -74,9 +95,12 @@ latexmk -xelatex -jobname=homework-flow \
   main.tex
 ```
 
-The course Makefiles provide `make homework-flow` for this combination, but that target belongs to the course repositories rather than the class package.
+Course Makefiles provide `make homework-flow` for this configuration.
+The target uses a separate job name and PDF.
+It retains guides, solutions, discussions, and explicit source breaks.
+This target belongs to the course repositories.
 
-## Compile a subfile on its own
+## Compile a subfile separately
 
 ```latex
 \documentclass[main.tex]{subfiles}
@@ -86,10 +110,17 @@ The course Makefiles provide `make homework-flow` for this combination, but that
 \end{document}
 ```
 
-From the project root: `latexmk -xelatex standalone.tex`. See the [compiled standalone assignment]({{ '/examples/homework-subfile/' | relative_url }}). The parent can use `\subfile{standalone}` to include it; avoid including the same assignment a second time.
+From the project root, run `latexmk -xelatex standalone.tex`.
+See the [compiled standalone assignment]({{ '/examples/homework-subfile/' | relative_url }}).
+The parent can include it with `\subfile{standalone}`.
+Include each assignment only once.
 
-## References that survive reordering
+## Refer to problems and objects
 
-Use `\cref{prob:motion:01}` for a problem and ordinary `\label` / `\eqref` for equations. Equation, figure, and table numbers are `assignment.problem.item`; each problem's object counters continue across its guide, statement, solution, and discussion. Explicit labels must remain unique across the combined document.
+Use `\cref{prob:motion:01}` for a problem reference.
+Use standard `\label` and `\eqref` commands for equations.
+Equation, figure, and table numbers use the format `assignment.problem.item`.
+Each problem's object counters continue across its guide, statement, solution, and discussion.
+Explicit labels must be unique across the combined document.
 
-Read more in the [assignment reference]({{ '/reference/assignments/' | relative_url }}), [subfiles documentation](https://ctan.org/pkg/subfiles), and [cleveref documentation](https://ctan.org/pkg/cleveref).
+See the [assignment reference]({{ '/reference/assignments/' | relative_url }}), [subfiles documentation](https://ctan.org/pkg/subfiles), and [cleveref documentation](https://ctan.org/pkg/cleveref).

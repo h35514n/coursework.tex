@@ -13,11 +13,18 @@ nav_order: 1
 \documentclass[mode=worked,problem-breaks=page,final]{coursepsets}
 ```
 
-Assignment-oriented `article` layout: defaults to 11 pt, letter paper, no paragraph indentation, and course/assignment/problem information in the footer. Mathematics defaults to Pazo / Palatino. Loads `coursecommon`, `courseassignments`, `courseenvironments`, `coursemath`, and `coursefonts`.
+`coursepsets` uses an `article` layout for assignments.
+It defaults to 11 pt and letter paper.
+Paragraphs have no indentation.
+The footer shows course, assignment, and problem information.
+Mathematics defaults to Pazo / Palatino.
 
-It also loads tools used in recipes: `subfiles`, `cleveref`, `hyperref`, `graphicx`, `todonotes`, `caption`, and `subcaption`. The `final` option hides todos. Physics remains an explicit `\usepackage{coursephys}`.
+The class loads `coursecommon`, `courseassignments`, `courseenvironments`, `coursemath`, and `coursefonts`.
+It also loads `subfiles`, `cleveref`, `hyperref`, `graphicx`, `todonotes`, `caption`, and `subcaption`.
+The `final` option hides todos.
+For physics notation, add `\usepackage{coursephys}`.
 
-[Runnable homework]({{ '/examples/homework-worked/' | relative_url }}) · [Source](https://github.com/h35514n/coursework.tex/blob/master/tex/latex/coursework/coursepsets.cls)
+[Homework example]({{ '/examples/homework-worked/' | relative_url }}) · [Class source](https://github.com/h35514n/coursework.tex/blob/master/tex/latex/coursework/coursepsets.cls)
 
 ## `coursenotes`
 
@@ -25,16 +32,29 @@ It also loads tools used in recipes: `subfiles`, `cleveref`, `hyperref`, `graphi
 \documentclass[font-profile=pagella]{coursenotes}
 ```
 
-Chapter-oriented `report` / classicthesis layout: defaults to 12 pt, letter paper, Pagella Math, mixed-case contents entries, and AMS Euler chapter numerals. Loads `coursecommon`, `courseenvironments`, `coursemath`, and `coursefonts`. It also supplies `\localtableofcontents` through `etoc`, plus `subfiles`, `cleveref`, `hyperref`, and `graphicx`.
+`coursenotes` uses a `report` layout with classicthesis.
+It defaults to 12 pt, letter paper, and Pagella Math.
+Contents entries use mixed-case letters.
+Chapter numerals use AMS Euler.
 
-Notes set math-table defaults to `table-placement=H,table-top-skip=-2ex`. The class does not load the assignment renderer or homework todos.
+The class loads `coursecommon`, `courseenvironments`, `coursemath`, and `coursefonts`.
+It supplies `\localtableofcontents` through `etoc`.
+It also loads `subfiles`, `cleveref`, `hyperref`, and `graphicx`.
+Notes use `table-placement=H,table-top-skip=-2ex` as the defaults for mathematics tables.
+The class does not load assignment output or homework todos.
 
-[Runnable notes]({{ '/examples/notes/' | relative_url }}) · [Source](https://github.com/h35514n/coursework.tex/blob/master/tex/latex/coursework/coursenotes.cls)
+[Notes example]({{ '/examples/notes/' | relative_url }}) · [Class source](https://github.com/h35514n/coursework.tex/blob/master/tex/latex/coursework/coursenotes.cls)
 
 ## Class options
 
-Both classes consume the [shared configuration keys]({{ '/reference/configuration/' | relative_url }}) before forwarding other options to their base class. Output mode and break settings affect assignments; they do not turn notes into a problem-set document.
+Both classes process [shared configuration keys]({{ '/reference/configuration/' | relative_url }}) before they forward other options to the base class.
+Output modes and page-break settings affect assignments.
+They do not add assignment output to notes.
 
-Select `font-profile=pazo|pagella|euler` **in the class options** so mathematics packages load in the correct order. Later setup calls cannot reload the font backend.
+Select `font-profile=pazo|pagella|euler` in the class options.
+This selects the mathematics packages before they load.
+Later setup calls cannot reload the font backend.
 
-Other base-class options, such as `a4paper` or `twoside`, are forwarded to `article` or `report`. The coursework classes still own geometry and visual styling; forwarding is not a promise to replace all layout decisions.
+The classes forward other base-class options, such as `a4paper` or `twoside`, to `article` or `report`.
+The coursework classes still control geometry and visual style.
+A forwarded option does not replace all class layout settings.

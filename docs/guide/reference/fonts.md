@@ -7,23 +7,30 @@ nav_order: 7
 
 # Font profiles
 
-`coursefonts` is loaded by both classes. It selects Pagella prose, DejaVu Sans Mono at 0.85 scale, and a mathematics backend. It exposes no additional author commands: select its profile through the class option.
+Both classes load `coursefonts`.
+It selects Pagella prose, DejaVu Sans Mono at 0.85 scale, and a mathematics backend.
+It supplies no additional author commands.
+Select its profile through a class option.
 
 ```latex
 \documentclass[font-profile=euler]{coursenotes}
 ```
 
-| Profile | Mathematics | Backend | Default for |
+| Profile | Mathematics | Backend | Default use |
 | --- | --- | --- | --- |
 | `pazo` | Original Pazo / Palatino | `mathpazo` and `bm` | Homework |
 | `pagella` | TeX Gyre Pagella Math | `unicode-math` | Notes |
-| `euler` | Euler Math, upright style | `euler-math` / `unicode-math` | Explicit choice |
+| `euler` | Euler Math with upright letters | `euler-math` / `unicode-math` | Explicit selection |
 
-The class selects its default before processing options and loading fonts. A later `\courseworksetup{font-profile=...}` changes stored configuration but cannot switch an already loaded font backend. Use the class option.
+The class selects its default profile before it processes options and loads fonts.
+A later `\courseworksetup{font-profile=...}` changes the stored configuration.
+It cannot replace a font backend that is already loaded.
+Use the class option to select fonts.
 
-The notes chapter numerals use a separate AMS Euler display face and remain independent of the mathematics profile.
+Notes chapter numerals use a separate AMS Euler display font.
+They are independent of the mathematics profile.
 
-## Compare the same expression
+## Compare an expression
 
 [Pazo PDF and source]({{ '/examples/font-pazo/' | relative_url }})
 
@@ -37,8 +44,10 @@ The notes chapter numerals use a separate AMS Euler display face and remain inde
 
 <img class="preview" loading="lazy" alt="Euler mathematics with Pagella prose" src="{{ '/assets/examples/font-euler/preview.png' | relative_url }}">
 
-## Standalone libraries
+## Standalone packages
 
-`coursemath` and `coursephys` can be used with `article` without `coursefonts`. In that case the host document controls fonts. The [article specimen]({{ '/examples/reference-article/' | relative_url }}) exercises this separation.
+You can use `coursemath` and `coursephys` with `article` without `coursefonts`.
+The host document then controls fonts.
+See the [article example]({{ '/examples/reference-article/' | relative_url }}).
 
-[Font implementation](https://github.com/h35514n/coursework.tex/blob/master/tex/latex/coursework/coursefonts.sty) · [Homework font restoration](https://github.com/h35514n/coursework.tex/blob/master/docs/HOMEWORK-FONT-RESTORATION.md) · [Notes styling restoration](https://github.com/h35514n/coursework.tex/blob/master/docs/NOTES-FONT-RESTORATION.md)
+[Font source](https://github.com/h35514n/coursework.tex/blob/master/tex/latex/coursework/coursefonts.sty) · [Homework font history](https://github.com/h35514n/coursework.tex/blob/master/docs/history/HOMEWORK-FONT-RESTORATION.md) · [Notes font history](https://github.com/h35514n/coursework.tex/blob/master/docs/history/NOTES-FONT-RESTORATION.md)
