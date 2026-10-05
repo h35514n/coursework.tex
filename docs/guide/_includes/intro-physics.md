@@ -1,6 +1,5 @@
-Load `coursephys` explicitly with `\usepackage{coursephys}` in homework, notes, or an article.
-It loads `coursemath`, `graphicx`, and `siunitx`.
-It does not select fonts or page layout.
+Load `coursephys` with `\usepackage{coursephys}` in homework, notes, or an article to use physics notation.
+It loads `coursemath`, `graphicx`, and `siunitx`, leaving fonts and page layout to the document.
 
 ### Units
 
@@ -11,6 +10,6 @@ Use the [siunitx](https://ctan.org/pkg/siunitx) commands that this package suppl
 \unit{\joule}
 ```
 
-The package supplies physics vectors and operators, including `\grad` and `\laplacian`.
-The standard text accent `\u` is not a unit command.
+The package provides physics vectors and operators, including `\grad` and `\laplacian`.
+Use `\unit` for units; `\u` retains its standard text-accent meaning.
 Both coursework classes configure comma digit groups when `siunitx` loads.

@@ -4,13 +4,14 @@ title: Getting started
 nav_order: 2
 ---
 
-# Your first document
+# Getting started
+{: #your-first-document }
 
-Use XeLaTeX and a full TeX Live 2026 installation with current updates.
-The classes require fontspec, classicthesis, TikZ, and other TeX Live packages.
-An older installation can lack the required LaTeX kernel.
+Use XeLaTeX with a full, updated TeX Live 2026 installation.
+The classes need the June 2026 LaTeX kernel or newer, along with fontspec, classicthesis, TikZ, and other TeX Live packages.
 
-## Install the checkout
+## Installation
+{: #install-the-checkout }
 
 ```sh
 git clone https://github.com/h35514n/coursework.tex.git
@@ -20,24 +21,22 @@ kpsewhich coursepsets.cls
 kpsewhich coursenotes.cls
 ```
 
-The installer links this checkout into `TEXMFHOME`.
-Changes to the checkout take effect through the link.
-It verifies both classes, six packages, and both script-r glyph PDFs.
-It refuses to overwrite a real directory.
-It can replace an existing symbolic link.
-Use a stable checkout for installation.
+The installer links the checkout into `TEXMFHOME`, so changes to its files take effect immediately.
+It verifies that TeX can find both classes, all six packages, and both script-r glyph PDFs.
+It can replace an existing symbolic link but refuses to overwrite a real directory.
+Keep the checkout in a stable location after installation.
 
-For a temporary checkout or review worktree, use scoped lookup:
+To compile against a temporary checkout or review worktree, set `TEXINPUTS` for the compile command:
 
 ```sh
 TEXINPUTS="/absolute/path/to/coursework.tex/tex/latex/coursework//:" \
   latexmk -xelatex -halt-on-error main.tex
 ```
 
-The trailing colon retains the normal TeX search paths.
-This command does not require installation.
+The trailing colon retains the normal TeX search paths, so this command works without installation.
 
-## Start from a complete example
+## Example projects
+{: #start-from-a-complete-example }
 
 | Example | Contents |
 | --- | --- |
@@ -45,11 +44,9 @@ This command does not require installation.
 | [Reading notes project]({{ '/examples/notes/' | relative_url }}) | Chapters, local contents, examples, and formulas |
 | [Ordinary article]({{ '/examples/reference-article/' | relative_url }}) | Shared notation and environments without a coursework layout |
 
-Download a source ZIP.
-Extract the ZIP.
-From the extracted project directory, run `latexmk -xelatex -halt-on-error main.tex`.
+Download and extract a source ZIP, then run `latexmk -xelatex -halt-on-error main.tex` from the extracted project directory.
 For the article example, replace `main.tex` with `reference-article.tex`.
-The included README identifies the root file.
+Each project includes a README with its root file and compile command.
 
 ## A minimal notes document
 
@@ -70,9 +67,8 @@ Both classes also accept plain text and standard LaTeX displays.
 
 ## Compile from the project root
 
-Assignment directories, image paths, and example instructions use paths relative to the project root.
-Compile combined documents and standalone subfiles from that directory.
-Use `latexmk` to complete the additional passes for contents and references.
+Assignment directories and image paths are relative to the project root.
+Compile both combined documents and standalone subfiles from that directory, as shown in the example instructions.
+Use `latexmk` to run the additional passes needed for contents and references.
 
-The classes use XeLaTeX.
-Layouts can differ with pdfLaTeX or LuaLaTeX.
+The classes use XeLaTeX; pdfLaTeX and LuaLaTeX can produce different layouts.

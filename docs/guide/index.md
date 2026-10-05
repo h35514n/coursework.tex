@@ -7,23 +7,23 @@ permalink: /
 
 <p class="eyebrow">Coursework · XeLaTeX · v2</p>
 
-# Create course documents
+# Coursework documentation
+{: #create-course-documents }
 
-<p class="lead">Use this guide to create homework and reading notes. Start with a complete example. Use the reference to find commands.</p>
+<p class="lead">Coursework provides XeLaTeX classes for homework and reading notes, with shared notation and environments. This guide covers installation, document setup, and the available commands.</p>
 
 <div class="cards">
-<a class="card" href="{{ '/getting-started/' | relative_url }}"><strong>Start a document →</strong>Install the classes. Compile your first PDF.</a>
-<a class="card" href="{{ '/homework/' | relative_url }}"><strong>Create homework →</strong>Declare problems. Select worked copies, worksheets, or compact handouts.</a>
-<a class="card" href="{{ '/notes/' | relative_url }}"><strong>Create notes →</strong>Add chapters, local contents, theorems, and formulas.</a>
-<a class="card" href="{{ '/command-index/' | relative_url }}"><strong>Find a command →</strong>Read signatures, defaults, examples, and package requirements.</a>
+<a class="card" href="{{ '/getting-started/' | relative_url }}"><strong>Getting started</strong>Install the classes and compile an example.</a>
+<a class="card" href="{{ '/homework/' | relative_url }}"><strong>Homework</strong>Declare problems and produce worked copies, worksheets, or compact handouts.</a>
+<a class="card" href="{{ '/notes/' | relative_url }}"><strong>Reading notes</strong>Set up chapters, local contents, theorems, and formulas.</a>
+<a class="card" href="{{ '/command-index/' | relative_url }}"><strong>Command index</strong>Look up syntax, defaults, examples, and required packages.</a>
 </div>
 
 ## Compiled examples
 
-The guide build compiles each preview with XeLaTeX and this repository's classes.
-Each example includes its source and PDF.
-Download an example from the [example gallery]({{ '/examples/' | relative_url }}).
-You can also copy code from the reference.
+Each [example]({{ '/examples/' | relative_url }}) includes a PDF and the source used to compile it.
+Download a complete project to use as a starting point, or copy a code snippet from the reference.
+All previews are compiled with XeLaTeX and the classes in this repository.
 
 ## Classes and notation
 
@@ -32,10 +32,9 @@ You can also copy code from the reference.
 | `coursepsets` | Homework, exams, worksheets, and problem handouts | Pazo / Palatino |
 | `coursenotes` | Reading notes with chapters | TeX Gyre Pagella Math |
 
-Both classes load mathematics notation and document environments.
-For physics notation and SI units, add `\usepackage{coursephys}`.
-Both classes use Pagella prose.
+Both classes use Pagella prose and load shared mathematics notation and document environments.
+Add `\usepackage{coursephys}` for physics notation and SI units.
 You can select other [font profiles]({{ '/reference/fonts/' | relative_url }}) through class options.
 
-This guide describes the current v2 API for readers with basic LaTeX knowledge.
+This guide covers Coursework v2 and assumes basic LaTeX knowledge.
 Use XeLaTeX and TeX Live 2026 with the June 2026 LaTeX kernel or newer.

@@ -6,12 +6,12 @@ has_children: true
 permalink: /examples/
 ---
 
-# Compiled examples
+# Examples
+{: #compiled-examples }
 
-Each example includes source code, a source ZIP, a PDF, and previews of every page.
-The ZIP contains the exact source variant that produced the preview.
-Its README gives the compile command and project root.
-You can copy code directly from each example page.
+Each example includes source code, a downloadable source ZIP and PDF, and previews of every page.
+The ZIP contains the exact source variant used for the preview, with a README explaining where and how to compile it.
+You can also copy code directly from the example page.
 
 ## Homework and notes
 
@@ -22,7 +22,7 @@ You can copy code directly from each example page.
 ## Notation and environments
 
 The [homework]({{ '/examples/reference-coursepsets/' | relative_url }}), [notes]({{ '/examples/reference-coursenotes/' | relative_url }}), and [article]({{ '/examples/reference-article/' | relative_url }}) examples compile the same shared source.
-These examples use every shared notation command and environment in the reference.
+Together, they demonstrate every shared notation command and environment in the reference.
 
 ## Fonts
 

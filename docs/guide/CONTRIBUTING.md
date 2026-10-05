@@ -92,13 +92,12 @@ The build uses raw Liquid blocks to preserve literal TeX.
 
 ## Writing policy
 
-Apply the writing rules in [ASD-STE100 Issue 9](https://www.asd-ste100.org/assets/files/ASD-STE100_ISSUE9.pdf) to public explanatory prose and instructions.
-This project applies writing rules only.
-It does not claim a complete dictionary audit or full ASD-STE100 conformance.
+Write the guide as usage documentation for readers with basic LaTeX knowledge.
+Use clear, natural technical prose that helps them find a command, understand its behavior, and compile a document.
+Page titles and navigation labels should describe their contents without slogans or promotional language.
 
-The policy covers authored pages, includes, catalog descriptions, and argument explanations.
-It also covers example titles, navigation labels, alternative text, footers, generated pages, and source-download instructions.
-Apply the same rules to new maintenance instructions.
+This policy covers authored pages, includes, catalog descriptions, argument explanations, example titles, navigation labels, alternative text, footers, and generated download instructions.
+Use the same approach for maintenance instructions.
 
 Preserve executable TeX, shell commands, signatures, identifiers, file paths, mathematical notation, and specimen content.
 Historical report bodies retain their original language and checkpoint facts.
@@ -117,27 +116,21 @@ Use consistent technical terms:
 
 ### Review checklist
 
-- Limit procedural sentences to 20 words and descriptive sentences to 25 words.
-- Count words with the standard's rules for technical names, identifiers, parentheses, and vertical lists.
-- Give one instruction in each procedural sentence.
-- Use the imperative for instructions.
-- Use active voice. In descriptions, use passive voice only if the actor is unknown.
-- Put a condition first if the reader must know it before the action.
-- Use permitted simple verb forms. Avoid perfect tenses and verb forms that end in `-ing`.
-- Limit noun groups to three words unless a defined technical name requires more words.
-- Use one technical term for each meaning.
-- Use complete sentences in prose. Retain articles and other necessary words.
-- Start each descriptive paragraph with its topic. Keep each paragraph to one topic and six sentences or fewer.
-- Use separate sentences instead of semicolons.
-- Remove idioms, metaphors, ambiguous pronouns, and unnecessary words.
-- Preserve each command's requirements, defaults, errors, and effects.
-- Review generated HTML and source-download instructions as well as authored Markdown.
+- Use descriptive page titles and specific section headings. Keep navigation labels consistent with the pages they identify.
+- Explain behavior in reference entries. Use direct instructions for procedures.
+- Combine closely related ideas when that reads more naturally than a series of short sentences.
+- Prefer active voice and concrete terms. Use passive voice when the actor is unimportant or unknown.
+- Use consistent technical terms, and define unfamiliar ones where readers first need them.
+- Keep paragraphs focused on one topic. Use lists or tables when they make steps or comparisons easier to scan.
+- Remove promotional phrasing, filler, and repetition that does not help the reader.
+- Preserve requirements, defaults, errors, and effects, including details needed to distinguish similar commands.
+- Keep executable examples, signatures, identifiers, paths, and mathematical notation accurate.
+- Review rendered pages, search labels, alternative text, and source-download instructions alongside the authored Markdown.
+- Preserve page paths and existing heading anchors when changing titles or headings.
 
-Code and signature punctuation do not follow prose punctuation rules.
-Table headings, labels, and argument names can be fragments.
-Use complete sentences for explanations in table cells.
-Sentence counts and word scans assist the review.
-They do not establish meaning, grammar, or full STE conformance.
+There are no fixed sentence-length limits or restrictions on verb forms.
+Use the wording and punctuation that make the explanation easiest to understand.
+Table headings, labels, and argument names can be fragments; explanations should read naturally in their context.
 
 ## Publication
 

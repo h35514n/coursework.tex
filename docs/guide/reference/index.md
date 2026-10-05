@@ -6,13 +6,12 @@ has_children: true
 permalink: /reference/
 ---
 
-# Public interfaces
+# Reference
+{: #public-interfaces }
 
-Each entry gives the required packages, signature, arguments, behavior, and a complete example.
-Square brackets identify optional arguments.
-Braces identify required arguments.
-Signatures contain placeholders to explain syntax.
-The separate examples contain code that you can compile.
+Each entry describes the required packages, syntax, arguments, and behavior, followed by example code and a link to a complete project.
+In signatures, square brackets mark optional arguments and braces mark required arguments.
+Signatures use placeholders to explain the syntax; the examples contain code you can compile.
 
 | Module | Purpose | Class support |
 | --- | --- | --- |
@@ -26,5 +25,6 @@ The separate examples contain code that you can compile.
 | `coursefonts.sty` | Prose and mathematics fonts | Both classes |
 
 Use the [command index]({{ '/command-index/' | relative_url }}) to find a command.
-The catalog excludes internal helpers and most commands from third-party packages.
-The guide links to third-party documentation where examples use inherited commands.
+The reference covers Coursework commands and environments, with selected third-party commands used in the examples.
+Internal helpers and most third-party commands are excluded.
+Links to third-party documentation provide details about inherited commands.

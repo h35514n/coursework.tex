@@ -1,10 +1,7 @@
-Both classes load `courseenvironments`.
-You can also load it explicitly with `\usepackage{courseenvironments}`.
-It loads `coursemath`, `amsthm`, `booktabs`, `float`, and `enumitem`.
-It does not select fonts.
+Both classes load `courseenvironments`; you can also load it separately with `\usepackage{courseenvironments}`.
+The package loads `coursemath`, `amsthm`, `booktabs`, `float`, and `enumitem`, leaving font selection to the document.
 
-For semantic references in an article, load `hyperref` after the shared package.
-Then load `cleveref`.
+For semantic references in an article, load `hyperref` after the shared package, followed by `cleveref`.
 
 ### Counter families
 

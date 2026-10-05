@@ -1,16 +1,14 @@
 ---
 layout: default
-title: Fonts
+title: Font profiles
 parent: Reference
 nav_order: 7
 ---
 
 # Font profiles
 
-Both classes load `coursefonts`.
-It selects Pagella prose, DejaVu Sans Mono at 0.85 scale, and a mathematics backend.
-It supplies no additional author commands.
-Select its profile through a class option.
+Both classes load `coursefonts`, which selects Pagella prose, DejaVu Sans Mono at 0.85 scale, and a mathematics backend.
+The package has no additional author commands; choose the profile through a class option.
 
 ```latex
 \documentclass[font-profile=euler]{coursenotes}
@@ -22,15 +20,14 @@ Select its profile through a class option.
 | `pagella` | TeX Gyre Pagella Math | `unicode-math` | Notes |
 | `euler` | Euler Math with upright letters | `euler-math` / `unicode-math` | Explicit selection |
 
-The class selects its default profile before it processes options and loads fonts.
-A later `\courseworksetup{font-profile=...}` changes the stored configuration.
-It cannot replace a font backend that is already loaded.
-Use the class option to select fonts.
+The class selects its default profile, processes options, and then loads fonts.
+A later `\courseworksetup{font-profile=...}` updates the stored configuration but cannot replace the loaded backend.
+Choose fonts in the class options.
 
-Notes chapter numerals use a separate AMS Euler display font.
-They are independent of the mathematics profile.
+Notes chapter numerals use a separate AMS Euler display font, independent of the mathematics profile.
 
-## Compare an expression
+## Font comparison
+{: #compare-an-expression }
 
 [Pazo PDF and source]({{ '/examples/font-pazo/' | relative_url }})
 
@@ -46,8 +43,7 @@ They are independent of the mathematics profile.
 
 ## Standalone packages
 
-You can use `coursemath` and `coursephys` with `article` without `coursefonts`.
-The host document then controls fonts.
+You can use `coursemath` and `coursephys` with `article` without loading `coursefonts`, leaving font selection to the host document.
 See the [article example]({{ '/examples/reference-article/' | relative_url }}).
 
 [Font source](https://github.com/h35514n/coursework.tex/blob/master/tex/latex/coursework/coursefonts.sty) · [Homework font history](https://github.com/h35514n/coursework.tex/blob/master/docs/history/HOMEWORK-FONT-RESTORATION.md) · [Notes font history](https://github.com/h35514n/coursework.tex/blob/master/docs/history/NOTES-FONT-RESTORATION.md)

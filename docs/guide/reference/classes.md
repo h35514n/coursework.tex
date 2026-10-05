@@ -13,11 +13,8 @@ nav_order: 1
 \documentclass[mode=worked,problem-breaks=page,final]{coursepsets}
 ```
 
-`coursepsets` uses an `article` layout for assignments.
-It defaults to 11 pt and letter paper.
-Paragraphs have no indentation.
-The footer shows course, assignment, and problem information.
-Mathematics defaults to Pazo / Palatino.
+`coursepsets` uses an `article` layout for assignments, with 11 pt text, letter paper, and unindented paragraphs by default.
+The footer shows course, assignment, and problem information, and mathematics defaults to Pazo / Palatino.
 
 The class loads `coursecommon`, `courseassignments`, `courseenvironments`, `coursemath`, and `coursefonts`.
 It also loads `subfiles`, `cleveref`, `hyperref`, `graphicx`, `todonotes`, `caption`, and `subcaption`.
@@ -32,10 +29,8 @@ For physics notation, add `\usepackage{coursephys}`.
 \documentclass[font-profile=pagella]{coursenotes}
 ```
 
-`coursenotes` uses a `report` layout with classicthesis.
-It defaults to 12 pt, letter paper, and Pagella Math.
-Contents entries use mixed-case letters.
-Chapter numerals use AMS Euler.
+`coursenotes` uses a `report` layout with classicthesis, defaulting to 12 pt text, letter paper, and Pagella Math.
+Contents entries retain mixed-case letters, and chapter numerals use AMS Euler.
 
 The class loads `coursecommon`, `courseenvironments`, `coursemath`, and `coursefonts`.
 It supplies `\localtableofcontents` through `etoc`.
@@ -48,13 +43,10 @@ The class does not load assignment output or homework todos.
 ## Class options
 
 Both classes process [shared configuration keys]({{ '/reference/configuration/' | relative_url }}) before they forward other options to the base class.
-Output modes and page-break settings affect assignments.
-They do not add assignment output to notes.
+Output modes and page-break settings control assignments without adding assignment output to notes.
 
-Select `font-profile=pazo|pagella|euler` in the class options.
-This selects the mathematics packages before they load.
+Select `font-profile=pazo|pagella|euler` in the class options so the mathematics packages are chosen before they load.
 Later setup calls cannot reload the font backend.
 
 The classes forward other base-class options, such as `a4paper` or `twoside`, to `article` or `report`.
-The coursework classes still control geometry and visual style.
-A forwarded option does not replace all class layout settings.
+The coursework classes still control geometry and visual style, so forwarded options do not replace all layout settings.

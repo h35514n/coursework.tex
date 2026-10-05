@@ -4,39 +4,37 @@ title: Homework
 nav_order: 3
 ---
 
-# Create homework
+# Homework
+{: #create-homework }
 
-`coursepsets` loads assignment output, metadata, mathematics, environments, and fonts.
-For physics notation, load `coursephys` explicitly.
+`coursepsets` provides the homework layout, assignment output, course metadata, shared mathematics notation, environments, and fonts.
+Load `coursephys` explicitly if you need physics notation.
 
 ## Set course metadata
 
-Put the configuration in the main preamble.
-Alternatively, put it in a shared `course.tex` file that homework and notes load.
+Put the configuration in the main preamble, or in a shared `course.tex` file loaded by both homework and notes.
 
 {% include snippets/metadata.md %}
 
-The six metadata fields accept LaTeX.
-Each setup call replaces the supplied values and retains the other values.
+All six metadata fields accept LaTeX.
+Each setup call updates the supplied values and leaves the others unchanged.
 
 ## Add front matter
 
 {% include snippets/title.md %}
 
-Title generation, contents, page numbers, todos, and assignment headings are separate operations.
-For visible todos, omit the `final` class option.
-Use `\listoftodos` to print the list.
-Use `\clearpage` where you require a page break.
-The `final` option suppresses todos in homework.
+Titles, contents, page numbers, todos, and assignment headings are configured separately.
+Use `\clearpage` wherever you need a page break.
+To show todos, omit the `final` class option and use `\listoftodos` to print their list.
+With `final`, homework todos are hidden.
 
 ## Declare and print an assignment
 
 {% include snippets/assignment.md %}
 
-The example selects problem `02` first.
-Its displayed reference is **1.1**.
+This example selects problem `02` first, giving it the displayed reference **1.1**.
 Problem `01` becomes **1.2**.
-The IDs and reference labels retain their identities when the selection order changes.
+Changing the selection order changes the displayed numbers while keeping the IDs and reference labels stable.
 
 ```text
 main.tex
@@ -50,16 +48,13 @@ fragments/
   discussion02.tex
 ```
 
-Each selected problem requires a `problem<ID>.tex` file.
-Worked mode also requires a `solution<ID>.tex` file.
-For an unsolved problem, the solution file can be empty.
+Each selected problem needs a `problem<ID>.tex` file.
+Worked mode also needs `solution<ID>.tex`, which can be empty for an unsolved problem.
 Guide and discussion files are optional.
-Fragments contain content only.
-The assignment renderer supplies headings and the solution closing marker.
+Fragments contain only the content: the assignment renderer adds headings and the solution closing marker.
 
-The renderer creates a Guide or Discussion section if at least one selected file for that role exists.
-An existing empty file can create a heading.
-To omit an optional role, omit its file.
+The renderer creates a Guide or Discussion section when at least one selected file for that role exists, even if the file is empty.
+To omit an optional role, leave out its file.
 Discussion sections appear only in worked mode.
 
 {% include snippets/assignment-notes.md %}
@@ -68,26 +63,25 @@ Discussion sections appear only in worked mode.
 
 | Class option | Result | Problem boundaries |
 | --- | --- | --- |
-| `mode=worked` | Guides, statements, solutions, and discussions | Continuous output by default. `problem-breaks=page` is available. |
-| `mode=worksheet` | Guides and statements. The renderer never reads solution or discussion files. | Separate pages |
-| `mode=compact` | Guides and statements. The renderer never reads solution or discussion files. | Continuous output |
+| `mode=worked` | Guides, statements, solutions, and discussions | Continuous by default; use `problem-breaks=page` for separate pages. |
+| `mode=worksheet` | Guides and statements; solution and discussion files are never read. | Separate pages |
+| `mode=compact` | Guides and statements; solution and discussion files are never read. | Continuous output |
 
 Compare the [worked]({{ '/examples/homework-worked/' | relative_url }}), [worksheet]({{ '/examples/homework-worksheet/' | relative_url }}), and [compact]({{ '/examples/homework-compact/' | relative_url }}) outputs.
-These outputs use the same project.
+All three outputs come from the same project.
 
 ## Set page breaks
 
 | Setting | Default | Effect |
 | --- | --- | --- |
-| `problem-breaks=page\|flow` | `flow` | Problem boundaries in worked mode. Worksheet and compact modes have their own behavior. |
+| `problem-breaks=page\|flow` | `flow` | Controls problem boundaries in worked mode. Worksheet and compact modes set their own boundaries. |
 | `assignment-breaks=page\|flow` | `flow` | Breaks before subsequent assignments |
 | `section-breaks=page\|flow` | `page` | Breaks between Guide, Problem Set, and Discussion sections |
 
-The first assignment and first role do not add automatic leading breaks.
-Long problems can span multiple pages.
-Explicit breaks in content and front matter still apply.
+No automatic break is added before the first assignment or before the first role within an assignment.
+Long problems can span multiple pages, and explicit breaks in content and front matter still apply.
 
-For continuous worked output, override source defaults when the document starts:
+For continuous worked output, override the source settings at the start of the document:
 
 ```sh
 latexmk -xelatex -jobname=homework-flow \
@@ -95,10 +89,8 @@ latexmk -xelatex -jobname=homework-flow \
   main.tex
 ```
 
-Course Makefiles provide `make homework-flow` for this configuration.
-The target uses a separate job name and PDF.
-It retains guides, solutions, discussions, and explicit source breaks.
-This target belongs to the course repositories.
+The course repositories provide `make homework-flow` for this configuration.
+The target produces a separate PDF and job name while retaining guides, solutions, discussions, and explicit source breaks.
 
 ## Compile a subfile separately
 
@@ -110,15 +102,13 @@ This target belongs to the course repositories.
 \end{document}
 ```
 
-From the project root, run `latexmk -xelatex standalone.tex`.
-See the [compiled standalone assignment]({{ '/examples/homework-subfile/' | relative_url }}).
-The parent can include it with `\subfile{standalone}`.
+Run `latexmk -xelatex standalone.tex` from the project root to produce the [standalone assignment]({{ '/examples/homework-subfile/' | relative_url }}).
+The parent document can include the same file with `\subfile{standalone}`.
 Include each assignment only once.
 
 ## Refer to problems and objects
 
-Use `\cref{prob:motion:01}` for a problem reference.
-Use standard `\label` and `\eqref` commands for equations.
+Refer to a problem with `\cref{prob:motion:01}`, and use standard `\label` and `\eqref` commands for equations.
 Equation, figure, and table numbers use the format `assignment.problem.item`.
 Each problem's object counters continue across its guide, statement, solution, and discussion.
 Explicit labels must be unique across the combined document.

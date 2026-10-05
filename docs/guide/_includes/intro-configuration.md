@@ -1,6 +1,6 @@
-Both classes load `coursecommon`.
-Standalone `\usepackage{coursecommon}` supplies configuration without subject notation or page layout.
-Title and heading commands use the surrounding class's title functions.
+Both classes load `coursecommon` for shared configuration.
+Loading it separately with `\usepackage{coursecommon}` provides configuration without subject notation or page layout.
+Its title and heading commands use the surrounding class's title functions.
 
 ### Setup keys
 
@@ -19,4 +19,4 @@ Title and heading commands use the surrounding class's title functions.
 | `font-profile` | Pazo in homework. Pagella in notes or standalone common. | `pazo`, `pagella`, or `euler`. Select it when the class loads. |
 
 Unknown keys and invalid choices produce LaTeX key errors.
-The generated title does not automatically show `textbook` metadata.
+Textbook metadata is stored for use through the metadata accessor and is not automatically included in the title.

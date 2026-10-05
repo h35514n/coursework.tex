@@ -73,7 +73,7 @@
   },
   {
     "id": "font-pazo",
-    "title": "Font profile: pazo",
+    "title": "Pazo font profile",
     "project": "shared",
     "root": "font-pazo.tex",
     "files": [
@@ -83,7 +83,7 @@
   },
   {
     "id": "font-pagella",
-    "title": "Font profile: pagella",
+    "title": "Pagella font profile",
     "project": "shared",
     "root": "font-pagella.tex",
     "files": [
@@ -93,7 +93,7 @@
   },
   {
     "id": "font-euler",
-    "title": "Font profile: euler",
+    "title": "Euler font profile",
     "project": "shared",
     "root": "font-euler.tex",
     "files": [

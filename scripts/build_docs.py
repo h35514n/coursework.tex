@@ -132,13 +132,13 @@ def compile_examples():
         if item.get('mode'):
             source.write_text(source.read_text().replace('mode=worked', 'mode='+item['mode'], 1))
         # Downloadable files are exactly those used for this variant.
-        text = ('# '+item['title']+'\n\nUse TeX Live 2026 with the LaTeX kernel 2026-06-01 or newer.\n'
-                'Use XeLaTeX and Coursework v2.\n'
-                'Install Coursework with the [authoring guide](https://h35514n.github.io/coursework.tex/getting-started/).\n\n'
-                'Compile from this directory, also for chapter and assignment subfiles:\n\n'
+        text = ('# '+item['title']+'\n\nThis project uses XeLaTeX and Coursework v2, with TeX Live 2026 and the LaTeX kernel 2026-06-01 or newer.\n'
+                'See [Getting started](https://h35514n.github.io/coursework.tex/getting-started/) for installation instructions.\n\n'
+                'Run this command from the extracted project directory, including when compiling a chapter or assignment subfile:\n\n'
                 '```sh\nlatexmk -xelatex -halt-on-error '+item['root']+'\n```\n\n'
-                'For an uninstalled checkout, add this prefix to the command:\n'
-                '`TEXINPUTS="/absolute/path/to/coursework.tex/tex/latex/coursework//:"`.\n')
+                'To use a checkout without installing it, prefix the command with '
+                '`TEXINPUTS="/absolute/path/to/coursework.tex/tex/latex/coursework//:"`. '
+                'The trailing colon retains the normal TeX search paths.\n')
         (folder/'README.md').write_text(text)
         pdfdir = folder/'output'
         pdfdir.mkdir()
@@ -216,14 +216,14 @@ def build_source(catalog, snippets_by_id, report):
         shutil.rmtree(STAGE)
     shutil.copytree(GUIDE, STAGE, ignore=shutil.ignore_patterns('examples', 'Gemfile*', 'api.json', 'examples.json', 'CONTRIBUTING.md'))
     revision = run(['git','rev-parse','HEAD']).strip()
-    (STAGE/'_includes/footer_custom.html').write_text('<p class="text-small text-grey-dk-000">The source commit is <a href="'+REPO+'/tree/'+revision+'">'+revision[:7]+'</a>. Examples use '+html.escape(report['xelatex'])+'.</p>\n')
+    (STAGE/'_includes/footer_custom.html').write_text('<p class="text-small text-grey-dk-000">Source: <a href="'+REPO+'/tree/'+revision+'">'+revision[:7]+'</a>. Examples compiled with '+html.escape(report['xelatex'])+'.</p>\n')
     inc = STAGE/'_includes/snippets'
     inc.mkdir(parents=True)
     for key, code in snippets_by_id.items():
         (inc/(key+'.md')).write_text(fence(code))
     reference = STAGE/'reference'
     reference.mkdir(exist_ok=True)
-    index = ['# Command and environment index\n', 'Search for a command name with or without a leading backslash.\n', '| Name | Kind | Package |', '| --- | --- | --- |']
+    index = ['# Command index\n{: #command-and-environment-index }\n', 'Look up commands and environments below, or search for a name with or without a leading backslash.\n', '| Name | Kind | Package |', '| --- | --- | --- |']
     for entry in sorted(catalog['entries'], key=lambda e: e['name'].lower()):
         name=entry['name']
         target=link('/reference/'+entry['group']+'/#'+name.lower())
@@ -236,17 +236,17 @@ def build_source(catalog, snippets_by_id, report):
             name=entry['name']
             source=REPO+'/blob/'+revision+'/tex/latex/coursework/'+entry['module']+'.sty'
             body += '## `'+name+'`\n{: #'+name.lower()+' }\n\n'
-            body += '<p class="api-meta">'+entry['kind']+' · <a href="'+source+'">'+entry['module']+'</a></p>\n\n'
+            body += '<p class="api-meta">'+entry['kind'].replace('dependency-', '')+' · <a href="'+source+'">'+entry['module']+'</a></p>\n\n'
             body += fence(entry['signature'])+'\n'+entry['description']+'\n\n**Arguments.** '+entry['arguments']+'\n\n'
             body += fence(snippets_by_id[entry['example']])+'\n'
             sample='homework-worked' if group in {'configuration','assignments'} else 'reference-coursepsets'
-            body += '[View the compiled example]('+link('/examples/'+sample+'/')+').\n\n'
+            body += '[Complete example]('+link('/examples/'+sample+'/')+').\n\n'
             if group in {'mathematics', 'physics', 'environments'}:
                 preview_page = {'mathematics': 1, 'physics': 2, 'environments': 3}[group]
                 if entry['example'] in {'env-formula', 'env-mathtable', 'env-subparts'}:
                     preview_page = 4
-                body += '<details><summary>Homework preview</summary><img class="preview" loading="lazy" alt="Homework '+html.escape(title.lower())+' example with '+name+'" src="'+link('/assets/examples/'+sample+f'/page-{preview_page}.png')+'"></details>\n\n'
-                body += '[Compare the notes example]('+link('/examples/reference-coursenotes/')+').\n\n'
+                body += '<details><summary>Homework preview</summary><img class="preview" loading="lazy" alt="'+html.escape(title)+' example showing '+name+' in homework" src="'+link('/assets/examples/'+sample+f'/page-{preview_page}.png')+'"></details>\n\n'
+                body += '[Notes example]('+link('/examples/reference-coursenotes/')+').\n\n'
         (reference/(group+'.md')).write_text(page(title,body,list(GROUPS).index(group)+2,'Reference'))
     examplesdir=STAGE/'examples'
     examplesdir.mkdir()
@@ -262,11 +262,14 @@ def build_source(catalog, snippets_by_id, report):
             for file in sorted(folder.rglob('*')):
                 if file.is_file() and 'output' not in file.relative_to(folder).parts:
                     archive.write(file,arcname=item['id']+'/'+str(file.relative_to(folder)))
-        body='# '+item['title']+'\n\n'
+        body='# '+item['title']+'\n'
+        if item['id'].startswith('font-'):
+            body+='{: #font-profile-'+item['id'][5:]+' }\n'
+        body+='\n'
         body+='[Download the PDF]('+link('/assets/examples/'+item['id']+'/example.pdf')+') · [Download the source ZIP]('+link('/assets/examples/'+item['id']+'/source.zip')+')\n\n'
-        body+='Compile `'+item['root']+'` from the extracted project directory. The source ZIP includes instructions and all fragments.\n\n'
+        body+='Extract the source ZIP and compile `'+item['root']+'` from the project directory. The ZIP includes all source files and a README with the compile command.\n\n'
         if item['id'] == 'reference-coursepsets':
-            body += 'This notation example uses an empty page style. It does not declare an assignment. Its table numbers start at 0.0.1. Complete homework projects include assignment numbers.\n\n'
+            body += 'This notation example uses an empty page style without declaring an assignment, so table numbers start at 0.0.1. In a complete homework project, these numbers include the assignment and problem numbers.\n\n'
         body+='## Source\n\n'+fence((folder/item['root']).read_text())+'\n'
         for file in sorted(folder.rglob('*.tex')):
             if file==folder/item['root'] or 'output' in file.relative_to(folder).parts:
@@ -276,13 +279,13 @@ def build_source(catalog, snippets_by_id, report):
         for i,file in enumerate(sorted((folder/'output').glob('page-*.png'),key=lambda p:int(p.stem.split('-')[-1])),1):
             shutil.copy2(file,assets/f'page-{i}.png')
             body+='### Page '+str(i)+'\n\n'
-            body+='<a href="'+link('/assets/examples/'+item['id']+'/example.pdf')+'"><img class="preview" loading="lazy" alt="'+html.escape(item['title'])+', compiled page '+str(i)+'" src="'+link('/assets/examples/'+item['id']+f'/page-{i}.png')+'"></a>\n\n'
+            body+='<a href="'+link('/assets/examples/'+item['id']+'/example.pdf')+'"><img class="preview" loading="lazy" alt="Page '+str(i)+' of '+html.escape(item['title'])+'" src="'+link('/assets/examples/'+item['id']+f'/page-{i}.png')+'"></a>\n\n'
         (examplesdir/(item['id']+'.md')).write_text(page(item['title'],body,report['examples'].index(item)+1,'Examples','/examples/'+item['id']+'/'))
     migration=(ROOT/'docs/MIGRATION.md').read_text()
     table=migration.split('## Complete command map',1)[1].split('## Environment and structure changes',1)[0]
     # Protect literal TeX from Liquid, preserving the table as Markdown.
-    body='# Migrate from v1\n\nThe guide describes v2. The classes do not support old aliases. For existing courses, use the source migration workflow.\n\n{% raw %}\n'+table+'\n{% endraw %}\n\n'
-    body+='[Read the v1 migration workflow]('+REPO+'/blob/master/docs/MIGRATION.md) · [Read the legacy course workflow]('+REPO+'/blob/master/docs/LEGACY-COURSE-MIGRATION.md).\n'
+    body='# Migration from v1\n{: #migrate-from-v1 }\n\nCoursework v2 replaces the v1 commands listed below and does not support their old aliases. Follow the linked migration instructions to update existing course sources.\n\n{% raw %}\n'+table+'\n{% endraw %}\n\n'
+    body+='[v1 migration instructions]('+REPO+'/blob/master/docs/MIGRATION.md) · [Legacy course migration instructions]('+REPO+'/blob/master/docs/LEGACY-COURSE-MIGRATION.md).\n'
     (STAGE/'migration.md').write_text(page('Migration from v1',body,9))
 
 
