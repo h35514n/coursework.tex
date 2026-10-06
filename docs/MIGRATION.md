@@ -70,24 +70,24 @@ Use this tool for v1 migration only.
 | `\vhat` | `\unitvect` |
 | `\vhatrm` | `\uprightunitvect` |
 | `\x` | `\times` |
-| `\abs{x}, \norm{x}` | \abs*{x}, \norm*{x} (preserve old automatic sizing) |
-| `\fdd{f}{x}, \fdl{f}{x}` | \deriv{f}{x}, \deriv[2]{f}{x} |
-| `\pdd{f}{x}, \pdl{f}{x}` | \pderiv{f}{x}, \pderiv[2]{f}{x} |
-| `\Int[x]{a}{b}{f}` | \integral{f}{x}{a}{b} |
-| `\eval{a}{b}{f}, \Eval{a}{b}{f}` | \evalat{f}{a}{b}, \evalbracket{f}{a}{b} |
-| `\Sum[n]{a}{b}, \infsum[n]{a}` | \sum_{n=a}^{b}, \sum_{n=a}^{\infty} |
-| `\Lim[b]{x}{f}` | \lim_{x\to b} f |
-| `\twovector, \threevector, \fourvector` | \colvector[alignment]{a\\b\\...} |
-| `\e{n}, \E{n}` | \times 10^{n}, 10^{n} |
-| `\u{unit}` | \unit{unit}. The standard text accent \u retains its meaning. |
-| `\n` | Removed unused narrow-minus shorthand. Write - instead. |
-| `\heading` | Explicit todos/page numbering, \makecourseworktitle, contents and \makeassignmentheading |
-| `\chap, \sect` | \assignment and renderer-generated sections |
-| `\problem, \solution, \includeproblem, \includeguide, \includediscussion` | One \declareproblem per fragment pair, then \printassignment |
+| `\abs{x}, \norm{x}` | `\abs*{x}`, `\norm*{x}` (preserve old automatic sizing) |
+| `\fdd{f}{x}, \fdl{f}{x}` | `\deriv{f}{x}`, `\deriv[2]{f}{x}` |
+| `\pdd{f}{x}, \pdl{f}{x}` | `\pderiv{f}{x}`, `\pderiv[2]{f}{x}` |
+| `\Int[x]{a}{b}{f}` | `\integral{f}{x}{a}{b}` |
+| `\eval{a}{b}{f}, \Eval{a}{b}{f}` | `\evalat{f}{a}{b}`, `\evalbracket{f}{a}{b}` |
+| `\Sum[n]{a}{b}, \infsum[n]{a}` | `\sum_{n=a}^{b}`, `\sum_{n=a}^{\infty}` |
+| `\Lim[b]{x}{f}` | `\lim_{x\to b} f` |
+| `\twovector, \threevector, \fourvector` | `\colvector[alignment]{a\\b\\...}` |
+| `\e{n}, \E{n}` | `\times 10^{n}`, `10^{n}` |
+| `\u{unit}` | `\unit{unit}`. The standard text accent `\u` retains its meaning. |
+| `\n` | Removed unused narrow-minus shorthand. Write `-` instead. |
+| `\heading` | Explicit todos/page numbering, `\makecourseworktitle`, contents and `\makeassignmentheading` |
+| `\chap, \sect` | `\assignment` and renderer-generated sections |
+| `\problem, \solution, \includeproblem, \includeguide, \includediscussion` | One `\declareproblem` per fragment pair, then `\printassignment` |
 | `\qqed, \SHOW, \HIDE, \TRUE, \FALSE` | Renderer-owned closing marker and named output modes |
-| `\subsect` | \paragraph* |
-| `\insertgraphic` | Standard center/includegraphics construction |
-| `\Author, \CourseNumber, \CourseName, \CourseTerm, \CourseText, \CourseTextAuthor` | \courseworksetup metadata and \courseworkvalue accessors |
+| `\subsect` | `\paragraph*` |
+| `\insertgraphic` | Standard `center`/`\includegraphics` construction |
+| `\Author, \CourseNumber, \CourseName, \CourseTerm, \CourseText, \CourseTextAuthor` | `\courseworksetup` metadata and `\courseworkvalue` accessors |
 
 These commands retain their names: `\NN`, `\ZZ`, `\QQ`, `\RR`, `\CC`, `\dd`, `\grad`, `\vect`, `\xhat`, `\yhat`, `\zhat`, `\rhat`, `\shat`, `\thetahat`, `\phihat`, `\priming`, and `\procedure`.
 `\grad` no longer consumes its subsequent token.
